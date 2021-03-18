@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="680" Width="1100">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.55*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Margin="10" Grid.Row="1"/>
+
     </Grid>
 </Window>
