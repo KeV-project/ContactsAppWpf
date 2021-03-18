@@ -5,12 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactsAppView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="680" Width="1100">
-    <Grid>
+        Title="ContactsApp" Height="680" Width="1100">
+    <Window.Resources>
+        <Style x:Key="LabelStyle">
+            <Setter Property="Label.FontSize" Value="14"/>
+            <Setter Property="Label.FontFamily" Value="Rod"/>
+        </Style>
+
+        <Style x:Key="TextBlockStyle">
+            <Setter Property="TextBlock.FontSize" Value="14"/>
+            <Setter Property="TextBlock.FontFamily" Value="Rod"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Top"/>
+            <Setter Property="TextBlock.Padding" Value="5"/>
+        </Style>
+    </Window.Resources >
+    
+    <Grid Margin="10,0,10,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.06*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.06*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -20,5 +34,44 @@
 
         <ListBox Margin="10" Grid.Row="1"/>
 
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.7*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Surname" Grid.Row="0" 
+                   Style="{StaticResource LabelStyle}"/>
+            <Label Content="Name" Grid.Row="1" 
+                   Style="{StaticResource LabelStyle}"/>
+            <Label Content="Birthday" Grid.Row="2" 
+                   Style="{StaticResource LabelStyle}"/>
+            <Label Content="Phone" Grid.Row="3" 
+                   Style="{StaticResource LabelStyle}"/>
+            <Label Content="E-mail" Grid.Row="4" 
+                   Style="{StaticResource LabelStyle}"/>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" 
+                       Style="{StaticResource TextBlockStyle}" Text="Text"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" 
+                       Style="{StaticResource TextBlockStyle}" Text="Text"/>
+            <DatePicker Grid.Row="2" Grid.Column="1" Width="120" 
+                        HorizontalAlignment="Left" Margin="0,0,0,10" 
+                        BorderBrush="White"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" 
+                       Style="{StaticResource TextBlockStyle}" Text="Text"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" 
+                       Style="{StaticResource TextBlockStyle}" Text="Text"/>
+        </Grid>
     </Grid>
 </Window>
