@@ -18,9 +18,9 @@ namespace ContactsAppView
 	/// <summary>
 	/// Логика взаимодействия для MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class ContactsAppWindow : Window
 	{
-		public MainWindow()
+		public ContactsAppWindow()
 		{
 			InitializeComponent();
 		}
