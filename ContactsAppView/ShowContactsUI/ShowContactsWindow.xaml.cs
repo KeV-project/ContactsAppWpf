@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ContactsAppView
+namespace ContactsAppUI.ShowContactsUI
 {
 	/// <summary>
 	/// Логика взаимодействия для MainWindow.xaml
 	/// </summary>
-	public partial class ContactsAppWindow : Window
+	public partial class ShowContactsWindow : Window
 	{
-		public ContactsAppWindow()
+		public ShowContactsWindow()
 		{
 			InitializeComponent();
 		}

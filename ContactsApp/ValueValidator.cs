@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace ContactsAppModel
+namespace ContactsApp
 {
     /// <summary>
     /// Класс <see cref="ValueValidator"/> предназначен для 

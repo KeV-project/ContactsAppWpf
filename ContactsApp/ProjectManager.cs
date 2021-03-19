@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace ContactsAppModel
+namespace ContactsApp
 {
 	/// <summary>
 	/// Класс <see cref="ProjectManager"/> предназначен

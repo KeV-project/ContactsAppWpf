@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ContactsAppModel
+namespace ContactsApp
 {
     /// <summary>
     /// Класс <see cref="Contact"/> предназначен для создания контактов 

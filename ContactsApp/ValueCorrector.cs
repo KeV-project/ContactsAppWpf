@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ContactsAppModel
+namespace ContactsApp
 {
     /// <summary>
     /// Класс <see cref="ValueCorrector"/> предназначен
