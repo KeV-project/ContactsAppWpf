@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace ContactsApp
+namespace ContactsAppModel
 {
     /// <summary>
     /// Класс <see cref="Project"/> предназначен для хранения

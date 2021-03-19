@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ContactsAppUI.ShowContactsUI
+namespace ContactsAppView.ShowContactsUI
 {
 	/// <summary>
 	/// Логика взаимодействия для MainWindow.xaml
