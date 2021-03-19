@@ -53,5 +53,18 @@ namespace ContactsAppViewModel.ShowContacts
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+
+        private RelayCommand _addContact;
+        public RelayCommand AddContact
+        {
+            get
+            {
+                return _addContact ??
+                  (_addContact = new RelayCommand(obj =>
+                  {
+                      
+                  }));
+            }
+        }
     }
 }

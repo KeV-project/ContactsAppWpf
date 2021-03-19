@@ -20,8 +20,8 @@
         <Style x:Key="ButtonStyle">
             <Setter Property="Button.Height" Value="30"/>
             <Setter Property="Button.Width" Value="30"/>
-            <Setter Property="Button.VerticalAlignment" Value="Center"/>
-            <Setter Property="Button.Margin" Value="10,0,10,0"/>
+            <Setter Property="Button.VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Button.Margin" Value="10,0,10,12"/>
         </Style>
     </Window.Resources>
     
