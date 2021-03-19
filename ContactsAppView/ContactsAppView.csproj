@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ShowContactsUI\ShowContactsWindow.xaml">
+    <Page Include="ShowContactsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,17 +63,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ShowContactsUI\ShowContactsWindow.xaml.cs">
+    <Compile Include="ShowContactsWindow.xaml.cs">
       <DependentUpon>ShowContactsWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="EditContactUI\EditContactWindow.xaml">
+    <Page Include="EditContactWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditContactUI\EditContactWindow.xaml.cs">
+    <Compile Include="EditContactWindow.xaml.cs">
       <DependentUpon>EditContactWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -100,6 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContactsAppViewModel\ContactsAppViewModel.csproj">
+      <Project>{a9b2e7f6-fe57-4af6-957e-8662d9c84306}</Project>
+      <Name>ContactsAppViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,8 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="ShowContactsViewModel.cs" />
+    <Compile Include="ShowContacts\ShowContactsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContactsApp\ContactsAppModel.csproj">
+      <Project>{0fdf0ddf-1d5f-4089-b5e5-28e67306bb76}</Project>
+      <Name>ContactsAppModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

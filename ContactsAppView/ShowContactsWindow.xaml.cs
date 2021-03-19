@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ContactsAppViewModel.ShowContacts;
 
-namespace ContactsAppView.ShowContactsUI
+namespace ContactsAppView
 {
 	/// <summary>
 	/// Логика взаимодействия для MainWindow.xaml
@@ -23,6 +24,8 @@ namespace ContactsAppView.ShowContactsUI
 		public ShowContactsWindow()
 		{
 			InitializeComponent();
+
+			DataContext = new ShowContactsViewModel();
 		}
 	}
 }
