@@ -1,12 +1,22 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ContactsAppModel
 {
     /// <summary>
     /// Класс <see cref="Contact"/> предназначен для создания контактов 
     /// </summary>
-    public class Contact : ICloneable, IComparable<Contact>
+    public class Contact : INotifyPropertyChanged, ICloneable, IComparable<Contact>
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
         /// <summary>
         /// Cодержит идентификатор контакта
         /// </summary>
@@ -29,6 +39,8 @@ namespace ContactsAppModel
                 ValueValidator.AssertLengthInRange(Convert.ToString(value),
                     minLength, maxLength, "id контакта");
                 _id = value;
+
+                OnPropertyChanged("Id");
             }
         }
 
@@ -56,6 +68,8 @@ namespace ContactsAppModel
                     minLength, maxLength, "имя контакта");
 
                 _firstName = ValueCorrector.ToUpperFirstLetter(value);
+
+                OnPropertyChanged("FirstName");
             }
         }
 
@@ -83,6 +97,8 @@ namespace ContactsAppModel
                    minLength, maxLength, "фамилия контакта");
 
                 _lastName = ValueCorrector.ToUpperFirstLetter(value);
+
+                OnPropertyChanged("LastName");
             }
         }
 
@@ -117,6 +133,8 @@ namespace ContactsAppModel
                     minLength, maxLength, "e-mail контакта");
 
                 _email = value;
+
+                OnPropertyChanged("Email");
             }
         }
         /// <summary>
@@ -144,6 +162,8 @@ namespace ContactsAppModel
                      "рождения");
 
                 _birthDate = value;
+
+                OnPropertyChanged("Birthday");
             }
         }
 

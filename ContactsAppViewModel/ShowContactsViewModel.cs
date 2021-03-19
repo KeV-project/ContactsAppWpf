@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactsAppViewModel
 {
-    public class Class1
+    public class ShowContactsViewModel
     {
     }
 }
