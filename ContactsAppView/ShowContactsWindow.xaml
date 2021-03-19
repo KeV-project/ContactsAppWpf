@@ -23,13 +23,6 @@
             <Setter Property="Button.VerticalAlignment" Value="Center"/>
             <Setter Property="Button.Margin" Value="10,0,10,0"/>
         </Style>
-
-        <Style x:Key="DatePickerStyle">
-            <Setter Property="DatePicker.Width" Value="120"/>
-            <Setter Property="DatePicker.HorizontalAlignment" Value="Left"/>
-            <Setter Property="DatePicker.BorderBrush" Value="White"/>
-            <!--<Setter Property="DatePicker.SelectedDate" Value="{x:Static sys:DateTime.Now}"/>-->
-        </Style>
     </Window.Resources>
     
     <Grid Margin="10,0,10,0">
@@ -104,9 +97,9 @@
             <TextBlock Grid.Row="1" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding FirstName}"/>
-            <DatePicker Grid.Row="2" Grid.Column="1" 
-                        Style="{StaticResource DatePickerStyle}"
-                        SelectedDate="{Binding BirthDate}"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" 
+                       Style="{StaticResource TextBlockStyle}" 
+                       Text="{Binding BirthDate, StringFormat=dd.MM.yyyy}"/>
             <TextBlock Grid.Row="3" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        DataContext="{Binding Number}"
