@@ -12,18 +12,43 @@ using ContactsAppModel;
 
 namespace ContactsAppViewModel
 {
+    /// <summary>
+    /// Класс <see cref="ShowContactsViewModel"/> 
+    /// связывает модель и представление через механизм привязки данных. 
+    /// </summary>
     public class ShowContactsViewModel: INotifyPropertyChanged
     {
+        /// <summary>
+        /// Хранит проект с пользовательскими данными приложения
+        /// </summary>
         private Project _project;
 
+        /// <summary>
+        /// Хранит путь к файлу с пользовательскими данными приложения
+        /// </summary>
         private FileInfo _path;
 
+        /// <summary>
+        /// Хранит текущий выбранный контакт
+        /// </summary>
         private Contact _selectedContact;
 
+        /// <summary>
+        /// Хранит список контактов пользователя
+        /// </summary>
         public ObservableCollection<Contact> Contacts { get; set; }
 
+        /// <summary>
+        /// Хранит сервис предоставляющий свойста и методы для
+        /// работы с дочерним окном
+        /// </summary>
         private IWindowService _windowService;
 
+        /// <summary>
+        /// Инициализирует проект пользовательских данных и
+        /// устанавливает сервис для связи с дочерним окном
+        /// </summary>
+        /// <param name="editContactWindowService">Сервис дочернего окна</param>
         public ShowContactsViewModel(IWindowService 
             editContactWindowService)
 		{
@@ -39,6 +64,9 @@ namespace ContactsAppViewModel
             _windowService = editContactWindowService;
         }
 
+        /// <summary>
+        /// Возвращает и устанавливает текущий контакт
+        /// </summary>
         public Contact SelectedContact
         {
             get
@@ -52,14 +80,29 @@ namespace ContactsAppViewModel
             }
         }
 
+        /// <summary>
+        /// Реализует привязку пользовательских данных к элементам управления
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Сообщает View об изменении пользовательских данных
+        /// </summary>
+        /// <param name="prop"></param>
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
+        /// <summary>
+        /// Хранит команду добавления нового контакта
+        /// </summary>
         private RelayCommand _addContactCommand;
+
+        /// <summary>
+        /// Возвращает команду добавления нового контакта
+        /// </summary>
         public RelayCommand AddContactCommand
         {
             get
