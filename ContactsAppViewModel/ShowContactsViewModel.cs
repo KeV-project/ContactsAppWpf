@@ -9,7 +9,8 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using ContactsAppModel;
 
-namespace ContactsAppViewModel.ShowContacts
+
+namespace ContactsAppViewModel
 {
     public class ShowContactsViewModel: INotifyPropertyChanged
     {
@@ -21,7 +22,10 @@ namespace ContactsAppViewModel.ShowContacts
 
         public ObservableCollection<Contact> Contacts { get; set; }
 
-        public ShowContactsViewModel()
+        private IWindowService _windowService;
+
+        public ShowContactsViewModel(IWindowService 
+            editContactWindowService)
 		{
             _path = new FileInfo(Environment.GetFolderPath(
                 Environment.SpecialFolder.ApplicationData) +
@@ -32,6 +36,7 @@ namespace ContactsAppViewModel.ShowContacts
 			{
                 Contacts.Add(_project[i]);
 			}
+            _windowService = editContactWindowService;
         }
 
         public Contact SelectedContact
@@ -54,15 +59,21 @@ namespace ContactsAppViewModel.ShowContacts
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        private RelayCommand _addContact;
-        public RelayCommand AddContact
+        private RelayCommand _addContactCommand;
+        public RelayCommand AddContactCommand
         {
             get
             {
-                return _addContact ??
-                  (_addContact = new RelayCommand(obj =>
+                return _addContactCommand ??
+                  (_addContactCommand = new RelayCommand(obj =>
                   {
-                      
+                      EditContactViewModel viewModel = 
+                      new EditContactViewModel();
+                      _windowService.ShowDialog(viewModel);
+                      if(_windowService.DialogResult)
+					  {
+
+					  }
                   }));
             }
         }

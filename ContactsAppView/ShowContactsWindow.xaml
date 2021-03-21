@@ -9,7 +9,7 @@
         Title="ContactsApp" 
         Height="680" Width="1100" 
         MinHeight="680" MinWidth="1100"
-        FontSize="14">
+        FontSize="14" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Style x:Key="TextBlockStyle">
@@ -24,94 +24,113 @@
             <Setter Property="Button.Margin" Value="10,0,10,12"/>
         </Style>
     </Window.Resources>
-    
-    <Grid Margin="10,0,10,0">
+
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.06*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.08*"/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.55*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Height="35" VerticalAlignment="Top" FontSize="14" Grid.RowSpan="2">
+            <MenuItem Header="File" Margin="12,6,10,0">
+                <MenuItem Header="Exit(Alt + F4)"/>
+            </MenuItem>
+            <MenuItem Header="Edit" Margin="10,6,10,0">
+                <MenuItem Header="Add contact"/>
+                <MenuItem Header="Edit contact"/>
+                <MenuItem Header="Remove contact"/>
+            </MenuItem>
+            <MenuItem Header="Help" Margin="10,6,10,0">
+                <MenuItem Header="About(F1)"/>
+            </MenuItem>
+        </Menu>
 
-        <!--Содержит поле для поиска и список контактов-->
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.08*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <!--Содержит поле для поиска-->
-            <Grid Margin="10, 5, 10, 5">
+        <!--Контент-->
+        <Grid Grid.Row="1" Margin="10,0,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.55*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Содержит поле для поиска и список контактов-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="38*"/>
+                </Grid.RowDefinitions>
+
+                <!--Содержит поле для поиска-->
+                <Grid Margin="10, 5, 10, 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Find:" Height="25"/>
+                    <TextBox Grid.Column="1" Height="25" Padding="0,0,0,2"/>
+                </Grid>
+
+                <ListBox Margin="10" Grid.Row="1" ItemsSource="{Binding Contacts}"
+                     SelectedItem="{Binding SelectedContact}" Grid.RowSpan="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock Text="{Binding Path=LastName}" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Path=FirstName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+            <!--Содержит поля для вывода информации о контакте с подписями-->
+            <Grid Grid.Column="1" Margin="10" DataContext="{Binding SelectedContact}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.7*"/>
+                </Grid.RowDefinitions>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Content="Find:" Height="25"/>
-                <TextBox Grid.Column="1" Height="25" Padding="0,0,0,2"/>
-            </Grid>
+                <Label Content="Surname" Grid.Row="0"/>
+                <Label Content="Name" Grid.Row="1"/>
+                <Label Content="Birthday" Grid.Row="2"/>
+                <Label Content="Phone" Grid.Row="3"/>
+                <Label Content="E-mail" Grid.Row="4"/>
 
-            <ListBox Margin="10" Grid.Row="1" ItemsSource="{Binding Contacts}"
-                     SelectedItem="{Binding SelectedContact}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Margin="5">
-                            <TextBlock Text="{Binding Path=LastName}" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding Path=FirstName}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Grid>
-        
-        <!--Содержит поля для вывода информации о контакте с подписями-->
-        <Grid Grid.Row="1" Grid.Column="1" Margin="10" DataContext="{Binding SelectedContact}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="0.7*"/>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Label Content="Surname" Grid.Row="0"/>
-            <Label Content="Name" Grid.Row="1"/>
-            <Label Content="Birthday" Grid.Row="2"/>
-            <Label Content="Phone" Grid.Row="3"/>
-            <Label Content="E-mail" Grid.Row="4"/>
-
-            <TextBlock Grid.Row="0" Grid.Column="1" 
+                <TextBlock Grid.Row="0" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding LastName}"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" 
+                <TextBlock Grid.Row="1" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding FirstName}"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" 
+                <TextBlock Grid.Row="2" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding BirthDate, StringFormat=dd.MM.yyyy}"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" 
+                <TextBlock Grid.Row="3" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        DataContext="{Binding Number}"
                        Text="{Binding Number}"/>
-            <TextBlock Grid.Row="4" Grid.Column="1" 
+                <TextBlock Grid.Row="4" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding Email}"/>
+            </Grid>
         </Grid>
-        
+
         <!--Содержит кнопки для доюавления, редактирования и удаления контакта-->
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Content="+" Style="{StaticResource ButtonStyle}"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,0,10,0">
+            <Button Content="+" Style="{StaticResource ButtonStyle}" 
+                    Command="{Binding AddContactCommand}"/>
             <Button Content="E" Style="{StaticResource ButtonStyle}"/>
             <Button Content="-" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>

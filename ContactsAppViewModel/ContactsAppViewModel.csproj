@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditContactViewModel.cs" />
+    <Compile Include="IWindowService.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="ShowContacts\ShowContactsViewModel.cs" />
+    <Compile Include="ShowContactsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,5 +54,6 @@
       <Name>ContactsAppModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

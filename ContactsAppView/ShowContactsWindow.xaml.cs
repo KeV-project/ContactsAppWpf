@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ContactsAppViewModel.ShowContacts;
+using ContactsAppViewModel;
 
 namespace ContactsAppView
 {
@@ -25,7 +25,8 @@ namespace ContactsAppView
 		{
 			InitializeComponent();
 
-			DataContext = new ShowContactsViewModel();
+			DataContext = new ShowContactsViewModel(
+				new EditContactWindowService());
 		}
 	}
 }

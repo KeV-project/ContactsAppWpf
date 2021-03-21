@@ -5,12 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactsAppView"
         mc:Ignorable="d"
-        Title="Edit Contact" Height="450" Width="800" ResizeMode="NoResize"
-        FontSize="18">
-    <Grid Margin="30">
+        Title="Edit Contact" Height="362" Width="671.5" ResizeMode="NoResize"
+        FontSize="14" WindowStartupLocation="CenterScreen" >
+
+    <Window.Resources>
+        <Style x:Key="ButtonStyle">
+            <Setter Property="Button.Height" Value="32"/>
+            <Setter Property="Button.Width" Value="120"/>
+            <Setter Property="Button.Margin" Value="10,0,10,0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="30,30,30,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
 
         <Grid>
@@ -35,8 +44,16 @@
 
             <TextBox Grid.Row="0" Grid.Column="1" Text="Text"/>
             <TextBox Grid.Row="1" Grid.Column="1" Text="Text"/>
-            <DatePicker Grid.Row="3" Grid.Column="1" Width="150" HorizontalAlignment="Left" BorderBrush="White"/>
+            <DatePicker Grid.Row="2" Grid.Column="1" Width="150" HorizontalAlignment="Left" BorderBrush="White"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="Text"/>
             <TextBox Grid.Row="4" Grid.Column="1" Text="Text"/>
         </Grid>
+
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Width="280" 
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Content="Cancel" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Ok" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
     </Grid>
 </Window>
