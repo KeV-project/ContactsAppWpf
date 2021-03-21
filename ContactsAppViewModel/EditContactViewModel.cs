@@ -7,6 +7,10 @@ using ContactsAppModel;
 
 namespace ContactsAppViewModel
 {
+	/// <summary>
+	/// Класс <see cref="EditContactViewModel"/>
+	/// связывает модель и представление через механизм привязки данных.
+	/// </summary>
 	public class EditContactViewModel
 	{
 		
