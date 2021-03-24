@@ -16,7 +16,7 @@ namespace ContactsAppViewModel
     /// Класс <see cref="ShowContactsViewModel"/> 
     /// связывает модель и представление через механизм привязки данных. 
     /// </summary>
-    public class ShowContactsViewModel: INotifyPropertyChanged
+    public class ShowContactsViewModel: VeiwModelBase
     {
         /// <summary>
         /// Хранит проект с пользовательскими данными приложения
@@ -78,21 +78,6 @@ namespace ContactsAppViewModel
                 _selectedContact = value;
                 OnPropertyChanged("SelectedContact");
             }
-        }
-
-        /// <summary>
-        /// Реализует привязку пользовательских данных к элементам управления
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Сообщает View об изменении пользовательских данных
-        /// </summary>
-        /// <param name="prop"></param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
         /// <summary>
