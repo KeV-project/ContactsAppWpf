@@ -132,6 +132,9 @@
                 <TextBlock Grid.Row="4" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding Email}"/>
+                <Image HorizontalAlignment="Center" Height="132" Grid.Row="6" VerticalAlignment="Center" Width="112" Source="kisspng-exclamation-mark-question-mark-computer-icons-isolated-vector-5adcf2c43db788.2850159915244295082528.png" Margin="0,0,0,10"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Birthday today:" VerticalAlignment="Center" Height="47" Width="146" FontSize="20" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="161,52,0,0" Grid.Row="6" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="48" Width="373" FontSize="20" FontWeight="Bold"/>
             </Grid>
         </Grid>
 
