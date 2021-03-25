@@ -7,43 +7,8 @@ namespace ContactsAppModel
     /// <summary>
     /// Класс <see cref="Contact"/> предназначен для создания контактов 
     /// </summary>
-    public class Contact : INotifyPropertyChanged, ICloneable, IComparable<Contact>
+    public class Contact : ModelBase, ICloneable, IComparable<Contact>
     {
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
-
-        /// <summary>
-        /// Cодержит идентификатор контакта
-        /// </summary>
-        private long _id;
-
-        /// <summary>
-        /// Возвращает и создает id контакта
-        /// Id контакта должно состоять не более чем из 15 символом
-        /// </summary> 
-        public long Id
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                const int minLength = 0;
-                const int maxLength = 15;
-                ValueValidator.AssertLengthInRange(Convert.ToString(value),
-                    minLength, maxLength, "id контакта");
-                _id = value;
-
-                OnPropertyChanged("Id");
-            }
-        }
-
         /// <summary>
         /// Cодержит имя контакта
         /// </summary>
@@ -64,8 +29,16 @@ namespace ContactsAppModel
             {
                 const int minLength = 1;
                 const int maxLength = 50;
-                ValueValidator.AssertCorrectName(value,
-                    minLength, maxLength, "имя контакта");
+				try
+				{
+                    ValueValidator.AssertCorrectName(value,
+                        minLength, maxLength, "имя контакта");
+                    RemoveError("FirstName");
+                }
+                catch(ArgumentException e)
+				{
+                    AddError("FirstName", e.Message);
+				}
 
                 _firstName = ValueCorrector.ToUpperFirstLetter(value);
 
@@ -93,9 +66,17 @@ namespace ContactsAppModel
             {
                 const int minLength = 0;
                 const int maxLength = 50;
-                ValueValidator.AssertCorrectName(value,
-                   minLength, maxLength, "фамилия контакта");
-
+                try
+                {
+                    ValueValidator.AssertCorrectName(value,
+                        minLength, maxLength, "фамилия контакта");
+                    RemoveError("LastName");
+                }
+                catch (ArgumentException e)
+                {
+                    AddError("LastName", e.Message);
+                }
+               
                 _lastName = ValueCorrector.ToUpperFirstLetter(value);
 
                 OnPropertyChanged("LastName");
@@ -129,9 +110,17 @@ namespace ContactsAppModel
 
                 const int minLength = 0;
                 const int maxLength = 50;
-                ValueValidator.AssertLengthInRange(value,
-                    minLength, maxLength, "e-mail контакта");
-
+                try
+                {
+                    ValueValidator.AssertLengthInRange(value,
+                        minLength, maxLength, "e-mail контакта");
+                    RemoveError("Email");
+                }
+                catch (ArgumentException e)
+                {
+                    AddError("Email", e.Message);
+                }
+                
                 _email = value;
 
                 OnPropertyChanged("Email");
@@ -158,8 +147,16 @@ namespace ContactsAppModel
                 DateTime minDate = new DateTime(1900, 12, 31, 23, 59, 59);
                 DateTime maxDate = new DateTime(DateTime.Today.Year,
                     DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
-                ValueValidator.AssertCorrectDate(value, minDate, maxDate,
+                try
+				{
+                    ValueValidator.AssertCorrectDate(value, minDate, maxDate,
                      "рождения");
+                    RemoveError("BirthDate");
+                }
+                catch(ArgumentException e)
+				{
+                    AddError("BirthDate", e.Message);
+				}
 
                 _birthDate = value;
 
@@ -172,11 +169,10 @@ namespace ContactsAppModel
         /// </summary>
         public Contact()
         {
-            Id = 0;
-            FirstName = "Неизвестно";
-            LastName = "Неизвестно";
+            FirstName = "";
+            LastName = "";
             Number = new PhoneNumber();
-            Email = "Неизвестно";
+            Email = "";
             BirthDate = DateTime.Today;
         }
 
@@ -191,7 +187,6 @@ namespace ContactsAppModel
         public Contact(string firstName, string lastName,
             PhoneNumber number, string email, DateTime birthDate)
         {
-            Id = 0;
             FirstName = firstName;
             LastName = lastName;
             Number = number;

@@ -52,13 +52,12 @@ namespace ContactsAppView
 			});
 		}
 
-		/// <summary>
-		/// Запускает окно
-		/// </summary>
-		/// <param name="dataContext">Редактируемый контакт</param>
 		public void ShowDialog(object dataContext)
 		{
+			((EditContactViewModel)dataContext).OkCommand = OkCommand;
+			((EditContactViewModel)dataContext).CancelCommand = CancelCommand;
 			_editContactWindow = new EditContactWindow();
+			_editContactWindow.DataContext = dataContext;
 			_editContactWindow.ShowDialog();
 		}
 	}

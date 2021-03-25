@@ -13,6 +13,14 @@ namespace ContactsAppViewModel
 	/// </summary>
 	public class EditContactViewModel: VeiwModelBase
 	{
-		
-	}
+		public RelayCommand OkCommand { get; set; }
+
+		public RelayCommand CancelCommand { get; set; }
+		public Contact EditedContact { get; private set; }
+
+		public EditContactViewModel(Contact contact)
+		{
+			EditedContact = contact;
+		}
+    }
 }

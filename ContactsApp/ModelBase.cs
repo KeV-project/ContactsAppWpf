@@ -65,13 +65,13 @@ namespace ContactsAppModel
             {
                 return !HasErrors;
             }
-
         }
 
         public void AddError(string propertyName, string error)
         {
             _errors[propertyName] = new List<string>() { error };
             NotifyErrorsChanged(propertyName);
+            OnPropertyChanged("IsValid");
         }
 
         public void RemoveError(string propertyName)
@@ -81,6 +81,7 @@ namespace ContactsAppModel
                 _errors.Remove(propertyName);
             }
             NotifyErrorsChanged(propertyName);
+            OnPropertyChanged("IsValid");
         }
 
         public void NotifyErrorsChanged(string propertyName)

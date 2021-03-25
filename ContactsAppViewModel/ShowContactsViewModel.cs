@@ -96,12 +96,14 @@ namespace ContactsAppViewModel
                   (_addContactCommand = new RelayCommand(obj =>
                   {
                       EditContactViewModel viewModel = 
-                      new EditContactViewModel();
+                        new EditContactViewModel(new Contact());
                       _windowService.ShowDialog(viewModel);
                       if(_windowService.DialogResult)
 					  {
-
-					  }
+                          _project.AddContact(viewModel.EditedContact);
+                          Contacts.Add(viewModel.EditedContact);
+                          ProjectManager.SaveProject(_project, _path);
+                      }
                   }));
             }
         }

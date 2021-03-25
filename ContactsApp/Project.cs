@@ -27,27 +27,11 @@ namespace ContactsAppModel
         public Contact this[int index] => _contacts[index];
 
         /// <summary>
-        /// Возвращает и задает последний выданный контакту идентификатор
-        /// </summary>
-        [DataMember]
-        public int LastId { get; private set; }
-
-        /// <summary>
         /// Инициализирует объект класса <see cref="Project">
         /// </summary>
         public Project()
         {
-            LastId = 0;
             _contacts = new List<Contact>();
-        }
-
-        /// <summary>
-        /// Создает идентификатор для нового контакта
-        /// </summary>
-        /// <returns>Возвращает новый Id</returns>
-        public int GetNewId()
-        {
-            return ++LastId;
         }
 
         /// <summary>
@@ -68,7 +52,6 @@ namespace ContactsAppModel
         {
             if (newContact != null)
             {
-                newContact.Id = GetNewId();
                 _contacts.Add(newContact);
                 _contacts.Sort();
             }

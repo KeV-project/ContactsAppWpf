@@ -6,7 +6,7 @@ namespace ContactsAppModel
     /// Класс <see cref="PhoneNumber"/> хранит информацию 
     /// о номере телефона контакта
     /// </summary>
-    public class PhoneNumber : IComparable<PhoneNumber>
+    public class PhoneNumber: ModelBase, IComparable<PhoneNumber>
     {
         /// <summary>
         /// Поле предназначено для хранения номера телефона контакта
@@ -25,9 +25,20 @@ namespace ContactsAppModel
             }
             set
             {
-                ValueValidator.AssertRussianPhoneNumber(value,
-                    "номер телефона");
+				try
+				{
+                    ValueValidator.AssertRussianPhoneNumber(value,
+                        "номер телефона");
+                    RemoveError("Number");
+                }
+                catch(ArgumentException e)
+				{
+                    AddError("Number", e.Message);
+				}
+                
                 _number = value;
+
+                OnPropertyChanged("Number");
             }
         }
 
