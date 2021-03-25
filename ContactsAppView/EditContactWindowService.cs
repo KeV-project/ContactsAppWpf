@@ -35,7 +35,7 @@ namespace ContactsAppView
 		public RelayCommand CancelCommand { get; set; }
 
 		/// <summary>
-		/// Выполняет реализацию команд
+		/// Выполняет инициализацию команд
 		/// </summary>
 		public EditContactWindowService()
 		{
@@ -52,6 +52,10 @@ namespace ContactsAppView
 			});
 		}
 
+		/// <summary>
+		/// Запускает окно
+		/// </summary>
+		/// <param name="dataContext">ViewModel окна</param>
 		public void ShowDialog(object dataContext)
 		{
 			((EditContactViewModel)dataContext).OkCommand = OkCommand;
