@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using ContactsAppModel;
+using ContactsAppViewModel.WindowServices;
+using ContactsAppViewModel.Commands;
 
 
 namespace ContactsAppViewModel
@@ -111,24 +113,27 @@ namespace ContactsAppViewModel
         /// <summary>
         /// Хранит команду редактирования контакта
         /// </summary>
-        private RelayCommand _edditContactCommand;
+        private RelayCommand _editContactCommand;
 
         /// <summary>
         /// Возвращает команду редактирования нового контакта
         /// </summary>
-        public RelayCommand EdditContactCommand
+        public RelayCommand EditContactCommand
         {
             get
             {
-                return _edditContactCommand ??
-                  (_edditContactCommand = new RelayCommand(obj =>
+                return _editContactCommand ??
+                  (_editContactCommand = new RelayCommand(obj =>
                   {
-                      EditContactViewModel viewModel =
+                      if(SelectedContact != null)
+					  {
+                          EditContactViewModel viewModel =
                         new EditContactViewModel(SelectedContact);
-                      _windowService.ShowDialog(viewModel);
-                      if (_windowService.DialogResult)
-                      {
-                          ProjectManager.SaveProject(_project, _path);
+                          _windowService.ShowDialog(viewModel);
+                          if (_windowService.DialogResult)
+                          {
+                              ProjectManager.SaveProject(_project, _path);
+                          }
                       }
                   }));
             }
@@ -149,9 +154,12 @@ namespace ContactsAppViewModel
                 return _removeContactCommand ??
                   (_removeContactCommand = new RelayCommand(obj =>
                   {
-                      _project.RemoveContact(SelectedContact);
-                      Contacts.Remove(SelectedContact);
-                      ProjectManager.SaveProject(_project, _path);
+                      if(SelectedContact != null)
+					  {
+                          _project.RemoveContact(SelectedContact);
+                          Contacts.Remove(SelectedContact);
+                          ProjectManager.SaveProject(_project, _path);
+                      }
                   }));
             }
         }

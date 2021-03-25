@@ -26,7 +26,7 @@ namespace ContactsAppView
 			InitializeComponent();
 
 			DataContext = new ShowContactsViewModel(
-				new EditContactWindowService());
+				new WindowServices.EditContactWindowService());
 		}
 	}
 }

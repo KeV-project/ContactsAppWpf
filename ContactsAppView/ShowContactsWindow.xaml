@@ -33,14 +33,18 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Height="35" VerticalAlignment="Top" FontSize="14" Grid.RowSpan="2">
+        <Menu Grid.Row="0" Height="35" VerticalAlignment="Top" 
+              FontSize="14" Grid.RowSpan="2">
             <MenuItem Header="File" Margin="12,6,10,0">
                 <MenuItem Header="Exit(Alt + F4)"/>
             </MenuItem>
             <MenuItem Header="Edit" Margin="10,6,10,0">
-                <MenuItem Header="Add contact"/>
-                <MenuItem Header="Edit contact"/>
-                <MenuItem Header="Remove contact"/>
+                <MenuItem Header="Add contact" 
+                          Command="{Binding AddContactCommand}"/>
+                <MenuItem Header="Edit contact" 
+                          Command="{Binding EditContactCommand}"/>
+                <MenuItem Header="Remove contact" 
+                          Command="{Binding RemoveContactCommand}"/>
             </MenuItem>
             <MenuItem Header="Help" Margin="10,6,10,0">
                 <MenuItem Header="About(F1)"/>
@@ -73,12 +77,14 @@
                     <TextBox Grid.Column="1" Height="25" Padding="0,0,0,2"/>
                 </Grid>
 
-                <ListBox Margin="10" Grid.Row="1" ItemsSource="{Binding Contacts}"
+                <ListBox Margin="10" Grid.Row="1" 
+                         ItemsSource="{Binding Contacts}"
                      SelectedItem="{Binding SelectedContact}" Grid.RowSpan="2">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
-                                <TextBlock Text="{Binding Path=LastName}" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Path=LastName}" 
+                                           Margin="0,0,5,0"/>
                                 <TextBlock Text="{Binding Path=FirstName}" />
                             </StackPanel>
                         </DataTemplate>
@@ -87,7 +93,8 @@
             </Grid>
 
             <!--Содержит поля для вывода информации о контакте с подписями-->
-            <Grid Grid.Column="1" Margin="10" DataContext="{Binding SelectedContact}">
+            <Grid Grid.Column="1" Margin="10" 
+                  DataContext="{Binding SelectedContact}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.2*"/>
                     <RowDefinition Height="0.2*"/>
@@ -133,7 +140,7 @@
             <Button Content="+" Style="{StaticResource ButtonStyle}" 
                     Command="{Binding AddContactCommand}"/>
             <Button Content="E" Style="{StaticResource ButtonStyle}"
-                    Command="{Binding EdditContactCommand}"/>
+                    Command="{Binding EditContactCommand}"/>
             <Button Content="-" Style="{StaticResource ButtonStyle}"
                     Command="{Binding RemoveContactCommand}"/>
         </StackPanel>

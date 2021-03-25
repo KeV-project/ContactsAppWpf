@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ContactsAppViewModel
+namespace ContactsAppViewModel.Commands
 {
     public class RelayCommand : ICommand
     {

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ContactsAppViewModel.Commands;
 
-namespace ContactsAppViewModel
+namespace ContactsAppViewModel.WindowServices
 {
 	/// <summary>
 	/// Реализует интерфейс сервиса, предоставляющего свойства 
