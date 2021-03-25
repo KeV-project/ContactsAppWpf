@@ -13,11 +13,25 @@ namespace ContactsAppViewModel
 	/// </summary>
 	public class EditContactViewModel: VeiwModelBase
 	{
+		/// <summary>
+		/// Команда успешного закрытия окна
+		/// </summary>
 		public RelayCommand OkCommand { get; set; }
 
+		/// <summary>
+		/// Команда закрытия окна
+		/// </summary>
 		public RelayCommand CancelCommand { get; set; }
+
+		/// <summary>
+		/// Редактируемый контакт
+		/// </summary>
 		public Contact EditedContact { get; private set; }
 
+		/// <summary>
+		/// Инициализирует редактируемый контакт
+		/// </summary>
+		/// <param name="contact"></param>
 		public EditContactViewModel(Contact contact)
 		{
 			EditedContact = contact;
