@@ -107,5 +107,31 @@ namespace ContactsAppViewModel
                   }));
             }
         }
+
+        /// <summary>
+        /// Хранит команду редактирования контакта
+        /// </summary>
+        private RelayCommand _edditContactCommand;
+
+        /// <summary>
+        /// Возвращает команду редактирования нового контакта
+        /// </summary>
+        public RelayCommand EdditContactCommand
+        {
+            get
+            {
+                return _edditContactCommand ??
+                  (_edditContactCommand = new RelayCommand(obj =>
+                  {
+                      EditContactViewModel viewModel =
+                        new EditContactViewModel(SelectedContact);
+                      _windowService.ShowDialog(viewModel);
+                      if (_windowService.DialogResult)
+                      {
+                          ProjectManager.SaveProject(_project, _path);
+                      }
+                  }));
+            }
+        }
     }
 }

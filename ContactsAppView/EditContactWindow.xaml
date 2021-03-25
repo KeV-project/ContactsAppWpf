@@ -53,10 +53,12 @@
 
             <TextBox Grid.Row="0" Grid.Column="1" 
                      Text="{Binding EditedContact.LastName,
+                     Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
             <TextBox Grid.Row="1" Grid.Column="1" 
                      Text="{Binding EditedContact.FirstName,
+                     Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
             <DatePicker Grid.Row="2" Grid.Column="1" Width="150" 
@@ -65,11 +67,13 @@
                         Mode=TwoWay, NotifyOnValidationError=True}"
                         Style="{StaticResource ContactInfoStyle}"/>
             <TextBox Grid.Row="3" Grid.Column="1" 
-                     Text="{Binding EditedContact.Number.Number, 
+                     Text="{Binding EditedContact.Number.Number,
+                     Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
             <TextBox Grid.Row="4" Grid.Column="1" 
                      Text="{Binding EditedContact.Email,
+                     Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
         </Grid>
