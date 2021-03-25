@@ -41,6 +41,11 @@ namespace ContactsAppViewModel
         public ObservableCollection<Contact> Contacts { get; set; }
 
         /// <summary>
+        /// Хранит строку с именами именинников
+        /// </summary>
+        public string BirthdayNames { get; private set; } = "";
+
+        /// <summary>
         /// Хранит сервис предоставляющий свойста и методы для
         /// работы с дочерним окном
         /// </summary>
@@ -62,7 +67,18 @@ namespace ContactsAppViewModel
             for(int i = 0; i < _project.GetContactsCount(); i++)
 			{
                 Contacts.Add(_project[i]);
+                if(_project[i].BirthDate.Month == DateTime.Today.Month
+                    && _project[i].BirthDate.Day == DateTime.Today.Day)
+				{
+                    BirthdayNames += _project[i].LastName + " " +
+                       _project[i].FirstName + ", ";
+				}
 			}
+            if (BirthdayNames.Length > 2)
+            {
+                BirthdayNames = BirthdayNames.Remove(
+                    BirthdayNames.Length - 2, 2);
+            }
             _windowService = editContactWindowService;
         }
 

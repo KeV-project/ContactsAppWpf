@@ -92,49 +92,72 @@
                 </ListBox>
             </Grid>
 
-            <!--Содержит поля для вывода информации о контакте с подписями-->
-            <Grid Grid.Column="1" Margin="10" 
-                  DataContext="{Binding SelectedContact}">
+            <!--Содержит поля для вывода информации о контакте 
+                и панель с уведомлением о днях рождения-->
+            <Grid Grid.Column="1" Margin="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.2*"/>
-                    <RowDefinition Height="0.2*"/>
-                    <RowDefinition Height="0.2*"/>
-                    <RowDefinition Height="0.2*"/>
-                    <RowDefinition Height="0.2*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition Height="0.4*"/>
                 </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                <Grid DataContext="{Binding SelectedContact}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <Label Content="Surname" Grid.Row="0"/>
-                <Label Content="Name" Grid.Row="1"/>
-                <Label Content="Birthday" Grid.Row="2"/>
-                <Label Content="Phone" Grid.Row="3"/>
-                <Label Content="E-mail" Grid.Row="4"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="1" 
+                    <Label Content="Surname" Grid.Row="0"/>
+                    <Label Content="Name" Grid.Row="1"/>
+                    <Label Content="Birthday" Grid.Row="2"/>
+                    <Label Content="Phone" Grid.Row="3"/>
+                    <Label Content="E-mail" Grid.Row="4"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding LastName}"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" 
+                    <TextBlock Grid.Row="1" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding FirstName}"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" 
+                    <TextBlock Grid.Row="2" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding BirthDate, StringFormat=dd.MM.yyyy}"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" 
+                    <TextBlock Grid.Row="3" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        DataContext="{Binding Number}"
                        Text="{Binding Number}"/>
-                <TextBlock Grid.Row="4" Grid.Column="1" 
+                    <TextBlock Grid.Row="4" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding Email}"/>
-                <Image HorizontalAlignment="Center" Height="132" Grid.Row="6" VerticalAlignment="Center" Width="112" Source="kisspng-exclamation-mark-question-mark-computer-icons-isolated-vector-5adcf2c43db788.2850159915244295082528.png" Margin="0,0,0,10"/>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Birthday today:" VerticalAlignment="Center" Height="47" Width="146" FontSize="20" FontWeight="Bold"/>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="161,52,0,0" Grid.Row="6" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="48" Width="373" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" 
+                           Source="img.png"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" TextWrapping="Wrap" 
+                           Text="Birthday today:"  
+                           Height="47" Width="146" FontSize="20" FontWeight="Bold" Margin="10,10,0,0"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Height="48"
+                           TextWrapping="Wrap" FontSize="20" FontWeight="Bold"
+                           Text="{Binding BirthdayNames}" Margin="161,59,10,50"/>
+                </Grid>
+
+
             </Grid>
         </Grid>
 

@@ -109,8 +109,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Img\kisspng-exclamation-mark-question-mark-computer-icons-isolated-vector-5adcf2c43db788.2850159915244295082528.png" />
+    <Resource Include="img.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
