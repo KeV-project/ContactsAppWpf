@@ -128,13 +128,14 @@
             </Grid>
         </Grid>
 
-        <!--Содержит кнопки для доюавления, редактирования и удаления контакта-->
+        <!--Содержит кнопки для добавления, редактирования и удаления контакта-->
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,0,10,0" Grid.RowSpan="2">
             <Button Content="+" Style="{StaticResource ButtonStyle}" 
                     Command="{Binding AddContactCommand}"/>
             <Button Content="E" Style="{StaticResource ButtonStyle}"
                     Command="{Binding EdditContactCommand}"/>
-            <Button Content="-" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="-" Style="{StaticResource ButtonStyle}"
+                    Command="{Binding RemoveContactCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

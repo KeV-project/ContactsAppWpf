@@ -133,5 +133,27 @@ namespace ContactsAppViewModel
                   }));
             }
         }
+
+        /// <summary>
+        /// Хранит команду удаления контакта
+        /// </summary>
+        private RelayCommand _removeContactCommand;
+
+        /// <summary>
+        /// Возвращает команду удаления нового контакта
+        /// </summary>
+        public RelayCommand RemoveContactCommand
+        {
+            get
+            {
+                return _removeContactCommand ??
+                  (_removeContactCommand = new RelayCommand(obj =>
+                  {
+                      _project.RemoveContact(SelectedContact);
+                      Contacts.Remove(SelectedContact);
+                      ProjectManager.SaveProject(_project, _path);
+                  }));
+            }
+        }
     }
 }
