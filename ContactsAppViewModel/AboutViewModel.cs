@@ -5,6 +5,9 @@ namespace ContactsAppViewModel
 {
 	public class AboutViewModel: ViewModelBase
 	{
+		/// <summary>
+		/// Возвращает имя приложения
+		/// </summary>
 		public string AppName
 		{
 			get
@@ -13,6 +16,9 @@ namespace ContactsAppViewModel
 			}
 		}
 
+		/// <summary>
+		/// Возвращает версию приложения
+		/// </summary>
 		public string Version
 		{
 			get
@@ -21,6 +27,9 @@ namespace ContactsAppViewModel
 			}
 		}
 
+		/// <summary>
+		/// Возвращает имя разработчика приложения
+		/// </summary>
 		public string Author
 		{
 			get
@@ -29,6 +38,9 @@ namespace ContactsAppViewModel
 			}
 		}
 
+		/// <summary>
+		/// Возвращает адрес электронной почты разработчика
+		/// </summary>
 		public string Email
 		{
 			get
@@ -37,6 +49,9 @@ namespace ContactsAppViewModel
 			}
 		}
 
+		/// <summary>
+		/// Возвращает сведения об авторских правах
+		/// </summary>
 		public string Copyright
 		{
 			get
@@ -45,8 +60,14 @@ namespace ContactsAppViewModel
 			}
 		}
 
+		/// <summary>
+		/// Хранит команду открытия репозитория на Git Hub
+		/// </summary>
 		private RelayCommand _openRepositoryCommand;
 
+		/// <summary>
+		/// Возвращает команду открытия репозитория на Git Hub
+		/// </summary>
 		public RelayCommand OpenRepositoryCommand
 		{
 			get
