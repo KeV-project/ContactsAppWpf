@@ -10,23 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ContactsAppViewModel;
 
 namespace ContactsAppView
 {
 	/// <summary>
-	/// Логика взаимодействия для MainWindow.xaml
+	/// Логика взаимодействия для AboutWindow.xaml
 	/// </summary>
-	public partial class ShowContactsWindow : Window
+	public partial class AboutWindow : Window
 	{
-		public ShowContactsWindow()
+		public AboutWindow()
 		{
-			DataContext = new ShowContactsViewModel(
-				new WindowServices.EditContactWindowService(), 
-				new WindowServices.AboutWindowService());
-
 			InitializeComponent();
 		}
 	}

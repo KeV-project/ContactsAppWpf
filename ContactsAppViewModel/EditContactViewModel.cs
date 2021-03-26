@@ -12,7 +12,7 @@ namespace ContactsAppViewModel
 	/// Класс <see cref="EditContactViewModel"/>
 	/// связывает модель и представление через механизм привязки данных.
 	/// </summary>
-	public class EditContactViewModel: VeiwModelBase
+	public class EditContactViewModel: ViewModelBase
 	{
 		/// <summary>
 		/// Команда успешного закрытия окна

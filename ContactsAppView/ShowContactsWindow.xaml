@@ -47,7 +47,8 @@
                           Command="{Binding RemoveContactCommand}"/>
             </MenuItem>
             <MenuItem Header="Help" Margin="10,6,10,0">
-                <MenuItem Header="About(F1)"/>
+                <MenuItem Header="About(F1)"
+                          Command="{Binding AboutCommand}"/>
             </MenuItem>
         </Menu>
 
