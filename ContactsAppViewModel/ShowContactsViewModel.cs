@@ -183,8 +183,14 @@ namespace ContactsAppViewModel
             }
         }
 
+        /// <summary>
+        /// Хранит команду запуска окна About
+        /// </summary>
         private RelayCommand _aboutCommand;
 
+        /// <summary>
+        /// Возвращает команду запуска окна About
+        /// </summary>
         public RelayCommand AboutCommand
 		{
 			get

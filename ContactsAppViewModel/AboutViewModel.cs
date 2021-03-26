@@ -3,6 +3,10 @@ using ContactsAppViewModel.Commands;
 
 namespace ContactsAppViewModel
 {
+	/// <summary>
+	/// Класс <see cref="AboutViewModel"/> связывает модель и 
+	/// представление через механизм привязки данных
+	/// </summary>
 	public class AboutViewModel: ViewModelBase
 	{
 		/// <summary>
