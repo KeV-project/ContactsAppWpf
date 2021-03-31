@@ -6,6 +6,9 @@ using System.Runtime.CompilerServices;
 
 namespace ContactsAppModel
 {
+    //TODO: XML комментарии?
+    //TODO: название не отражает назначение класса
+    //TODO: почему не абстрактный?
 	public class ModelBase: INotifyPropertyChanged, INotifyDataErrorInfo
     {
         /// <summary>
@@ -19,6 +22,7 @@ namespace ContactsAppModel
         /// <param name="prop">Измененное свойство</param>
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
+            //TODO: лучше через .?
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
@@ -86,6 +90,7 @@ namespace ContactsAppModel
         {
             _errors[propertyName] = new List<string>() { error };
             NotifyErrorsChanged(propertyName);
+            //TODO: nameof
             OnPropertyChanged("IsValid");
         }
 
@@ -100,6 +105,7 @@ namespace ContactsAppModel
                 _errors.Remove(propertyName);
             }
             NotifyErrorsChanged(propertyName);
+            //TODO: nameof
             OnPropertyChanged("IsValid");
         }
 
@@ -110,6 +116,7 @@ namespace ContactsAppModel
         /// <param name="propertyName"></param>
         public void NotifyErrorsChanged(string propertyName)
         {
+            //TODO: лучше через .?
             if (ErrorsChanged != null)
             {
                 ErrorsChanged(this,

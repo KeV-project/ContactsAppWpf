@@ -51,8 +51,10 @@ namespace ContactsAppViewModel
         /// </summary>
         private IWindowService _editContactWindowService;
 
+        //TODO: XML комментарии?
         private IWindowService _aboutWindowService;
 
+        //TODO: XML комментарии стоят не для всех аргументов
         /// <summary>
         /// Инициализирует проект пользовательских данных и
         /// устанавливает сервис для связи с дочерним окном
@@ -97,6 +99,7 @@ namespace ContactsAppViewModel
             set
             {
                 _selectedContact = value;
+                //TODO: nameof
                 OnPropertyChanged("SelectedContact");
             }
         }
@@ -119,6 +122,7 @@ namespace ContactsAppViewModel
                       EditContactViewModel viewModel = 
                         new EditContactViewModel(new Contact());
                       _editContactWindowService.ShowDialog(viewModel);
+
                       if(_editContactWindowService.DialogResult)
 					  {
                           _project.AddContact(viewModel.EditedContact);
@@ -149,6 +153,7 @@ namespace ContactsAppViewModel
                           EditContactViewModel viewModel =
                             new EditContactViewModel(SelectedContact);
                           _editContactWindowService.ShowDialog(viewModel);
+
                           if (_editContactWindowService.DialogResult)
                           {
                               ProjectManager.SaveProject(_project, _path);

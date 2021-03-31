@@ -9,6 +9,7 @@ namespace ContactsAppViewModel
 	/// </summary>
 	public class AboutViewModel: ViewModelBase
 	{
+        //TODO: Лучше тут использовать => вместо явного прописывания get-еров
 		/// <summary>
 		/// Возвращает имя приложения
 		/// </summary>

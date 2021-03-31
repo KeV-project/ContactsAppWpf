@@ -25,23 +25,28 @@ namespace ContactsAppModel
             }
             set
             {
+                //TODO: Ниже дублируется проверка
 				try
 				{
                     ValueValidator.AssertRussianPhoneNumber(value,
                         "номер телефона");
+                    //TODO: nameof
                     RemoveError("Number");
                 }
                 catch(ArgumentException e)
 				{
+                    //TODO: nameof
                     AddError("Number", e.Message);
 				}
                 
                 _number = value;
 
+                //TODO: nameof
                 OnPropertyChanged("Number");
             }
         }
 
+        //TODO: вызвать через цепочку конструкторов
         /// <summary>
         /// Инициализирует объект класса <see cref="PhoneNumber">
         /// </summary>

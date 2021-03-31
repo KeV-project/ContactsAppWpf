@@ -20,6 +20,7 @@ namespace ContactsAppView.WindowServices
         /// </summary>
         private AboutWindow _aboutWindow;
 
+        //TODO: Команды не проинициализированы и результат диалога не используется. Так должно быть?
         /// <summary>
         /// Хранит результат завершения работы окна
         /// </summary>

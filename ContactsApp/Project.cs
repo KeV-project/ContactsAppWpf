@@ -34,6 +34,7 @@ namespace ContactsAppModel
             _contacts = new List<Contact>();
         }
 
+        //TODO: Свойство на гет?
         /// <summary>
         /// Возвращает количество контактов в списке
         /// </summary>
@@ -75,6 +76,7 @@ namespace ContactsAppModel
             }
         }
 
+        //TODO: Не используется?
         /// <summary>
         /// Метод отбирает все контакты,
         /// имя и фамилия которых содержит подстроку
@@ -98,6 +100,7 @@ namespace ContactsAppModel
             return contactsWithText;
         }
 
+        //TODO: Не используется?
         /// <summary>
         /// Метод отбирает все контакты, 
         /// у которых сегодня день рождения
@@ -132,6 +135,7 @@ namespace ContactsAppModel
             {
                 for (int i = 0; i < this.GetContactsCount(); i++)
                 {
+                    //TODO: вызвать сравнение двух контактов, а не дёргать свойства по отдельности?
                     if (this[i].FirstName != project[i].FirstName ||
                         this[i].LastName != project[i].LastName ||
                         this[i].Number.Number != project[i].Number.Number ||

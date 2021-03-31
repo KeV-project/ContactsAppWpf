@@ -27,21 +27,24 @@ namespace ContactsAppModel
             }
             set
             {
+                //TODO: Ниже дублируется проверка
                 const int minLength = 1;
                 const int maxLength = 50;
 				try
 				{
                     ValueValidator.AssertCorrectName(value,
                         minLength, maxLength, "имя контакта");
+                    //TODO: nameof
                     RemoveError("FirstName");
                 }
                 catch(ArgumentException e)
 				{
+                    //TODO: nameof
                     AddError("FirstName", e.Message);
 				}
 
                 _firstName = ValueCorrector.ToUpperFirstLetter(value);
-
+                //TODO: nameof
                 OnPropertyChanged("FirstName");
             }
         }
@@ -64,21 +67,24 @@ namespace ContactsAppModel
             }
             set
             {
+                //TODO: Ниже дублируется проверка
                 const int minLength = 0;
                 const int maxLength = 50;
                 try
                 {
                     ValueValidator.AssertCorrectName(value,
                         minLength, maxLength, "фамилия контакта");
+                    //TODO: nameof
                     RemoveError("LastName");
                 }
                 catch (ArgumentException e)
                 {
+                    //TODO: nameof
                     AddError("LastName", e.Message);
                 }
                
                 _lastName = ValueCorrector.ToUpperFirstLetter(value);
-
+                //TODO: nameof
                 OnPropertyChanged("LastName");
             }
         }
@@ -107,22 +113,24 @@ namespace ContactsAppModel
             set
             {
                 value = value.Replace(" ", "");
-
+                //TODO: Ниже дублируется проверка
                 const int minLength = 0;
                 const int maxLength = 50;
                 try
                 {
                     ValueValidator.AssertLengthInRange(value,
                         minLength, maxLength, "e-mail контакта");
+                    //TODO: nameof
                     RemoveError("Email");
                 }
                 catch (ArgumentException e)
                 {
+                    //TODO: nameof
                     AddError("Email", e.Message);
                 }
                 
                 _email = value;
-
+                //TODO: nameof
                 OnPropertyChanged("Email");
             }
         }
@@ -151,19 +159,22 @@ namespace ContactsAppModel
 				{
                     ValueValidator.AssertCorrectDate(value, minDate, maxDate,
                      "рождения");
+                    //TODO: nameof
                     RemoveError("BirthDate");
                 }
                 catch(ArgumentException e)
 				{
+                    //TODO: nameof
                     AddError("BirthDate", e.Message);
 				}
 
                 _birthDate = value;
-
+                //TODO: nameof (вот и ошибка из-за этого, ключ написан не верно)
                 OnPropertyChanged("Birthday");
             }
         }
 
+        //TODO: Лучше вызывать через цепочку конструкторов, чтобы уменьшить дублирование
         /// <summary>
         /// Инициализирует объект класса <see cref="Contact">
         /// </summary>

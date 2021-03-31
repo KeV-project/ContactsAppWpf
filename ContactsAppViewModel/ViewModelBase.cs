@@ -24,6 +24,7 @@ namespace ContactsAppViewModel
         /// <param name="prop">Измененное свойство</param>
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
+            //TODO: лучше через .?
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
