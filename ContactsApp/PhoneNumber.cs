@@ -6,7 +6,7 @@ namespace ContactsAppModel
     /// Класс <see cref="PhoneNumber"/> хранит информацию 
     /// о номере телефона контакта
     /// </summary>
-    public class PhoneNumber: ModelBase, IComparable<PhoneNumber>
+    public class PhoneNumber: IComparable<PhoneNumber>
     {
         /// <summary>
         /// Поле предназначено для хранения номера телефона контакта
@@ -26,34 +26,17 @@ namespace ContactsAppModel
             set
             {
                 //TODO: Ниже дублируется проверка
-				try
-				{
-                    ValueValidator.AssertRussianPhoneNumber(value,
-                        "номер телефона");
-                    //TODO: nameof
-                    RemoveError("Number");
-                }
-                catch(ArgumentException e)
-				{
-                    //TODO: nameof
-                    AddError("Number", e.Message);
-				}
-                
                 _number = value;
-
-                //TODO: nameof
-                OnPropertyChanged("Number");
+                ValueValidator.AssertRussianPhoneNumber(value,
+                        "номер телефона");
             }
         }
 
-        //TODO: вызвать через цепочку конструкторов
+        //TODO: вызвать через цепочку конструкторов +
         /// <summary>
         /// Инициализирует объект класса <see cref="PhoneNumber">
         /// </summary>
-        public PhoneNumber()
-        {
-            Number = 70000000000;
-        }
+        public PhoneNumber() : this(70000000000){}
 
         /// <summary>
         /// Инициализирует объект класса <see cref="PhoneNumber">

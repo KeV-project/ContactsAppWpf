@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using ContactsAppViewModel.Commands;
 
-namespace ContactsAppViewModel
+namespace ContactsAppViewModel.WindowViewModels
 {
 	/// <summary>
 	/// Класс <see cref="AboutViewModel"/> связывает модель и 

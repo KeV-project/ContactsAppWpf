@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ContactsAppModel;
 using ContactsAppViewModel.Commands;
 
-namespace ContactsAppViewModel
+namespace ContactsAppViewModel.WindowViewModels
 {
 	/// <summary>
 	/// Класс <see cref="EditContactViewModel"/>

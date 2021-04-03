@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contact.cs" />
-    <Compile Include="ModelBase.cs" />
     <Compile Include="PhoneNumber.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectManager.cs" />

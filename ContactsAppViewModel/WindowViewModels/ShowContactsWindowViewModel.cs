@@ -12,7 +12,7 @@ using ContactsAppViewModel.WindowServices;
 using ContactsAppViewModel.Commands;
 
 
-namespace ContactsAppViewModel
+namespace ContactsAppViewModel.WindowViewModels
 {
     /// <summary>
     /// Класс <see cref="ShowContactsViewModel"/> 
