@@ -68,7 +68,7 @@
                         Mode=TwoWay, NotifyOnValidationError=True}"
                         Style="{StaticResource ContactInfoStyle}"/>
             <TextBox Grid.Row="3" Grid.Column="1" 
-                     Text="{Binding ContactViewModel.Number.Number,
+                     Text="{Binding ContactViewModel.PhoneNumberViewModel.Number,
                      Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>

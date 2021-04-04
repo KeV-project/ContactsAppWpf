@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModelViewModels\ModelViewModelBase.cs" />
+    <Compile Include="ModelViewModels\PhoneNumberViewModel.cs" />
     <Compile Include="WindowViewModels\AboutWindowViewModel.cs" />
     <Compile Include="ModelViewModels\ContactViewModel.cs" />
     <Compile Include="WindowViewModels\EditContactWindowViewModel.cs" />

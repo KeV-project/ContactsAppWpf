@@ -19,7 +19,7 @@ namespace ContactsAppViewModel.WindowViewModels
     /// Класс <see cref="ShowContactsViewModel"/> 
     /// связывает модель и представление через механизм привязки данных. 
     /// </summary>
-    public class ShowContactsViewModel: ViewModelBase
+    public class ShowContactsWindowViewModel: ViewModelBase
     {
         /// <summary>
         /// Хранит проект с пользовательскими данными приложения
@@ -62,37 +62,46 @@ namespace ContactsAppViewModel.WindowViewModels
         /// устанавливает сервис для связи с дочерним окном
         /// </summary>
         /// <param name="editContactWindowService">Сервис дочернего окна</param>
-        public ShowContactsViewModel(IWindowService 
-            editContactWindowService, IWindowService aboutWindowService)
+        public ShowContactsWindowViewModel(IWindowService editContactWindowService,
+            IWindowService aboutWindowService)
 		{
             _path = new FileInfo(Environment.GetFolderPath(
                 Environment.SpecialFolder.ApplicationData) +
                 "\\ContactsAppWpf\\" + "ContactsAppWpf.notes");
             _project = ProjectManager.ReadProject(_path);
+
             ContactViewModels = new ObservableCollection<ContactViewModel>();
-            for(int i = 0; i < _project.GetContactsCount(); i++)
-			{
+
+            AddContacts();
+
+            _editContactWindowService = editContactWindowService;
+            _aboutWindowService = aboutWindowService;
+        }
+
+        private void AddContacts()
+        { 
+            for (int i = 0; i < _project.GetContactsCount(); i++)
+            {
                 ContactViewModels.Add(new ContactViewModel(_project[i]));
-                if(_project[i].BirthDate.Month == DateTime.Today.Month
+                if (_project[i].BirthDate.Month == DateTime.Today.Month
                     && _project[i].BirthDate.Day == DateTime.Today.Day)
-				{
+                {
                     BirthdayNames += _project[i].LastName + " " +
                        _project[i].FirstName + ", ";
-				}
-			}
+                }
+            }
+
             if (BirthdayNames.Length > 2)
             {
                 BirthdayNames = BirthdayNames.Remove(
                     BirthdayNames.Length - 2, 2);
             }
-            _editContactWindowService = editContactWindowService;
-            _aboutWindowService = aboutWindowService;
         }
 
         /// <summary>
         /// Возвращает и устанавливает текущий контакт
         /// </summary>
-        public ContactViewModel SelectedContact
+        public ContactViewModel SelectedContactViewModel
         {
             get
             {
@@ -102,7 +111,7 @@ namespace ContactsAppViewModel.WindowViewModels
             {
                 _selectedContactViewModel = value;
                 //TODO: nameof +
-                OnPropertyChanged(nameof(SelectedContact));
+                OnPropertyChanged(nameof(SelectedContactViewModel));
             }
         }
 
@@ -121,10 +130,9 @@ namespace ContactsAppViewModel.WindowViewModels
                 return _addContactCommand ??
                   (_addContactCommand = new RelayCommand(obj =>
                   {
-                      ContactViewModel contactViewModel = 
-                        new ContactViewModel(new Contact());
-                      EditContactViewModel editContactViewModel = 
-                        new EditContactViewModel(contactViewModel);
+                      EditContactWindowViewModel editContactViewModel = 
+                        new EditContactWindowViewModel(new ContactViewModel(
+                            new Contact()));
 
                       _editContactWindowService.ShowDialog(
                           editContactViewModel);
@@ -133,7 +141,8 @@ namespace ContactsAppViewModel.WindowViewModels
 					  {
                           _project.AddContact(editContactViewModel.
                               ContactViewModel.Contact);
-                          ContactViewModels.Add(contactViewModel);
+                          ContactViewModels.Add(editContactViewModel.
+                              ContactViewModel);
                           ProjectManager.SaveProject(_project, _path);
                       }
                   }));
@@ -155,10 +164,11 @@ namespace ContactsAppViewModel.WindowViewModels
                 return _editContactCommand ??
                   (_editContactCommand = new RelayCommand(obj =>
                   {
-                      if(SelectedContact != null)
+                      if(SelectedContactViewModel != null)
 					  {
-                          EditContactViewModel viewModel =
-                            new EditContactViewModel(SelectedContact);
+                          EditContactWindowViewModel viewModel =
+                            new EditContactWindowViewModel(
+                                SelectedContactViewModel);
                           _editContactWindowService.ShowDialog(viewModel);
 
                           if (_editContactWindowService.DialogResult)
@@ -185,10 +195,11 @@ namespace ContactsAppViewModel.WindowViewModels
                 return _removeContactCommand ??
                   (_removeContactCommand = new RelayCommand(obj =>
                   {
-                      if(SelectedContact != null)
+                      if(SelectedContactViewModel != null)
 					  {
-                          _project.RemoveContact(SelectedContact.Contact);
-                          ContactViewModels.Remove(SelectedContact);
+                          _project.RemoveContact(SelectedContactViewModel.
+                              Contact);
+                          ContactViewModels.Remove(SelectedContactViewModel);
                           ProjectManager.SaveProject(_project, _path);
                       }
                   }));
@@ -210,7 +221,8 @@ namespace ContactsAppViewModel.WindowViewModels
                 return _aboutCommand ??
                  (_aboutCommand = new RelayCommand(obj =>
                  {
-                     AboutViewModel viewModel = new AboutViewModel();
+                     AboutWindowViewModel viewModel = 
+                        new AboutWindowViewModel();
                      _aboutWindowService.ShowDialog(viewModel);
                  }));
             }

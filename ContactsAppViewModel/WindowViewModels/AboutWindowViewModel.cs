@@ -7,7 +7,7 @@ namespace ContactsAppViewModel.WindowViewModels
 	/// Класс <see cref="AboutViewModel"/> связывает модель и 
 	/// представление через механизм привязки данных
 	/// </summary>
-	public class AboutViewModel: ViewModelBase
+	public class AboutWindowViewModel: ViewModelBase
 	{
         //TODO: Лучше тут использовать => вместо явного прописывания get-еров
 		/// <summary>

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using ContactsAppModel;
 
 namespace ContactsAppViewModel.ModelViewModels
@@ -10,6 +6,8 @@ namespace ContactsAppViewModel.ModelViewModels
 	public class ContactViewModel: ModelViewModelBase
     {
         public Contact Contact { get; private set; }
+
+		private PhoneNumberViewModel _phoneNumberViewModel;
 
 		private void SetProperty(string property, Action setProperty)
 		{
@@ -56,18 +54,15 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 		}
 
-        public PhoneNumber Number
-		{
+        public PhoneNumberViewModel PhoneNumberViewModel 
+		{ 
 			get
 			{
-                return Contact.Number;
+				return _phoneNumberViewModel;
 			}
-			set
+			private set
 			{
-				SetProperty(nameof(Number), () =>
-				{
-					Contact.Number = value;
-				});
+				_phoneNumberViewModel = value;
 			}
 		}
 
@@ -104,6 +99,8 @@ namespace ContactsAppViewModel.ModelViewModels
         public ContactViewModel(Contact contact)
 		{
 			Contact = contact;
+			PhoneNumberViewModel = new PhoneNumberViewModel(
+				Contact.Number);
 		}
     }
 }

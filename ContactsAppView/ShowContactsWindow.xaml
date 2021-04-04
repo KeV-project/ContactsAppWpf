@@ -23,6 +23,14 @@
             <Setter Property="Button.VerticalAlignment" Value="Bottom"/>
             <Setter Property="Button.Margin" Value="10,0,10,12"/>
         </Style>
+
+        <!--<Style x:Key="ContactInfoStyle">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Foreground" Value="" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>-->
     </Window.Resources>
 
     <Grid>
@@ -80,15 +88,15 @@
                 </Grid>
 
                 <!--Содержит список контактов-->
-                <ListBox Margin="10" Grid.Row="1" 
-                         ItemsSource="{Binding Contacts}"
-                     SelectedItem="{Binding SelectedContact}" Grid.RowSpan="2">
+                <ListBox Margin="10" Grid.Row="1" Grid.RowSpan="2"
+                     ItemsSource="{Binding ContactViewModels}"
+                     SelectedItem="{Binding SelectedContactViewModel}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="{Binding Path=LastName}" 
                                            Margin="0,0,5,0"/>
-                                <TextBlock Text="{Binding Path=FirstName}" />
+                                <TextBlock Text="{Binding Path=FirstName}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -103,7 +111,7 @@
                 </Grid.RowDefinitions>
                     
                 <!--Информация о выбранном контакте-->
-                <Grid DataContext="{Binding SelectedContact}">
+                <Grid DataContext="{Binding SelectedContactViewModel}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*"/>
                         <RowDefinition Height="0.2*"/>
@@ -135,8 +143,7 @@
                        Text="{Binding BirthDate, StringFormat=dd.MM.yyyy}"/>
                     <TextBlock Grid.Row="3" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
-                       DataContext="{Binding Number}"
-                       Text="{Binding Number}"/>
+                       Text="{Binding PhoneNumberViewModel.Number}"/>
                     <TextBlock Grid.Row="4" Grid.Column="1" 
                        Style="{StaticResource TextBlockStyle}" 
                        Text="{Binding Email}"/>
