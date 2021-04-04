@@ -11,6 +11,21 @@ namespace ContactsAppViewModel.ModelViewModels
     {
         public Contact Contact { get; private set; }
 
+		private void SetProperty(string property, Action setProperty)
+		{
+			try
+			{
+				setProperty();
+				RemoveError(property);
+			}
+			catch(ArgumentException ex)
+			{
+				AddError(property, ex.Message);
+			}
+
+			OnPropertyChanged(property);
+		}
+
         public string FirstName
 		{
 			get
@@ -19,15 +34,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				try
+				SetProperty(nameof(FirstName), () =>
 				{
 					Contact.FirstName = value;
-                    RemoveError(nameof(FirstName));
-				}
-                catch(ArgumentException ex)
-				{
-                    AddError(nameof(FirstName), ex.Message);
-				}
+				});
 			}
 		}
 
@@ -39,15 +49,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				try
+				SetProperty(nameof(LastName), () =>
 				{
 					Contact.LastName = value;
-                    RemoveError(nameof(LastName));
-				}
-                catch(ArgumentException ex)
-				{
-                    AddError("LastName", ex.Message);
-				}
+				});
 			}
 		}
 
@@ -59,15 +64,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				try
+				SetProperty(nameof(Number), () =>
 				{
 					Contact.Number = value;
-                    RemoveError(nameof(Number));
-				}
-                catch(ArgumentException ex)
-				{
-                    AddError(nameof(Number), ex.Message);
-				}
+				});
 			}
 		}
 
@@ -79,15 +79,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				try
+				SetProperty(nameof(Email), () =>
 				{
 					Contact.Email = value;
-                    RemoveError(nameof(Email));
-				}
-                catch(ArgumentException ex)
-				{
-                    AddError(nameof(Email), ex.Message);
-				}
+				});
 			}
 		}
 
@@ -99,15 +94,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				try
+				SetProperty(nameof(BirthDate), () =>
 				{
 					Contact.BirthDate = value;
-                    RemoveError(nameof(BirthDate));
-				}
-                catch(ArgumentException ex)
-				{
-                    AddError(nameof(BirthDate), ex.Message);
-				}
+				});
 			}
 		}
 

@@ -45,8 +45,8 @@ namespace ContactsAppViewModel.Commands
         public RelayCommand(Action<object> execute,
             Func<object, bool> canExecute = null)
         {
-            this._execute = execute;
-            this._canExecute = canExecute;
+            _execute = execute;
+            _canExecute = canExecute;
         }
 
         /// <summary>
@@ -58,8 +58,7 @@ namespace ContactsAppViewModel.Commands
         /// если команда отключена</returns>
         public bool CanExecute(object parameter)
         {
-            return this._canExecute == null ||
-                this._canExecute(parameter);
+            return _canExecute == null || _canExecute(parameter);
         }
 
         /// <summary>
@@ -68,7 +67,7 @@ namespace ContactsAppViewModel.Commands
         /// <param name="parameter">Параметр команды</param>
         public void Execute(object parameter)
         {
-            this._execute(parameter);
+            _execute(parameter);
         }
     }
 }

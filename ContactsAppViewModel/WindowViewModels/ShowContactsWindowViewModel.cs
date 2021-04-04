@@ -34,12 +34,13 @@ namespace ContactsAppViewModel.WindowViewModels
         /// <summary>
         /// Хранит текущий выбранный контакт
         /// </summary>
-        private Contact _selectedContact;
+        private ContactViewModel _selectedContactViewModel;
 
         /// <summary>
         /// Хранит список контактов пользователя
         /// </summary>
-        public ObservableCollection<Contact> Contacts { get; set; }
+        public ObservableCollection<ContactViewModel> 
+            ContactViewModels{ get; set; }
 
         /// <summary>
         /// Хранит строку с именами именинников
@@ -68,10 +69,10 @@ namespace ContactsAppViewModel.WindowViewModels
                 Environment.SpecialFolder.ApplicationData) +
                 "\\ContactsAppWpf\\" + "ContactsAppWpf.notes");
             _project = ProjectManager.ReadProject(_path);
-            Contacts = new ObservableCollection<Contact>();
+            ContactViewModels = new ObservableCollection<ContactViewModel>();
             for(int i = 0; i < _project.GetContactsCount(); i++)
 			{
-                Contacts.Add(_project[i]);
+                ContactViewModels.Add(new ContactViewModel(_project[i]));
                 if(_project[i].BirthDate.Month == DateTime.Today.Month
                     && _project[i].BirthDate.Day == DateTime.Today.Day)
 				{
@@ -91,15 +92,15 @@ namespace ContactsAppViewModel.WindowViewModels
         /// <summary>
         /// Возвращает и устанавливает текущий контакт
         /// </summary>
-        public Contact SelectedContact
+        public ContactViewModel SelectedContact
         {
             get
             {
-                return _selectedContact;
+                return _selectedContactViewModel;
             }
             set
             {
-                _selectedContact = value;
+                _selectedContactViewModel = value;
                 //TODO: nameof +
                 OnPropertyChanged(nameof(SelectedContact));
             }
@@ -120,14 +121,19 @@ namespace ContactsAppViewModel.WindowViewModels
                 return _addContactCommand ??
                   (_addContactCommand = new RelayCommand(obj =>
                   {
-                      EditContactViewModel viewModel = 
-                        new EditContactViewModel(
-                            new ContactViewModel(new Contact()));
-                      _editContactWindowService.ShowDialog(viewModel);
+                      ContactViewModel contactViewModel = 
+                        new ContactViewModel(new Contact());
+                      EditContactViewModel editContactViewModel = 
+                        new EditContactViewModel(contactViewModel);
+
+                      _editContactWindowService.ShowDialog(
+                          editContactViewModel);
+
                       if(_editContactWindowService.DialogResult)
 					  {
-                          _project.AddContact(viewModel.ContactViewModel.Contact);
-                          Contacts.Add(viewModel.ContactViewModel.Contact);
+                          _project.AddContact(editContactViewModel.
+                              ContactViewModel.Contact);
+                          ContactViewModels.Add(contactViewModel);
                           ProjectManager.SaveProject(_project, _path);
                       }
                   }));
@@ -152,8 +158,7 @@ namespace ContactsAppViewModel.WindowViewModels
                       if(SelectedContact != null)
 					  {
                           EditContactViewModel viewModel =
-                            new EditContactViewModel(new ContactViewModel(
-                                SelectedContact));
+                            new EditContactViewModel(SelectedContact);
                           _editContactWindowService.ShowDialog(viewModel);
 
                           if (_editContactWindowService.DialogResult)
@@ -182,8 +187,8 @@ namespace ContactsAppViewModel.WindowViewModels
                   {
                       if(SelectedContact != null)
 					  {
-                          _project.RemoveContact(SelectedContact);
-                          Contacts.Remove(SelectedContact);
+                          _project.RemoveContact(SelectedContact.Contact);
+                          ContactViewModels.Remove(SelectedContact);
                           ProjectManager.SaveProject(_project, _path);
                       }
                   }));
