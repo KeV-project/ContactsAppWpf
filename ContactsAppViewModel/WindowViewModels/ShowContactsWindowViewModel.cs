@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using ContactsAppModel;
 using ContactsAppViewModel.WindowServices;
 using ContactsAppViewModel.Commands;
+using ContactsAppViewModel.ModelViewModels;
 
 
 namespace ContactsAppViewModel.WindowViewModels
@@ -99,8 +100,8 @@ namespace ContactsAppViewModel.WindowViewModels
             set
             {
                 _selectedContact = value;
-                //TODO: nameof
-                OnPropertyChanged("SelectedContact");
+                //TODO: nameof +
+                OnPropertyChanged(nameof(SelectedContact));
             }
         }
 
@@ -120,13 +121,13 @@ namespace ContactsAppViewModel.WindowViewModels
                   (_addContactCommand = new RelayCommand(obj =>
                   {
                       EditContactViewModel viewModel = 
-                        new EditContactViewModel(new Contact());
+                        new EditContactViewModel(
+                            new ContactViewModel(new Contact()));
                       _editContactWindowService.ShowDialog(viewModel);
-
                       if(_editContactWindowService.DialogResult)
 					  {
-                          _project.AddContact(viewModel.EditedContact);
-                          Contacts.Add(viewModel.EditedContact);
+                          _project.AddContact(viewModel.ContactViewModel.Contact);
+                          Contacts.Add(viewModel.ContactViewModel.Contact);
                           ProjectManager.SaveProject(_project, _path);
                       }
                   }));
@@ -151,7 +152,8 @@ namespace ContactsAppViewModel.WindowViewModels
                       if(SelectedContact != null)
 					  {
                           EditContactViewModel viewModel =
-                            new EditContactViewModel(SelectedContact);
+                            new EditContactViewModel(new ContactViewModel(
+                                SelectedContact));
                           _editContactWindowService.ShowDialog(viewModel);
 
                           if (_editContactWindowService.DialogResult)

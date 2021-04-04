@@ -8,20 +8,20 @@ using ContactsAppModel;
 namespace ContactsAppViewModel.ModelViewModels
 {
 	public class ContactViewModel: ModelViewModelBase
-	{
-        private Contact _contact;
+    {
+        public Contact Contact { get; private set; }
 
         public string FirstName
 		{
 			get
 			{
-                return _contact.FirstName;
+                return Contact.FirstName;
 			}
 			set
 			{
 				try
 				{
-                    _contact.FirstName = value;
+					Contact.FirstName = value;
                     RemoveError(nameof(FirstName));
 				}
                 catch(ArgumentException ex)
@@ -35,18 +35,18 @@ namespace ContactsAppViewModel.ModelViewModels
 		{
 			get
 			{
-                return _contact.LastName;
+                return Contact.LastName;
 			}
 			set
 			{
 				try
 				{
-                    _contact.LastName = value;
+					Contact.LastName = value;
                     RemoveError(nameof(LastName));
 				}
                 catch(ArgumentException ex)
 				{
-                    AddError(nameof(LastName), ex.Message);
+                    AddError("LastName", ex.Message);
 				}
 			}
 		}
@@ -55,13 +55,13 @@ namespace ContactsAppViewModel.ModelViewModels
 		{
 			get
 			{
-                return _contact.Number;
+                return Contact.Number;
 			}
 			set
 			{
 				try
 				{
-                    _contact.Number = value;
+					Contact.Number = value;
                     RemoveError(nameof(Number));
 				}
                 catch(ArgumentException ex)
@@ -75,13 +75,13 @@ namespace ContactsAppViewModel.ModelViewModels
 		{
 			get
 			{
-                return _contact.Email;
+                return Contact.Email;
 			}
 			set
 			{
 				try
 				{
-                    _contact.Email = value;
+					Contact.Email = value;
                     RemoveError(nameof(Email));
 				}
                 catch(ArgumentException ex)
@@ -95,13 +95,13 @@ namespace ContactsAppViewModel.ModelViewModels
 		{
 			get
 			{
-                return _contact.BirthDate;
+                return Contact.BirthDate;
 			}
 			set
 			{
 				try
 				{
-                    _contact.BirthDate = value;
+					Contact.BirthDate = value;
                     RemoveError(nameof(BirthDate));
 				}
                 catch(ArgumentException ex)
@@ -113,7 +113,7 @@ namespace ContactsAppViewModel.ModelViewModels
 
         public ContactViewModel(Contact contact)
 		{
-            _contact = contact;
+			Contact = contact;
 		}
     }
 }

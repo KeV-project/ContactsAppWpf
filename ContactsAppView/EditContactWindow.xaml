@@ -14,6 +14,7 @@
             <Setter Property="Button.Width" Value="120"/>
             <Setter Property="Button.Margin" Value="10,0,10,0"/>
         </Style>
+
         <Style x:Key="ContactInfoStyle">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
@@ -52,39 +53,38 @@
             <Label Content="Email" Grid.Row="4"/>
 
             <TextBox Grid.Row="0" Grid.Column="1" 
-                     Text="{Binding EditedContact.LastName,
+                     Text="{Binding ContactViewModel.LastName,
                      Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
             <TextBox Grid.Row="1" Grid.Column="1" 
-                     Text="{Binding EditedContact.FirstName,
+                     Text="{Binding ContactViewModel.FirstName,
                      Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
             <DatePicker Grid.Row="2" Grid.Column="1" Width="150" 
                         HorizontalAlignment="Left" BorderBrush="White"
-                        SelectedDate="{Binding EditedContact.BirthDate, 
+                        SelectedDate="{Binding ContactViewModel.BirthDate, 
                         Mode=TwoWay, NotifyOnValidationError=True}"
                         Style="{StaticResource ContactInfoStyle}"/>
             <TextBox Grid.Row="3" Grid.Column="1" 
-                     Text="{Binding EditedContact.Number.Number,
+                     Text="{Binding ContactViewModel.Number.Number,
                      Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
             <TextBox Grid.Row="4" Grid.Column="1" 
-                     Text="{Binding EditedContact.Email,
+                     Text="{Binding ContactViewModel.Email,
                      Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
         </Grid>
-
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Width="280" 
                     HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <Button Content="Cancel" Style="{StaticResource ButtonStyle}"
                     Command="{Binding CancelCommand}"/>
             <Button Content="Ok" Style="{StaticResource ButtonStyle}" 
-                    IsEnabled="{Binding EditedContact.IsValid, 
+                    IsEnabled="{Binding ContactViewModel.IsValid, 
                     NotifyOnValidationError=True}"
                     Command="{Binding OkCommand}"/>
         </StackPanel>

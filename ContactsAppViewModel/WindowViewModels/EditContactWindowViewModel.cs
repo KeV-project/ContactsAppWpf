@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ContactsAppModel;
 using ContactsAppViewModel.Commands;
+using ContactsAppViewModel.ModelViewModels;
 
 namespace ContactsAppViewModel.WindowViewModels
 {
@@ -24,18 +25,15 @@ namespace ContactsAppViewModel.WindowViewModels
 		/// </summary>
 		public RelayCommand CancelCommand { get; set; }
 
-		/// <summary>
-		/// Редактируемый контакт
-		/// </summary>
-		public Contact EditedContact { get; private set; }
+		public ContactViewModel ContactViewModel { get; private set; }
 
 		/// <summary>
 		/// Инициализирует редактируемый контакт
 		/// </summary>
 		/// <param name="contact"></param>
-		public EditContactViewModel(Contact contact)
+		public EditContactViewModel(ContactViewModel contactViewModel)
 		{
-			EditedContact = contact;
+			ContactViewModel = contactViewModel;
 		}
     }
 }

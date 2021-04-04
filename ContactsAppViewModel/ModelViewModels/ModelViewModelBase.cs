@@ -5,8 +5,8 @@ using System.ComponentModel;
 
 namespace ContactsAppViewModel.ModelViewModels
 {
-	public abstract class ModelViewModelBase : ViewModelBase
-	{
+	public class ModelViewModelBase : ViewModelBase, INotifyDataErrorInfo
+    {
         /// <summary>
         /// Хранит свойства объекта и соответствующие 
         /// им сообщения об ошибках
