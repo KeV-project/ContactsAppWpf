@@ -23,7 +23,7 @@ namespace ContactsAppView
 	{
 		public ShowContactsWindow()
 		{
-			DataContext = new ShowContactsViewModel(
+			DataContext = new ShowContactsWindowViewModel(
 				new WindowServices.EditContactWindowService(), 
 				new WindowServices.AboutWindowService());
 

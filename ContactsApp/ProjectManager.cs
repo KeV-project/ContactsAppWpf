@@ -44,11 +44,12 @@ namespace ContactsAppModel
 			return project;
 		}
 
-		//TODO: XML комментарии стоят не для всех аргументов
+		//TODO: XML комментарии стоят не для всех аргументов +
 		/// <summary>
-		/// Метод выполняет сериализацию объекта
+		/// Выполняет сериализацию объекта
 		/// </summary>
 		/// <param name="project">Сериализуемый объект</param>
+		/// <param name="path">Путь к файлу для сериализации</param>
 		public static void SaveProject(Project project,
 			FileInfo path)
 		{

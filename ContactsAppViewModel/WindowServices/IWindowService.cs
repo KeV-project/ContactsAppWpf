@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ContactsAppViewModel.Commands;
 
 namespace ContactsAppViewModel.WindowServices
 {
@@ -13,21 +10,6 @@ namespace ContactsAppViewModel.WindowServices
 	/// </summary>
 	public interface IWindowService
 	{
-		/// <summary>
-		/// Хранит результат завершения работы окна
-		/// </summary>
-		bool DialogResult { get; }
-
-		/// <summary>
-		/// Возвращает и устанавливает команду успешного закрытия окна
-		/// </summary>
-		RelayCommand OkCommand { get; set; }
-
-		/// <summary>
-		/// Возвращает и устанавливает команду закрытия окна
-		/// </summary>
-		RelayCommand CancelCommand { get; set; }
-
 		/// <summary>
 		/// Выполняет запуск окна
 		/// </summary>

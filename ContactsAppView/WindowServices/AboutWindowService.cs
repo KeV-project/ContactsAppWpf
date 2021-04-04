@@ -20,23 +20,7 @@ namespace ContactsAppView.WindowServices
         /// </summary>
         private AboutWindow _aboutWindow;
 
-        //TODO: Команды не проинициализированы и результат диалога не используется. Так должно быть?
-        /// <summary>
-        /// Хранит результат завершения работы окна
-        /// </summary>
-        public bool DialogResult { get; }
-
-        /// <summary>
-        /// Устанавливает и возвращает команду успешного
-        /// завершения работы окна
-        /// </summary>
-        public RelayCommand OkCommand { get; set; }
-
-        /// <summary>
-        /// Устанавливает и возвращает команду завершения
-        /// работы окна
-        /// </summary>
-        public RelayCommand CancelCommand { get; set; }
+        //TODO: Команды не проинициализированы и результат диалога не используется. Так должно быть? +
 
         /// <summary>
         /// Выполняет запуск окна

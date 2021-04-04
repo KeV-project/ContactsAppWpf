@@ -34,15 +34,12 @@ namespace ContactsAppModel
             _contacts = new List<Contact>();
         }
 
-        //TODO: Свойство на гет?
+        //TODO: Свойство на гет? +
         /// <summary>
         /// Возвращает количество контактов в списке
         /// </summary>
         /// <returns>Значение показывает, скоько контактов в списке</returns>
-        public int GetContactsCount()
-        {
-            return _contacts.Count;
-        }
+        public int ContactsCount { get => _contacts.Count; }
 
         /// <summary>
         /// Метод добавляет новый контакт в список проекта
@@ -131,16 +128,12 @@ namespace ContactsAppModel
         /// Возвращает 0, если объекты не равны<returns>
         public int CompareTo(Project project)
         {
-            if (this.GetContactsCount() == project.GetContactsCount())
+            if (ContactsCount == project.ContactsCount)
             {
-                for (int i = 0; i < this.GetContactsCount(); i++)
+                for (int i = 0; i < ContactsCount; i++)
                 {
-                    //TODO: вызвать сравнение двух контактов, а не дёргать свойства по отдельности?
-                    if (this[i].FirstName != project[i].FirstName ||
-                        this[i].LastName != project[i].LastName ||
-                        this[i].Number.Number != project[i].Number.Number ||
-                        this[i].Email != project[i].Email ||
-                        this[i].BirthDate != project[i].BirthDate)
+                    //TODO: вызвать сравнение двух контактов, а не дёргать свойства по отдельности? +
+                    if (this[i].CompareTo(project[i]) == 0)
                     {
                         return 0;
                     }

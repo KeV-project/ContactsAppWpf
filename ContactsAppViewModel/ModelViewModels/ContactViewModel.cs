@@ -32,6 +32,7 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
+				//TODO: Ниже дублируется проверка
 				SetProperty(nameof(FirstName), () =>
 				{
 					Contact.FirstName = value;

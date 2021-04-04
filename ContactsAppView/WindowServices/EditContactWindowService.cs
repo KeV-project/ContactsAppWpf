@@ -14,7 +14,7 @@ namespace ContactsAppView.WindowServices
 	/// предоставляет viewModel свойства и методы для 
 	/// работы с окном <see cref="EditContactWindow"/>
 	/// </summary>
-	public class EditContactWindowService: IWindowService
+	public class EditContactWindowService: IWindowDialogService
 	{
 		/// <summary>
 		/// Хранит объект класса Window
@@ -60,8 +60,8 @@ namespace ContactsAppView.WindowServices
 		/// <param name="dataContext">ViewModel окна</param>
 		public void ShowDialog(object dataContext)
 		{
-			((EditContactViewModel)dataContext).OkCommand = OkCommand;
-			((EditContactViewModel)dataContext).CancelCommand = CancelCommand;
+			((EditContactWindowViewModel)dataContext).OkCommand = OkCommand;
+			((EditContactWindowViewModel)dataContext).CancelCommand = CancelCommand;
 			_editContactWindow = new EditContactWindow();
 			_editContactWindow.DataContext = dataContext;
 			_editContactWindow.ShowDialog();

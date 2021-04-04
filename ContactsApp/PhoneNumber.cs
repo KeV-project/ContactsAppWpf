@@ -24,8 +24,7 @@ namespace ContactsAppModel
                 return _number;
             }
             set
-            {
-                //TODO: Ниже дублируется проверка
+            { 
                 _number = value;
                 ValueValidator.AssertRussianPhoneNumber(value,
                         "номер телефона");
