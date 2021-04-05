@@ -72,7 +72,7 @@
                      Mode=TwoWay,
                      NotifyOnValidationError=True}"
                      Style="{StaticResource ContactInfoStyle}"/>
-            <TextBox Grid.Row="4" Grid.Column="1" 
+            <TextBox Grid.Row="4" Grid.Column="1"
                      Text="{Binding ContactViewModel.Email,
                      Mode=TwoWay,
                      NotifyOnValidationError=True}"

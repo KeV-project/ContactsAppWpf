@@ -51,7 +51,7 @@ namespace ContactsAppModel
             if (newContact != null)
             {
                 _contacts.Add(newContact);
-                _contacts.Sort();
+                SortContacts();
             }
             else
             {
@@ -73,52 +73,15 @@ namespace ContactsAppModel
             }
         }
 
-        //TODO: Не используется?
-        /// <summary>
-        /// Метод отбирает все контакты,
-        /// имя и фамилия которых содержит подстроку
-        /// </summary>
-        /// <param name="text">Подстрока, наличие которой определяется
-        /// в имени и фамилии контакта</param>
-        /// <returns>Список контактов, имя и фамилия которых содержит подстроку</returns>
-        public List<Contact> GetContactsWithText(string text)
-        {
-            List<Contact> contactsWithText = new List<Contact>();
+        //TODO: Не используется? +
+        //TODO: Не используется? +
 
-            foreach (Contact currentContact in _contacts)
-            {
-                if ((currentContact.LastName + " "
-                    + currentContact.FirstName).Contains(text))
-                {
-                    contactsWithText.Add(currentContact);
-                }
-            }
-
-            return contactsWithText;
+        public void SortContacts()
+		{
+            _contacts.Sort();
         }
 
-        //TODO: Не используется?
-        /// <summary>
-        /// Метод отбирает все контакты, 
-        /// у которых сегодня день рождения
-        /// </summary>
-        /// <returns>Список контактов, 
-        /// у которых сегодня день рождения</returns>
-        public List<Contact> GetAllBirthContacts()
-        {
-            List<Contact> birthCotacts = new List<Contact>();
-
-            foreach (Contact currentContact in _contacts)
-            {
-                if (currentContact.BirthDate.Day == DateTime.Today.Day
-                    && currentContact.BirthDate.Month
-                    == DateTime.Today.Month)
-                {
-                    birthCotacts.Add(currentContact);
-                }
-            }
-            return birthCotacts;
-        }
+        //TODO: вызвать сравнение двух контактов, а не дёргать свойства по отдельности?
 
         /// <summary>
         /// Метод предназначен для сравнивания объектов
@@ -128,12 +91,15 @@ namespace ContactsAppModel
         /// Возвращает 0, если объекты не равны<returns>
         public int CompareTo(Project project)
         {
-            if (ContactsCount == project.ContactsCount)
+            if (this.ContactsCount == project.ContactsCount)
             {
-                for (int i = 0; i < ContactsCount; i++)
+                for (int i = 0; i < this.ContactsCount; i++)
                 {
-                    //TODO: вызвать сравнение двух контактов, а не дёргать свойства по отдельности? +
-                    if (this[i].CompareTo(project[i]) == 0)
+                    if (this[i].FirstName != project[i].FirstName ||
+                        this[i].LastName != project[i].LastName ||
+                        this[i].Number.Number != project[i].Number.Number ||
+                        this[i].Email != project[i].Email ||
+                        this[i].BirthDate != project[i].BirthDate)
                     {
                         return 0;
                     }

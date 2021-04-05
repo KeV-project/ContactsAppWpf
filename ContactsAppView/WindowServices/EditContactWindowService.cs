@@ -14,7 +14,7 @@ namespace ContactsAppView.WindowServices
 	/// предоставляет viewModel свойства и методы для 
 	/// работы с окном <see cref="EditContactWindow"/>
 	/// </summary>
-	public class EditContactWindowService: IWindowDialogService
+	public class EditContactWindowService: IDialogWindowService
 	{
 		/// <summary>
 		/// Хранит объект класса Window

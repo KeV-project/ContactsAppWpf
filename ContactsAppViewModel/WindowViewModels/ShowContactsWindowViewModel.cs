@@ -53,7 +53,7 @@ namespace ContactsAppViewModel.WindowViewModels
         /// Хранит сервис предоставляющий свойста и методы для
         /// работы с дочерним окном
         /// </summary>
-        private IWindowDialogService _editContactWindowService;
+        private IDialogWindowService _editContactWindowService;
 
         //TODO: XML комментарии?
         private IWindowService _aboutWindowService;
@@ -64,7 +64,7 @@ namespace ContactsAppViewModel.WindowViewModels
         /// устанавливает сервис для связи с дочерним окном
         /// </summary>
         /// <param name="editContactWindowService">Сервис дочернего окна</param>
-        public ShowContactsWindowViewModel(IWindowDialogService 
+        public ShowContactsWindowViewModel(IDialogWindowService 
             editContactWindowService, IWindowService aboutWindowService)
 		{
             _path = new FileInfo(Environment.GetFolderPath(
@@ -151,8 +151,8 @@ namespace ContactsAppViewModel.WindowViewModels
 					  {
                           _project.AddContact(editContactViewModel.
                               ContactViewModel.Contact);
-                          ContactViewModels.Add(editContactViewModel.
-                              ContactViewModel);
+                          ContactViewModels = GetAllContactViewModels();
+                          OnPropertyChanged(nameof(ContactViewModels));
                           ProjectManager.SaveProject(_project, _path);
                       }
                   }));
@@ -183,6 +183,9 @@ namespace ContactsAppViewModel.WindowViewModels
 
                           if (_editContactWindowService.DialogResult)
                           {
+                              _project.SortContacts();
+                              ContactViewModels = GetAllContactViewModels();
+                              OnPropertyChanged(nameof(ContactViewModels));
                               ProjectManager.SaveProject(_project, _path);
                           }
                       }

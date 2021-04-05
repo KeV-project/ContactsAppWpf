@@ -2,7 +2,7 @@
 
 namespace ContactsAppViewModel.WindowServices
 {
-	public interface IWindowDialogService: IWindowService
+	public interface IDialogWindowService: IWindowService
 	{
 		/// <summary>
 		/// Хранит результат завершения работы окна
