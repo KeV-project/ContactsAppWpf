@@ -25,6 +25,9 @@ namespace ContactsAppViewModel.WindowViewModels
 		/// </summary>
 		public RelayCommand CancelCommand { get; set; }
 
+		/// <summary>
+		/// ViewModel редактируемого контакта
+		/// </summary>
 		public ContactViewModel ContactViewModel { get; private set; }
 
 		/// <summary>

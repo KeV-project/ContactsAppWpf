@@ -16,7 +16,7 @@ using ContactsAppViewModel.ModelViewModels;
 namespace ContactsAppViewModel.WindowViewModels
 {
     /// <summary>
-    /// Класс <see cref="ShowContactsViewModel"/> 
+    /// Класс <see cref="ShowContactsWindowViewModel"/> 
     /// связывает модель и представление через механизм привязки данных. 
     /// </summary>
     public class ShowContactsWindowViewModel: ViewModelBase
@@ -32,38 +32,48 @@ namespace ContactsAppViewModel.WindowViewModels
         private FileInfo _path;
 
         /// <summary>
-        /// Хранит текущий выбранный контакт
+        /// Хранит VM текущего выбранного контакта
         /// </summary>
         private ContactViewModel _selectedContactViewModel;
 
         /// <summary>
-        /// Хранит список контактов пользователя
+        /// Хранит список VM контактов пользователя
         /// </summary>
         public ObservableCollection<ContactViewModel> 
             ContactViewModels{ get; set; }
 
         /// <summary>
-        /// Хранит строку с именами именинников
+        /// Возвращает и устанавливет строку с именами именинников
         /// </summary>
         public string BirthdayNames { get; private set; } = "";
 
+        /// <summary>
+        /// Возвращает и устанавливет строку для поиска контакта
+        /// </summary>
         public string SoughtContactName { get; private set; }
 
         /// <summary>
         /// Хранит сервис предоставляющий свойста и методы для
-        /// работы с дочерним окном
+        /// работы с дочерним окном для редактирования контакта
         /// </summary>
         private IDialogWindowService _editContactWindowService;
 
-        //TODO: XML комментарии?
+        //TODO: XML комментарии? +
+        /// <summary>
+        /// Хранит сервис предоставляющий свойста и методы для
+        /// работы с окном About
+        /// </summary>
         private IWindowService _aboutWindowService;
 
         //TODO: XML комментарии стоят не для всех аргументов
         /// <summary>
         /// Инициализирует проект пользовательских данных и
-        /// устанавливает сервис для связи с дочерним окном
+        /// устанавливает сервисы для связи с дочерним окном
         /// </summary>
-        /// <param name="editContactWindowService">Сервис дочернего окна</param>
+        /// <param name="editContactWindowService">
+        /// Сервис для взаимодействия с окном редактирования контакта</param>
+        /// /// <param name="aboutWindowService">
+        /// Сервис окна About</param>
         public ShowContactsWindowViewModel(IDialogWindowService 
             editContactWindowService, IWindowService aboutWindowService)
 		{
@@ -78,6 +88,10 @@ namespace ContactsAppViewModel.WindowViewModels
             _aboutWindowService = aboutWindowService;
         }
 
+        /// <summary>
+        /// Возвращает список VM всех контактов
+        /// </summary>
+        /// <returns>Список VM всех контактов</returns>
         private ObservableCollection<ContactViewModel> 
             GetAllContactViewModels()
 		{
@@ -90,6 +104,12 @@ namespace ContactsAppViewModel.WindowViewModels
             return contactViewModels;
         }
 
+        /// <summary>
+        /// Возвращает список VM контактов, подходящих под
+        /// поисковый запрос
+        /// </summary>
+        /// <returns>Возвращает список VM контактов, подходящих под
+        /// поисковый запрос</returns>
         private ObservableCollection<ContactViewModel>
             GetSoughtContactViewModels()
 		{
@@ -219,8 +239,14 @@ namespace ContactsAppViewModel.WindowViewModels
             }
         }
 
+        /// <summary>
+        /// Хранит команду для поиска контакта по подстроке
+        /// </summary>
         private RelayCommand _findContactCommand;
 
+        /// <summary>
+        /// Возвращает команду для поиска контакта
+        /// </summary>
         public RelayCommand FindContactCommand
         {
             get
