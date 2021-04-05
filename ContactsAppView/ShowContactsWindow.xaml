@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:ContactsAppView"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="ContactsApp" 
         Height="680" Width="1100" 
@@ -83,7 +84,15 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Find:" Margin="2"/>
-                    <TextBox Grid.Column="1" Height="25" Padding="0,0,0,2"/>
+                    <TextBox x:Name="FindTextBox" Grid.Column="1" Height="25" Padding="0,0,0,2">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction 
+                                    Command="{Binding FindContactCommand}"
+                                    CommandParameter="{Binding Text, ElementName=FindTextBox}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
                 </Grid>
 
                 <!--Содержит список контактов-->

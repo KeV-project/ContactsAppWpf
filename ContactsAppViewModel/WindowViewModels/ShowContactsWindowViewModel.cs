@@ -47,6 +47,8 @@ namespace ContactsAppViewModel.WindowViewModels
         /// </summary>
         public string BirthdayNames { get; private set; } = "";
 
+        public string SoughtContactName { get; private set; }
+
         /// <summary>
         /// Хранит сервис предоставляющий свойста и методы для
         /// работы с дочерним окном
@@ -70,32 +72,40 @@ namespace ContactsAppViewModel.WindowViewModels
                 "\\ContactsAppWpf\\" + "ContactsAppWpf.notes");
             _project = ProjectManager.ReadProject(_path);
 
-            ContactViewModels = new ObservableCollection<ContactViewModel>();
-
-            AddContacts();
+            ContactViewModels = GetAllContactViewModels();
 
             _editContactWindowService = editContactWindowService;
             _aboutWindowService = aboutWindowService;
         }
 
-        private void AddContacts()
-        {
+        private ObservableCollection<ContactViewModel> 
+            GetAllContactViewModels()
+		{
+            ObservableCollection<ContactViewModel> contactViewModels =
+                new ObservableCollection<ContactViewModel>();
             for (int i = 0; i < _project.ContactsCount; i++)
             {
-                ContactViewModels.Add(new ContactViewModel(_project[i]));
-                if (_project[i].BirthDate.Month == DateTime.Today.Month
-                    && _project[i].BirthDate.Day == DateTime.Today.Day)
-                {
-                    BirthdayNames += _project[i].LastName + " " +
-                       _project[i].FirstName + ", ";
+                contactViewModels.Add(new ContactViewModel(_project[i]));
+            }
+            return contactViewModels;
+        }
+
+        private ObservableCollection<ContactViewModel>
+            GetSoughtContactViewModels()
+		{
+            ObservableCollection<ContactViewModel> soughtContactViewModels =
+               new ObservableCollection<ContactViewModel>();
+            for (int i = 0; i < _project.ContactsCount; i++)
+            {
+                string currentContactName = _project[i].LastName
+                    + " " + _project[i].FirstName;
+                if(currentContactName.Contains(SoughtContactName))
+				{
+                    soughtContactViewModels.Add(new ContactViewModel(
+                        _project[i]));
                 }
             }
-
-            if (BirthdayNames.Length > 2)
-            {
-                BirthdayNames = BirthdayNames.Remove(
-                    BirthdayNames.Length - 2, 2);
-            }
+            return soughtContactViewModels;
         }
 
         /// <summary>
@@ -203,6 +213,29 @@ namespace ContactsAppViewModel.WindowViewModels
                           ProjectManager.SaveProject(_project, _path);
                       }
                   }));
+            }
+        }
+
+        private RelayCommand _findContactCommand;
+
+        public RelayCommand FindContactCommand
+        {
+            get
+            {
+                return _findContactCommand ??
+                 (_findContactCommand = new RelayCommand(soughtContactName =>
+                 {
+                     SoughtContactName = soughtContactName.ToString();
+                     if(SoughtContactName != "")
+					 {
+                         ContactViewModels = GetSoughtContactViewModels();
+					 }
+					 else
+					 {
+                         ContactViewModels = GetAllContactViewModels();
+					 }
+                     OnPropertyChanged(nameof(ContactViewModels));
+                 }));
             }
         }
 
