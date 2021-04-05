@@ -5,7 +5,12 @@ using System.ComponentModel;
 
 namespace ContactsAppViewModel.ModelViewModels
 {
-	public class ModelViewModelBase : ViewModelBase, INotifyDataErrorInfo
+    /// <summary>
+    /// Класс <see cref="ModelViewModelBase"/> предназначен для 
+    /// проведения валидации данных 
+    /// </summary>
+	public abstract class ModelViewModelBase : ViewModelBase, 
+        INotifyDataErrorInfo
     {
         /// <summary>
         /// Хранит свойства объекта и соответствующие 

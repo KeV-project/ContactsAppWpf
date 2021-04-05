@@ -27,7 +27,7 @@ namespace ContactsAppModel
         public Contact this[int index] => _contacts[index];
 
         /// <summary>
-        /// Инициализирует объект класса <see cref="Project">
+        /// Инициализирует объект класса <see cref="Project"/>
         /// </summary>
         public Project()
         {
@@ -76,6 +76,10 @@ namespace ContactsAppModel
         //TODO: Не используется? +
         //TODO: Не используется? +
 
+        /// <summary>
+        /// Сортирует список контактов по фамилии в 
+        /// алфавитном порядке
+        /// </summary>
         public void SortContacts()
 		{
             _contacts.Sort();

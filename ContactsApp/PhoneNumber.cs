@@ -33,7 +33,8 @@ namespace ContactsAppModel
 
         //TODO: вызвать через цепочку конструкторов +
         /// <summary>
-        /// Инициализирует объект класса <see cref="PhoneNumber">
+        /// Инициализирует свойства объекта класса <see cref="PhoneNumber"/>
+        /// значениями по умолчанию
         /// </summary>
         public PhoneNumber() : this(70000000000){}
 
@@ -49,12 +50,12 @@ namespace ContactsAppModel
         /// <summary>
         /// Сравнивает два объекта класса
         /// </summary>
-        /// <param name="number">Объект класса, который будет сравниваться
-        /// с текущим объектом</param>
+        /// <param name="number">Объект класса <see cref="PhoneNumber">, 
+        /// который будет сравниваться с текущим объектом</param>
         /// <returns>Возвращаемое значение показывает
-        /// рывны ли сравниваемые объекты класса.
+        /// рывны ли сравниваемые объекты.
         /// Если объекты равны, возвращает 1.
-        /// Если объекты не равны, позвращает 0</returns>
+        /// Если объекты не равны, возвращает 0</returns>
         public int CompareTo(PhoneNumber number)
         {
             if (this.Number == number.Number)

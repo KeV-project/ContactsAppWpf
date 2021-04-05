@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace ContactsAppModel
 {
     /// <summary>
-    /// Класс <see cref="Contact"/> предназначен для создания контактов 
+    /// Класс <see cref="Contact"/> хранит информацию о контакте
     /// </summary>
     public class Contact : ICloneable, IComparable<Contact>
     {
@@ -15,9 +15,8 @@ namespace ContactsAppModel
         private string _firstName;
 
         /// <summary>
-        /// Возвращает и создает имя контакта
-        /// Имя контакта должна состоять не более чем из 50 символов,
-        /// но не менее чем из 1
+        /// Возвращает и устанавливает имя контакта
+        /// Имя контакта должна состоять не более чем из 50 символов
         /// </summary>
         public string FirstName
         {
@@ -37,14 +36,13 @@ namespace ContactsAppModel
         }
 
         /// <summary>
-        /// Содердит фамилию контакта
+        /// Содержит фамилию контакта
         /// </summary>
         private string _lastName;
 
         /// <summary>
-        /// Возвращает и создает фамилию контакта.
+        /// Возвращает и устанавливает фамилию контакта.
         /// Фамилия контакта должна состоять не более чем из 50 символов.
-        /// Данное поле необязательно для заполнения
         /// </summary>
         public string LastName
         {
@@ -74,9 +72,9 @@ namespace ContactsAppModel
         private string _email;
 
         /// <summary>
-        /// Возвращает и создает e-mail контакта
-        /// Адрес электронной почты должен состоять не более чем из 50 символов.
-        /// Поле необязательное для заполнения
+        /// Возвращает и устанавливает e-mail контакта
+        /// Адрес электронной почты должен состоять 
+        /// не более чем из 50 символов.
         /// </summary>
         public string Email
         {
@@ -99,7 +97,7 @@ namespace ContactsAppModel
         private DateTime _birthDate;
 
         /// <summary>
-        /// Возвращает и создает дату рождения контакта
+        /// Возвращает и устанавливает дату рождения контакта
         /// Дата рождения не может быть раньше 1900 года и
         /// позже текущей даты 
         /// </summary>
@@ -123,7 +121,8 @@ namespace ContactsAppModel
 
         //TODO: Лучше вызывать через цепочку конструкторов, чтобы уменьшить дублирование +
         /// <summary>
-        /// Инициализирует объект класса <see cref="Contact">
+        /// Инициализирует объект класса <see cref="Contact"/>
+        /// значениями по умолчанию
         /// </summary>
         public Contact(): this("", "", new PhoneNumber(), 
             "", DateTime.Today)
@@ -132,7 +131,7 @@ namespace ContactsAppModel
         }
 
         /// <summary>
-        /// Инициализирует объект класса <see cref="Contact">
+        /// Инициализирует объект класса <see cref="Contact"/>
         /// </summary>
         /// <param name="firstName">Имя контакта</param>
         /// <param name="lastName">Фамилия контакта</param>
@@ -153,7 +152,7 @@ namespace ContactsAppModel
         /// Позволяет создать объект класса, 
         /// скопировав значения полей другого объекта
         /// </summary>
-        /// <returns> Возвращает копию объекта</returns>
+        /// <returns>Возвращает копию объекта</returns>
         public object Clone()
         {
             PhoneNumber number = new PhoneNumber(Number.Number);

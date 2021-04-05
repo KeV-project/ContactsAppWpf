@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 
 namespace ContactsAppViewModel
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         /// <summary>
         /// Реализует привязку пользовательских данных к элементам управления

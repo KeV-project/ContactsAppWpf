@@ -3,6 +3,10 @@ using System.Windows.Input;
 
 namespace ContactsAppViewModel.Commands
 {
+    /// <summary>
+    /// Класс <see cref="RelayCommand"/> предназначен для
+    /// создания команд
+    /// </summary>
     public class RelayCommand : ICommand
     {
         /// <summary>
@@ -46,9 +50,9 @@ namespace ContactsAppViewModel.Commands
         }
 
         /// <summary>
-        /// 
+        /// Выполняет проверку команды на возможное выполнение
         /// </summary>
-        /// <param name="parameter"></param>
+        /// <param name="parameter">Параметр команды</param>
         /// <returns>Возвращает true, если команда включена 
         /// и доступна для использования, и false, 
         /// если команда отключена</returns>

@@ -2,6 +2,10 @@
 
 namespace ContactsAppViewModel.WindowServices
 {
+	/// <summary>
+	/// Реализует интерфейс сервиса, предоставляющего свойства 
+	/// и методы для работы с диалоговым окном приложения
+	/// </summary>
 	public interface IDialogWindowService: IWindowService
 	{
 		/// <summary>

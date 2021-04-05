@@ -8,13 +8,14 @@ namespace ContactsAppModel
 	/// <summary>
 	/// Класс <see cref="ProjectManager"/> предназначен
 	/// для организации сериализации и десериализации
-	/// объектов класса <see cref="Project">
+	/// объектов класса <see cref="Project"/>
 	/// </summary>
 	public static class ProjectManager
 	{
 		/// <summary>
 		/// Метод выполныет десериализацию объекта
 		/// </summary>
+		/// <param name="path">Путь к файлу с проектом</param>
 		/// <returns>Десериализованный объект</returns>
 		public static Project ReadProject(FileInfo path)
 		{
