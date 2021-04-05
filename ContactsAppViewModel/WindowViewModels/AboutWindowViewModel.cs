@@ -9,61 +9,31 @@ namespace ContactsAppViewModel.WindowViewModels
 	/// </summary>
 	public class AboutWindowViewModel: ViewModelBase
 	{
-        //TODO: Лучше тут использовать => вместо явного прописывания get-еров
+        //TODO: Лучше тут использовать => вместо явного прописывания get-еров +
 		/// <summary>
 		/// Возвращает имя приложения
 		/// </summary>
-		public string AppName
-		{
-			get
-			{
-				return "ContactsApp";
-			}
-		}
+		public string AppName { get => "ContactsApp"; }
 
 		/// <summary>
 		/// Возвращает версию приложения
 		/// </summary>
-		public string Version
-		{
-			get
-			{
-				return "2.0.0";
-			}
-		}
+		public string Version { get => "2.0.0"; }
 
 		/// <summary>
 		/// Возвращает имя разработчика приложения
 		/// </summary>
-		public string Author
-		{
-			get
-			{
-				return "Ekaterina Kabanova";
-			}
-		}
+		public string Author { get => "Ekaterina Kabanova"; }
 
 		/// <summary>
 		/// Возвращает адрес электронной почты разработчика
 		/// </summary>
-		public string Email
-		{
-			get
-			{
-				return "katovskaya009@gmail.com";
-			}
-		}
+		public string Email { get => "katovskaya009@gmail.com"; }
 
 		/// <summary>
 		/// Возвращает сведения об авторских правах
 		/// </summary>
-		public string Copyright
-		{
-			get
-			{
-				return "2020 Ekaterina Kabanova ©";
-			}
-		}
+		public string Copyright { get => "2020 Ekaterina Kabanova ©"; }
 
 		/// <summary>
 		/// Хранит команду открытия репозитория на Git Hub
@@ -80,7 +50,8 @@ namespace ContactsAppViewModel.WindowViewModels
 				return _openRepositoryCommand ??
 				 (_openRepositoryCommand = new RelayCommand(obj =>
 				 {
-					 Process.Start("https://github.com/KeV-project/ContactsAppWpf");
+					 Process.Start(
+						 "https://github.com/KeV-project/ContactsAppWpf");
 				 }));
 			}
 		}
