@@ -85,8 +85,6 @@ namespace ContactsAppModel
             _contacts.Sort();
         }
 
-        //TODO: вызвать сравнение двух контактов, а не дёргать свойства по отдельности?
-
         /// <summary>
         /// Метод предназначен для сравнивания объектов
         /// </summary>
@@ -99,6 +97,7 @@ namespace ContactsAppModel
             {
                 for (int i = 0; i < this.ContactsCount; i++)
                 {
+                    //TODO: вызвать сравнение двух контактов, а не дёргать свойства по отдельности?
                     if (this[i].FirstName != project[i].FirstName ||
                         this[i].LastName != project[i].LastName ||
                         this[i].Number.Number != project[i].Number.Number ||

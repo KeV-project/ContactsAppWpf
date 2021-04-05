@@ -38,7 +38,8 @@
         <Menu Grid.Row="0" Height="35" VerticalAlignment="Top" 
               FontSize="14" Grid.RowSpan="2">
             <MenuItem Header="File" Margin="12,6,10,0">
-                <MenuItem Header="Exit(Alt + F4)" />
+                <MenuItem Header="Exit(Alt + F4)"
+                          Command="{Binding CloseApplicationCommand}"/>
             </MenuItem>
             <MenuItem Header="Edit" Margin="10,6,10,0">
                 <MenuItem Header="Add contact" 

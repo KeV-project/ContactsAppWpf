@@ -1,11 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using ContactsAppModel;
 using ContactsAppViewModel.WindowServices;
@@ -289,5 +283,25 @@ namespace ContactsAppViewModel.WindowViewModels
                  }));
             }
 		}
+
+        /// <summary>
+        /// Храни команду выхода из приложения
+        /// </summary>
+        private RelayCommand _closeApplicationCommand;
+
+        /// <summary>
+        /// Возвращает команду выхода из приложения
+        /// </summary>
+        public RelayCommand CloseApplicationCommand
+		{
+            get
+            {
+                return _closeApplicationCommand ??
+                 (_closeApplicationCommand = new RelayCommand(obj =>
+                 {
+                     Environment.Exit(0);
+                 }));
+            }
+        }
     }
 }
