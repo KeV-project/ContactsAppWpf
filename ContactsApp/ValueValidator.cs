@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ContactsAppModel
 {
@@ -72,6 +73,22 @@ namespace ContactsAppModel
             DateTime minDate, DateTime maxDate)
         {
             return minDate <= date && date <= maxDate;
+        }
+
+        /// <summary>
+        /// Выполняет проверку адреса электронной почты
+        /// на соответствие допустимому формату
+        /// </summary>
+        /// <param name="email">Адрес электроннной почты</param>
+        /// <returns>Значение показывает, соответствует ли email
+        /// допустимому формату</returns>
+        private static bool IsCorrectEmail(string email)
+		{
+            string pattern = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.)) 
+                |[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])
+                |(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
+            return Regex.IsMatch(email, pattern, RegexOptions.IgnoreCase);
         }
 
         /// <summary>
@@ -196,5 +213,20 @@ namespace ContactsAppModel
                     + minDate + " и позже " + maxDate);
             }
         }
+
+        /// <summary>
+        /// Метод предназначен для генерации исключения
+        /// в случае, если строка не соответствует адресу
+        /// электронной почты
+        /// </summary>
+        /// <param name="email">Адрес электронной почты</param>
+        public static void AssertCorrectEmail(string email)
+		{
+            if(!IsCorrectEmail(email))
+			{
+                throw new ArgumentException("ИСКЛЮЧЕНИЕ: " +
+                    "введен некорректный email");
+			}
+		}
     }
 }

@@ -86,12 +86,17 @@ namespace ContactsAppModel
             }
             set
             {
-                _email = value.Replace(" ", "");
+                //_email = value.Replace(" ", "");
 
-                const int minLength = 0;
-                const int maxLength = 50;
-                ValueValidator.AssertLengthInRange(value,
-                        minLength, maxLength, "e-mail контакта");
+                //const int minLength = 0;
+                //const int maxLength = 50;
+                //ValueValidator.AssertLengthInRange(value,
+                //        minLength, maxLength, "e-mail контакта");
+                _email = value;
+                if(_email.Length > 0)
+				{
+                    ValueValidator.AssertCorrectEmail(value);
+                }
             }
         }
         /// <summary>
