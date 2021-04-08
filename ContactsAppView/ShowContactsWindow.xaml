@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:ContactsAppView"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="ContactsApp" 
@@ -165,18 +163,18 @@
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" 
                            VerticalAlignment="Center" TextWrapping="Wrap" 
                            Text="Birthday today:"  
-                           Height="47" Width="146" FontSize="20" FontWeight="Bold" Margin="10,10,0,0"/>
+                           Height="47" Width="146" FontSize="20" 
+                           FontWeight="Bold" Margin="10,10,0,0"/>
                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Height="48"
                            TextWrapping="Wrap" FontSize="20" FontWeight="Bold"
                            Text="{Binding BirthdayNames}" Margin="161,59,10,50"/>
                 </Grid>
-
-
             </Grid>
         </Grid>
 
         <!--Содержит кнопки для добавления, редактирования и удаления контакта-->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,0,10,0" Grid.RowSpan="2">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" 
+                    Margin="10,0,10,0" Grid.RowSpan="2">
             <Button Content="+" Style="{StaticResource ButtonStyle}" 
                     Command="{Binding AddContactCommand}"/>
             <Button Content="E" Style="{StaticResource ButtonStyle}"

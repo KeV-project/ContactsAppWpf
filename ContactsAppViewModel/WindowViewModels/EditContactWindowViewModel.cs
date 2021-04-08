@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ContactsAppModel;
-using ContactsAppViewModel.Commands;
+﻿using ContactsAppViewModel.Commands;
 using ContactsAppViewModel.ModelViewModels;
 
 namespace ContactsAppViewModel.WindowViewModels
