@@ -45,7 +45,6 @@ namespace ContactsAppModel
 			return project;
 		}
 
-		//TODO: XML комментарии стоят не для всех аргументов +
 		/// <summary>
 		/// Выполняет сериализацию объекта
 		/// </summary>

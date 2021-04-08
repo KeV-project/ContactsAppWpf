@@ -34,12 +34,11 @@ namespace ContactsAppModel
             _contacts = new List<Contact>();
         }
 
-        //TODO: Свойство на гет? +
         /// <summary>
         /// Возвращает количество контактов в списке
         /// </summary>
         /// <returns>Значение показывает, скоько контактов в списке</returns>
-        public int ContactsCount { get => _contacts.Count; }
+        public int ContactsCount => _contacts.Count;
 
         /// <summary>
         /// Метод добавляет новый контакт в список проекта
@@ -72,10 +71,7 @@ namespace ContactsAppModel
                     "не существует");
             }
         }
-
-        //TODO: Не используется? +
-        //TODO: Не используется? +
-
+        
         /// <summary>
         /// Сортирует список контактов по фамилии в 
         /// алфавитном порядке

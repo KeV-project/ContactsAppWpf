@@ -50,7 +50,6 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				//TODO: Ниже дублируется проверка +
 				SetProperty(nameof(FirstName), () =>
 				{
 					Contact.FirstName = value;
@@ -69,7 +68,6 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				//TODO: Ниже дублируется проверка +
 				SetProperty(nameof(LastName), () =>
 				{
 					Contact.LastName = value;
@@ -104,7 +102,6 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				//TODO: Ниже дублируется проверка +
 				SetProperty(nameof(Email), () =>
 				{
 					Contact.Email = value;
@@ -123,7 +120,6 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 			set
 			{
-				//TODO: Ниже дублируется проверка +
 				SetProperty(nameof(BirthDate), () =>
 				{
 					Contact.BirthDate = value;

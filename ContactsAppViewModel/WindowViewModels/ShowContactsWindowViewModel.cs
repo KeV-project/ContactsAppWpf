@@ -52,14 +52,12 @@ namespace ContactsAppViewModel.WindowViewModels
         /// </summary>
         private IDialogWindowService _editContactWindowService;
 
-        //TODO: XML комментарии? +
         /// <summary>
         /// Хранит сервис предоставляющий свойста и методы для
         /// работы с окном About
         /// </summary>
         private IWindowService _aboutWindowService;
 
-        //TODO: XML комментарии стоят не для всех аргументов
         /// <summary>
         /// Инициализирует проект пользовательских данных и
         /// устанавливает сервисы для связи с дочерним окном
@@ -89,8 +87,7 @@ namespace ContactsAppViewModel.WindowViewModels
         private ObservableCollection<ContactViewModel> 
             GetAllContactViewModels()
 		{
-            ObservableCollection<ContactViewModel> contactViewModels =
-                new ObservableCollection<ContactViewModel>();
+            var contactViewModels = new ObservableCollection<ContactViewModel>();
             for (int i = 0; i < _project.ContactsCount; i++)
             {
                 contactViewModels.Add(new ContactViewModel(_project[i]));
@@ -107,7 +104,8 @@ namespace ContactsAppViewModel.WindowViewModels
         private ObservableCollection<ContactViewModel>
             GetSoughtContactViewModels()
 		{
-            ObservableCollection<ContactViewModel> soughtContactViewModels =
+            //TODO: именование
+            var soughtContactViewModels =
                new ObservableCollection<ContactViewModel>();
             for (int i = 0; i < _project.ContactsCount; i++)
             {
@@ -134,7 +132,6 @@ namespace ContactsAppViewModel.WindowViewModels
             set
             {
                 _selectedContactViewModel = value;
-                //TODO: nameof +
                 OnPropertyChanged(nameof(SelectedContactViewModel));
             }
         }
