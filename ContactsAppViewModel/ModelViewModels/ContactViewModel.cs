@@ -14,12 +14,7 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// </summary>
         public Contact Contact { get; private set; }
 
-		/// <summary>
-		/// ViewModel объекта класса <see cref="PhoneNumber"/>
-		/// </summary>
-		private PhoneNumberViewModel _phoneNumberViewModel;
-
-		/// <summary>
+        /// <summary>
 		/// Устанавливает свойство контакта
 		/// </summary>
 		/// <param name="property"></param>
@@ -79,19 +74,12 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// Возвращает и устанавливает VM для объекта 
 		/// класса <see cref="PhoneNumberViewModel"/>
 		/// </summary>
-		public PhoneNumberViewModel PhoneNumberViewModel 
-		{ 
-			get
-			{
-				return _phoneNumberViewModel;
-			}
-			private set
-			{
-				_phoneNumberViewModel = value;
-			}
-		}
+		public PhoneNumberViewModel PhoneNumberViewModel
+        {
+            get;
+        }
 
-		/// <summary>
+        /// <summary>
 		/// Возвращает и устанавливает адрес электронной почты контакта
 		/// </summary>
         public string Email

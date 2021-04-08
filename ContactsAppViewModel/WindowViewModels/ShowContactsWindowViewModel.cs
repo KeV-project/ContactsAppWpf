@@ -245,15 +245,12 @@ namespace ContactsAppViewModel.WindowViewModels
                 return _findContactCommand ??
                  (_findContactCommand = new RelayCommand(soughtContactName =>
                  {
+                     //TODO: Naming
                      SoughtContactName = soughtContactName.ToString();
-                     if(SoughtContactName != "")
-					 {
-                         ContactViewModels = GetSoughtContactViewModels();
-					 }
-					 else
-					 {
-                         ContactViewModels = GetAllContactViewModels();
-					 }
+                     
+                     ContactViewModels = SoughtContactName != "" 
+                         ? GetSoughtContactViewModels() 
+                         : GetAllContactViewModels();
                      OnPropertyChanged(nameof(ContactViewModels));
                  }));
             }
