@@ -7,7 +7,8 @@ namespace ContactsAppModel
     /// <summary>
     /// Класс <see cref="Contact"/> хранит информацию о контакте
     /// </summary>
-    public class Contact : ICloneable, IComparable<Contact>, IEquatable<Contact>
+    public class Contact : ICloneable, IComparable<Contact>, 
+        IEquatable<Contact>
     {
         /// <summary>
         /// Cодержит имя контакта
@@ -161,10 +162,10 @@ namespace ContactsAppModel
         }
 
         /// <summary>
-        /// Метод сравнивает два объекта класса по фамилии 
+        /// Метод предназначен для определения относительного порядка
+        /// следования двух элементов
         /// </summary>
-        /// <param name="contact">Объект, который будет сравниваться с
-        /// текущем объектов</param>
+        /// <param name="contact">Сравниваемый объект</param>
         /// <returns>Возвращает значение меньше 0, если фамиия 
         /// текущего контакта предшествует фамилиии сравниваемого
         /// Возвращает 0, если позиции объектов в порядке сортировки 
@@ -176,6 +177,13 @@ namespace ContactsAppModel
             return this.LastName.CompareTo(contact.LastName);
         }
 
+        /// <summary>
+        /// Определяет равенство двух объектов.
+        /// класса <see cref="Contact"/>
+        /// </summary>
+        /// <param name="other">Сравниваемый объект</param>
+        /// <returns>Возвращает true, если объекты равны.
+        /// Иначе возвращает false.</returns>
         public bool Equals(Contact other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -184,6 +192,13 @@ namespace ContactsAppModel
             return GetHashCode().Equals(other.GetHashCode());
         }
 
+
+        /// <summary>
+        /// Определяет равенство двух объектов.
+        /// </summary>
+        /// <param name="obj">Сравниваемый объект</param>
+        /// <returns>Возвращает true, если объекты равны.
+        /// Иначе возвращает false.</returns>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -193,6 +208,11 @@ namespace ContactsAppModel
             return Equals((Contact) obj);
         }
 
+        /// <summary>
+        /// Метод предназначен для генерации хеша
+        /// </summary>
+        /// <returns>Возвращает хеш объекта
+        /// класса <see cref="Contact"/></returns>
         public override int GetHashCode()
         {
             unchecked
