@@ -19,17 +19,17 @@ namespace ContactsAppView.WindowServices
         /// Запускаемое окно
         /// </summary>
         private AboutWindow _aboutWindow;
-
-        //TODO: Команды не проинициализированы и результат диалога не используется. Так должно быть? +
-
+        
         /// <summary>
         /// Выполняет запуск окна
         /// </summary>
         /// <param name="dataContext">ViewModel окна</param>
         public void ShowDialog(object dataContext)
         {
-            _aboutWindow = new AboutWindow();
-            _aboutWindow.DataContext = dataContext;
+            _aboutWindow = new AboutWindow
+            {
+                DataContext = dataContext
+            };
             _aboutWindow.ShowDialog();
         }
     }

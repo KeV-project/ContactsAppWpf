@@ -73,7 +73,6 @@ namespace ContactsAppViewModel.ModelViewModels
         {
             _errors[propertyName] = new List<string>() { error };
             NotifyErrorsChanged(propertyName);
-            //TODO: nameof +
             OnPropertyChanged(nameof(IsValid));
         }
 
@@ -88,7 +87,6 @@ namespace ContactsAppViewModel.ModelViewModels
                 _errors.Remove(propertyName);
             }
             NotifyErrorsChanged(propertyName);
-            //TODO: nameof +
             OnPropertyChanged(nameof(IsValid));
         }
 
@@ -99,7 +97,6 @@ namespace ContactsAppViewModel.ModelViewModels
         /// <param name="propertyName"></param>
         public void NotifyErrorsChanged(string propertyName)
         {
-            //TODO: лучше через .? +
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(
                 propertyName));
         }

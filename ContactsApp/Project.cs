@@ -9,7 +9,7 @@ namespace ContactsAppModel
     /// пользовательской информации приложения
     /// </summary>
     [DataContract]
-    public class Project : IComparable<Project>
+    public class Project : IEquatable<Project>
     {
         /// <summary>
         /// Хранит все контакты пользователя
@@ -34,12 +34,11 @@ namespace ContactsAppModel
             _contacts = new List<Contact>();
         }
 
-        //TODO: Свойство на гет? +
         /// <summary>
         /// Возвращает количество контактов в списке
         /// </summary>
         /// <returns>Значение показывает, скоько контактов в списке</returns>
-        public int ContactsCount { get => _contacts.Count; }
+        public int ContactsCount => _contacts.Count;
 
         /// <summary>
         /// Метод добавляет новый контакт в список проекта
@@ -72,10 +71,7 @@ namespace ContactsAppModel
                     "не существует");
             }
         }
-
-        //TODO: Не используется? +
-        //TODO: Не используется? +
-
+        
         /// <summary>
         /// Сортирует список контактов по фамилии в 
         /// алфавитном порядке
@@ -85,31 +81,25 @@ namespace ContactsAppModel
             _contacts.Sort();
         }
 
-        /// <summary>
-        /// Метод предназначен для сравнивания объектов
-        /// </summary>
-        /// <param name="project">Сравниваемый объект</param>
-        /// <returns>Возвращает 1, если объекты равны.
-        /// Возвращает 0, если объекты не равны<returns>
-        public int CompareTo(Project project)
+        public bool Equals(Project other)
         {
-            if (this.ContactsCount == project.ContactsCount)
-            {
-                for (int i = 0; i < this.ContactsCount; i++)
-                {
-                    //TODO: вызвать сравнение двух контактов, а не дёргать свойства по отдельности?
-                    if (this[i].FirstName != project[i].FirstName ||
-                        this[i].LastName != project[i].LastName ||
-                        this[i].Number.Number != project[i].Number.Number ||
-                        this[i].Email != project[i].Email ||
-                        this[i].BirthDate != project[i].BirthDate)
-                    {
-                        return 0;
-                    }
-                }
-                return 1;
-            }
-            return 0;
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            return Equals(_contacts, other._contacts);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Project) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (_contacts != null ? _contacts.GetHashCode() : 0);
         }
     }
 }

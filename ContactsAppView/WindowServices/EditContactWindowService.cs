@@ -62,9 +62,11 @@ namespace ContactsAppView.WindowServices
 		{
 			((EditContactWindowViewModel)dataContext).OkCommand = OkCommand;
 			((EditContactWindowViewModel)dataContext).CancelCommand = CancelCommand;
-			_editContactWindow = new EditContactWindow();
-			_editContactWindow.DataContext = dataContext;
-			_editContactWindow.ShowDialog();
+            _editContactWindow = new EditContactWindow
+            {
+                DataContext = dataContext
+            };
+            _editContactWindow.ShowDialog();
 		}
 	}
 }

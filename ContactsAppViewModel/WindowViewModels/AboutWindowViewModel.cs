@@ -9,33 +9,32 @@ namespace ContactsAppViewModel.WindowViewModels
 	/// </summary>
 	public class AboutWindowViewModel: ViewModelBase
 	{
-        //TODO: Лучше тут использовать => вместо явного прописывания get-еров +
 		/// <summary>
 		/// Возвращает имя приложения
 		/// </summary>
-		public string AppName { get => "ContactsApp"; }
+		public string AppName => "ContactsApp";
 
-		/// <summary>
+        /// <summary>
 		/// Возвращает версию приложения
 		/// </summary>
-		public string Version { get => "2.0.0"; }
+		public string Version => "2.0.0";
 
-		/// <summary>
+        /// <summary>
 		/// Возвращает имя разработчика приложения
 		/// </summary>
-		public string Author { get => "Ekaterina Kabanova"; }
+		public string Author => "Ekaterina Kabanova";
 
-		/// <summary>
+        /// <summary>
 		/// Возвращает адрес электронной почты разработчика
 		/// </summary>
-		public string Email { get => "katovskaya009@gmail.com"; }
+		public string Email => "katovskaya009@gmail.com";
 
-		/// <summary>
+        /// <summary>
 		/// Возвращает сведения об авторских правах
 		/// </summary>
-		public string Copyright { get => "2020 Ekaterina Kabanova ©"; }
+		public string Copyright => "2020 Ekaterina Kabanova ©";
 
-		/// <summary>
+        /// <summary>
 		/// Хранит команду открытия репозитория на Git Hub
 		/// </summary>
 		private RelayCommand _openRepositoryCommand;
