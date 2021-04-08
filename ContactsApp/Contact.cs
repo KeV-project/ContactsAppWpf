@@ -7,8 +7,7 @@ namespace ContactsAppModel
     /// <summary>
     /// Класс <see cref="Contact"/> хранит информацию о контакте
     /// </summary>
-    public class Contact: ICloneable, IComparable<Contact>, 
-        IEquatable<Contact>
+    public class Contact: ICloneable, IEquatable<Contact>
     {
         /// <summary>
         /// Cодержит имя контакта

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="ContactsApp" 
         Height="680" Width="1100" 
@@ -11,6 +12,16 @@
         FontSize="14" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
+        <CollectionViewSource x:Key="CollectionViewSource" Source=
+                              "{Binding ProjectViewModel.ContactViewModels}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="LastName" 
+                                     Direction="Ascending"/>
+                <scm:SortDescription PropertyName="FirstName" 
+                                     Direction="Ascending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        
         <Style x:Key="TextBlockStyle">
             <Setter Property="TextBlock.VerticalAlignment" Value="Top"/>
             <Setter Property="TextBlock.Padding" Value="5"/>
@@ -87,12 +98,11 @@
                         </i:Interaction.Triggers>
                     </TextBox>
                 </Grid>
-
+                
                 <!--Содержит список контактов-->
-                <ListBox Margin="10" Grid.Row="1" Grid.RowSpan="2" 
-                         DataContext="{Binding ProjectViewModel}"
-                         ItemsSource="{Binding ContactViewModels}"
-                         SelectedItem="{Binding SelectedContactViewModel}">
+                <ListBox Margin="10" Grid.Row="1" Grid.RowSpan="2"
+                         ItemsSource="{Binding Source=
+                                    {StaticResource CollectionViewSource}}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
@@ -167,9 +177,10 @@
                            Text="Birthday today:"  
                            Height="47" Width="146" FontSize="20" 
                            FontWeight="Bold" Margin="10,10,0,0"/>
-                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Height="48"
-                           TextWrapping="Wrap" FontSize="20" FontWeight="Bold"
-                           Text="{Binding BirthdayNames}" Margin="161,59,10,50"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" 
+                               Height="48" TextWrapping="Wrap" FontSize="20" 
+                               FontWeight="Bold" Margin="161,59,10,50"
+                               Text="{Binding BirthdayNames}"/>
                 </Grid>
             </Grid>
         </Grid>
