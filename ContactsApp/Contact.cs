@@ -192,7 +192,6 @@ namespace ContactsAppModel
             return GetHashCode().Equals(other.GetHashCode());
         }
 
-
         /// <summary>
         /// Определяет равенство двух объектов.
         /// </summary>

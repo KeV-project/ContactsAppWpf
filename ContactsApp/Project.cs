@@ -50,7 +50,6 @@ namespace ContactsAppModel
             if (newContact != null)
             {
                 _contacts.Add(newContact);
-                SortContacts();
             }
             else
             {
@@ -71,16 +70,14 @@ namespace ContactsAppModel
                     "не существует");
             }
         }
-        
-        /// <summary>
-        /// Сортирует список контактов по фамилии в 
-        /// алфавитном порядке
-        /// </summary>
-        public void SortContacts()
-		{
-            _contacts.Sort();
-        }
 
+        /// <summary>
+        /// Определяет равенство двух объектов.
+        /// класса <see cref="Project"/>
+        /// </summary>
+        /// <param name="other">Сравниваемый объект</param>
+        /// <returns>Возвращает true, если объекты равны.
+        /// Иначе возвращает false.</returns>
         public bool Equals(Project other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -89,6 +86,12 @@ namespace ContactsAppModel
             return Equals(_contacts, other._contacts);
         }
 
+        /// <summary>
+        /// Определяет равенство двух объектов.
+        /// </summary>
+        /// <param name="obj">Сравниваемый объект</param>
+        /// <returns>Возвращает true, если объекты равны.
+        /// Иначе возвращает false.</returns>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -97,6 +100,11 @@ namespace ContactsAppModel
             return Equals((Project) obj);
         }
 
+        /// <summary>
+        /// Метод предназначен для генерации хеша
+        /// </summary>
+        /// <returns>Возвращает хеш объекта
+        /// класса <see cref="Project"/></returns>
         public override int GetHashCode()
         {
             return (_contacts != null ? _contacts.GetHashCode() : 0);
