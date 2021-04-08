@@ -71,5 +71,10 @@ namespace ContactsAppViewModel.ModelViewModels
 
 			return contactViewModels;
 		}
+
+		public void AddContactViewModel(ContactViewModel contactViewModel)
+		{
+			ContactViewModels.Add(contactViewModel);
+		}
 	}
 }

@@ -161,22 +161,6 @@ namespace ContactsAppModel
             return new Contact(FirstName, LastName, number, Email, birthDate);
         }
 
-        /// <summary>
-        /// Метод предназначен для определения относительного порядка
-        /// следования двух элементов
-        /// </summary>
-        /// <param name="contact">Сравниваемый объект</param>
-        /// <returns>Возвращает значение меньше 0, если фамиия 
-        /// текущего контакта предшествует фамилиии сравниваемого
-        /// Возвращает 0, если позиции объектов в порядке сортировки 
-        /// по фамилии совпадают
-        /// Возвразает значение больше 0, если фамилия сравниваемого
-        /// контакта предшествует фамилии текущего</returns>
-        public int CompareTo(Contact contact)
-        {
-            return this.LastName.CompareTo(contact.LastName);
-        }
-
 		/// <summary>
 		/// Определяет равенство двух объектов.
 		/// класса <see cref="Contact"/>

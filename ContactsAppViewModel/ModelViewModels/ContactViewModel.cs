@@ -7,7 +7,8 @@ namespace ContactsAppViewModel.ModelViewModels
 	/// Класс <see cref="ContactViewModel"/> организует уровень
 	/// защиты данных приложения от неккоректного ввода
 	/// </summary>
-	public class ContactViewModel: ModelViewModelBase
+	public class ContactViewModel: ModelViewModelBase, 
+		IComparable<ContactViewModel>
     {
 		/// <summary>
 		/// Изменяемый контакт
@@ -125,5 +126,21 @@ namespace ContactsAppViewModel.ModelViewModels
 			PhoneNumberViewModel = new PhoneNumberViewModel(
 				Contact.Number);
 		}
-    }
+
+		/// <summary>
+		/// Метод предназначен для определения относительного порядка
+		/// следования двух элементов
+		/// </summary>
+		/// <param name="contactViewModel">Сравниваемый объект</param>
+		/// <returns>Возвращает значение меньше 0, если фамилия 
+		/// контакта текущей VM предшествует фамилиии контакта 
+		/// сравниваемой VM. Возвращает 0, если позиции объектов в 
+		/// порядке сортировки по фамилии контакта совпадают.
+		/// Возвращает значение больше 0, если фамилия контакта сравниваемой 
+		/// VM предшествует фамилии контакта текущей VM</returns>
+		public int CompareTo(ContactViewModel contactViewModel)
+		{
+			return LastName.CompareTo(contactViewModel.LastName);
+		}
+	}
 }
