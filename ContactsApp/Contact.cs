@@ -7,7 +7,7 @@ namespace ContactsAppModel
     /// <summary>
     /// Класс <see cref="Contact"/> хранит информацию о контакте
     /// </summary>
-    public class Contact : ICloneable, IComparable<Contact>, 
+    public class Contact: ICloneable, IComparable<Contact>, 
         IEquatable<Contact>
     {
         /// <summary>
@@ -177,52 +177,52 @@ namespace ContactsAppModel
             return this.LastName.CompareTo(contact.LastName);
         }
 
-        /// <summary>
-        /// Определяет равенство двух объектов.
-        /// класса <see cref="Contact"/>
-        /// </summary>
-        /// <param name="other">Сравниваемый объект</param>
-        /// <returns>Возвращает true, если объекты равны.
-        /// Иначе возвращает false.</returns>
-        public bool Equals(Contact other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            
-            return GetHashCode().Equals(other.GetHashCode());
-        }
+		/// <summary>
+		/// Определяет равенство двух объектов.
+		/// класса <see cref="Contact"/>
+		/// </summary>
+		/// <param name="other">Сравниваемый объект</param>
+		/// <returns>Возвращает true, если объекты равны.
+		/// Иначе возвращает false.</returns>
+		public bool Equals(Contact other)
+		{
+			if (ReferenceEquals(null, other)) return false;
+			if (ReferenceEquals(this, other)) return true;
 
-        /// <summary>
-        /// Определяет равенство двух объектов.
-        /// </summary>
-        /// <param name="obj">Сравниваемый объект</param>
-        /// <returns>Возвращает true, если объекты равны.
-        /// Иначе возвращает false.</returns>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+			return GetHashCode().Equals(other.GetHashCode());
+		}
 
-            return Equals((Contact) obj);
-        }
+		/// <summary>
+		/// Определяет равенство двух объектов.
+		/// </summary>
+		/// <param name="obj">Сравниваемый объект</param>
+		/// <returns>Возвращает true, если объекты равны.
+		/// Иначе возвращает false.</returns>
+		public override bool Equals(object obj)
+		{
+			if (ReferenceEquals(null, obj)) return false;
+			if (ReferenceEquals(this, obj)) return true;
+			if (obj.GetType() != this.GetType()) return false;
 
-        /// <summary>
-        /// Метод предназначен для генерации хеша
-        /// </summary>
-        /// <returns>Возвращает хеш объекта
-        /// класса <see cref="Contact"/></returns>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = (_firstName != null ? _firstName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (_lastName != null ? _lastName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (_email != null ? _email.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ _birthDate.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Number != null ? Number.GetHashCode() : 0);
-                return hashCode;
-            }
-        }
-    }
+			return Equals((Contact)obj);
+		}
+
+		/// <summary>
+		/// Метод предназначен для генерации хеша
+		/// </summary>
+		/// <returns>Возвращает хеш объекта
+		/// класса <see cref="Contact"/></returns>
+		public override int GetHashCode()
+		{
+			unchecked
+			{
+				var hashCode = (_firstName != null ? _firstName.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (_lastName != null ? _lastName.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (_email != null ? _email.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ _birthDate.GetHashCode();
+				hashCode = (hashCode * 397) ^ (Number != null ? Number.GetHashCode() : 0);
+				return hashCode;
+			}
+		}
+	}
 }

@@ -6,8 +6,8 @@ namespace ContactsAppModel
     /// Класс <see cref="PhoneNumber"/> хранит информацию 
     /// о номере телефона контакта
     /// </summary>
-    public class PhoneNumber: IComparable<PhoneNumber>
-    {
+    public class PhoneNumber: IEquatable<PhoneNumber>
+	{
         /// <summary>
         /// Поле предназначено для хранения номера телефона контакта
         /// </summary>
@@ -47,21 +47,42 @@ namespace ContactsAppModel
         }
 
         /// <summary>
-        /// Сравнивает два объекта класса
+		/// Определяет равенство двух объектов.
+		/// </summary>
+		/// <param name="obj">Сравниваемый объект</param>
+		/// <returns>Возвращает true, если объекты равны.
+		/// Иначе возвращает false.</returns>
+		public override bool Equals(object obj)
+		{
+			return Equals(obj as PhoneNumber);
+		}
+
+        /// <summary>
+		/// Определяет равенство двух объектов.
+		/// класса <see cref="PhoneNumber"/>
+		/// </summary>
+		/// <param name="other">Сравниваемый объект</param>
+		/// <returns>Возвращает true, если объекты равны.
+		/// Иначе возвращает false.</returns>
+		public bool Equals(PhoneNumber other)
+		{
+			return other != null &&
+				   _number == other._number &&
+				   Number == other.Number;
+		}
+
+
+        /// <summary>
+        /// Метод предназначен для генерации хеша
         /// </summary>
-        /// <param name="number">Объект класса <see cref="PhoneNumber">, 
-        /// который будет сравниваться с текущим объектом</param>
-        /// <returns>Возвращаемое значение показывает
-        /// рывны ли сравниваемые объекты.
-        /// Если объекты равны, возвращает 1.
-        /// Если объекты не равны, возвращает 0</returns>
-        public int CompareTo(PhoneNumber number)
-        {
-            if (this.Number == number.Number)
-            {
-                return 1;
-            }
-            return 0;
-        }
-    }
+        /// <returns>Возвращает хеш объекта
+        /// класса <see cref="PhoneNumber"/></returns>
+        public override int GetHashCode()
+		{
+			int hashCode = 1729877619;
+			hashCode = hashCode * -1521134295 + _number.GetHashCode();
+			hashCode = hashCode * -1521134295 + Number.GetHashCode();
+			return hashCode;
+		}
+	}
 }
