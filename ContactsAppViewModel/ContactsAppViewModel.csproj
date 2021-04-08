@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ModelViewModels\ModelViewModelBase.cs" />
     <Compile Include="ModelViewModels\PhoneNumberViewModel.cs" />
+    <Compile Include="ModelViewModels\ProjectViewModel.cs" />
     <Compile Include="WindowServices\IDialogWindowService.cs" />
     <Compile Include="WindowViewModels\AboutWindowViewModel.cs" />
     <Compile Include="ModelViewModels\ContactViewModel.cs" />

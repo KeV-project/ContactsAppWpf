@@ -89,9 +89,10 @@
                 </Grid>
 
                 <!--Содержит список контактов-->
-                <ListBox Margin="10" Grid.Row="1" Grid.RowSpan="2"
-                     ItemsSource="{Binding ContactViewModels}"
-                     SelectedItem="{Binding SelectedContactViewModel}">
+                <ListBox Margin="10" Grid.Row="1" Grid.RowSpan="2" 
+                         DataContext="{Binding ProjectViewModel}"
+                         ItemsSource="{Binding ContactViewModels}"
+                         SelectedItem="{Binding SelectedContactViewModel}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
@@ -105,7 +106,8 @@
             </Grid>
 
             <!--Правая панель-->
-            <Grid Grid.Column="1" Margin="10">
+            <Grid Grid.Column="1" Margin="10" 
+                  DataContext="{Binding ProjectViewModel}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="0.4*"/>
