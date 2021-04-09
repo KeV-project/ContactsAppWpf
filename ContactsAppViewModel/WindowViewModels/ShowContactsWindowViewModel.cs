@@ -29,8 +29,6 @@ namespace ContactsAppViewModel.WindowViewModels
         /// </summary>
         private IWindowService _aboutWindowService;
 
-		private string _searchString = "";
-
 		/// <summary>
 		/// Инициализирует проект пользовательских данных и
 		/// устанавливает сервисы для связи с дочерним окном
@@ -147,9 +145,9 @@ namespace ContactsAppViewModel.WindowViewModels
 				return _findContactCommand ??
 				 (_findContactCommand = new RelayCommand(searchString =>
 				 {
-					 //TODO: Naming
-					 _searchString = searchString.ToString();
-
+					 //TODO: Naming +
+					 ProjectViewModel.ShowSearchContacts(
+						 searchString.ToString());
 				 }));
 			}
 		}

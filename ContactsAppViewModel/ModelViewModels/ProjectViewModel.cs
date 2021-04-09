@@ -24,6 +24,8 @@ namespace ContactsAppViewModel.ModelViewModels
 			Environment.SpecialFolder.ApplicationData) +
             "\\ContactsAppWpf\\" + "ContactsAppWpf.notes");
 
+		public bool IsProjectSaved { get; set; } = false;
+
 		/// <summary>
 		/// Хранит список VM контактов пользователя
 		/// </summary>
@@ -71,7 +73,24 @@ namespace ContactsAppViewModel.ModelViewModels
 			return contactViewModels;
 		}
 
-		private List<Contact> GetAllContacts()
+		private ObservableCollection<ContactViewModel>
+			GetSearchContactViewModels(string searchString)
+		{
+			ObservableCollection<ContactViewModel> contactViewModels =
+				new ObservableCollection<ContactViewModel>();
+			for (int i = 0; i < ContactViewModels.Count; i++)
+			{
+				string contactName = ContactViewModels[i].LastName
+					+ " " + ContactViewModels[i].FirstName;
+				if(contactName.Contains(searchString))
+				{
+					contactViewModels.Add(ContactViewModels[i]);
+				}
+			}
+			return contactViewModels;
+		}
+
+			private List<Contact> GetAllContacts()
 		{
 			List<Contact> contacts = new List<Contact>();
 			for(int i = 0; i < ContactViewModels.Count; i++)
@@ -85,6 +104,7 @@ namespace ContactsAppViewModel.ModelViewModels
 			ContactViewModel contactViewModel)
 		{
 			ContactViewModels.Add(contactViewModel);
+			IsProjectSaved = false;
 		}
 
 		public void ReplaceContactViewModel(
@@ -93,6 +113,7 @@ namespace ContactsAppViewModel.ModelViewModels
 		{
 			ContactViewModels.Remove(currentContactViewModel);
 			ContactViewModels.Add(newContactViewModel);
+			IsProjectSaved = false;
 		}
 
 		public void RemoveSelectedContactViewModel()
@@ -100,13 +121,35 @@ namespace ContactsAppViewModel.ModelViewModels
 			if (SelectedContactViewModel != null)
 			{
 				ContactViewModels.Remove(SelectedContactViewModel);
+				IsProjectSaved = false;
 			}
+		}
+
+		public void ShowSearchContacts(string searchString)
+		{
+			if(!IsProjectSaved)
+			{
+				SaveProject();
+			}
+			if(searchString == "")
+			{
+				ContactViewModels = GetContactViewModels();
+			}
+			else
+			{
+				ContactViewModels = GetSearchContactViewModels(searchString);
+			}
+			OnPropertyChanged(nameof(ContactViewModels));
 		}
 
 		public void SaveProject()
 		{
-			_project.Contacts = GetAllContacts();
-			ProjectManager.SaveProject(_project, _defaultPath);
+			if(!IsProjectSaved)
+			{
+				_project.Contacts = GetAllContacts();
+				ProjectManager.SaveProject(_project, _defaultPath);
+				IsProjectSaved = true;
+			}
 		}
 	}
 }
