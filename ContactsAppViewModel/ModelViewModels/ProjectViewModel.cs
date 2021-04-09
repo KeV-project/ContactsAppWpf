@@ -55,10 +55,16 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 		}
 
+		public string BirthdayNames { get; private set; } = "";
+
+		public bool HasBirthdays { get; private set; } = false;
+
 		public ProjectViewModel()
 		{
 			_project = ProjectManager.ReadProject(_defaultPath);
 			ContactViewModels = GetContactViewModels();
+			BirthdayNames = GetBirthdayNames();
+			OnPropertyChanged(nameof(HasBirthdays));
 		}
 
 		private ObservableCollection<ContactViewModel> 
@@ -90,7 +96,7 @@ namespace ContactsAppViewModel.ModelViewModels
 			return contactViewModels;
 		}
 
-			private List<Contact> GetAllContacts()
+		private List<Contact> GetAllContacts()
 		{
 			List<Contact> contacts = new List<Contact>();
 			for(int i = 0; i < ContactViewModels.Count; i++)
@@ -98,6 +104,24 @@ namespace ContactsAppViewModel.ModelViewModels
 				contacts.Add(ContactViewModels[i].Contact);
 			}
 			return contacts;
+		}
+
+		private string GetBirthdayNames()
+		{
+			string birthdayNames = "";
+			for(int i = 0; i < ContactViewModels.Count; i++)
+			{
+				if(ContactViewModels[i].BirthDate.Day 
+					== DateTime.Today.Day
+					&& ContactViewModels[i].BirthDate.Month 
+					== DateTime.Today.Month)
+				{
+					birthdayNames += ContactViewModels[i].LastName + " "
+						+ ContactViewModels[i].FirstName + ", ";
+					HasBirthdays = true;
+				}
+			}
+			return birthdayNames.Trim(new char[] { ',', ' ' });
 		}
 
 		public void AddContactViewModel(

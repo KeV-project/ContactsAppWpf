@@ -33,6 +33,17 @@
             <Setter Property="Button.VerticalAlignment" Value="Bottom"/>
             <Setter Property="Button.Margin" Value="10,0,10,12"/>
         </Style>
+
+        <Style x:Key="BirthdayStyle">
+            <Setter Property="Control.Visibility" Value="Hidden"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding HasBirthdays}"
+                         Value="true">
+                    <Setter Property="Control.Visibility" Value="Visible"/>
+                </DataTrigger>
+                
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -172,15 +183,18 @@
 
                     <Image HorizontalAlignment="Center" 
                            VerticalAlignment="Center" 
-                           Source="img.png"/>
+                           Source="img.png"
+                           Style="{StaticResource BirthdayStyle}"/>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" 
                            VerticalAlignment="Center" TextWrapping="Wrap" 
                            Text="Birthday today:"  
                            Height="47" Width="146" FontSize="20" 
-                           FontWeight="Bold" Margin="10,10,0,0"/>
+                           FontWeight="Bold" Margin="10,10,0,0"
+                           Style="{StaticResource BirthdayStyle}"/>
                     <TextBlock Grid.Column="1" VerticalAlignment="Center" 
                                Height="48" TextWrapping="Wrap" FontSize="20" 
-                               FontWeight="Bold" Margin="161,59,10,50"
+                               FontWeight="Bold" Margin="161,60,10,49"
+                               Style="{StaticResource BirthdayStyle}"
                                Text="{Binding BirthdayNames}"/>
                 </Grid>
             </Grid>
