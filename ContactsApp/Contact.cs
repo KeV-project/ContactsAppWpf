@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace ContactsAppModel
 {
@@ -16,7 +14,7 @@ namespace ContactsAppModel
 
         /// <summary>
         /// Возвращает и устанавливает имя контакта
-        /// Имя контакта должна состоять не более чем из 50 символов
+        /// Имя контакта должно состоять не более чем из 50 символов
         /// </summary>
         public string FirstName
         {
@@ -42,7 +40,7 @@ namespace ContactsAppModel
 
         /// <summary>
         /// Возвращает и устанавливает фамилию контакта.
-        /// Фамилия контакта должна состоять не более чем из 50 символов.
+        /// Фамилия контакта должна состоять не более чем из 50 символов
         /// </summary>
         public string LastName
         {
@@ -67,14 +65,14 @@ namespace ContactsAppModel
         public PhoneNumber Number { get; set; }
 
         /// <summary>
-        /// Содержит адрес электронной почты контакта
+        /// Хранит адрес электронной почты контакта
         /// </summary>
         private string _email;
 
         /// <summary>
         /// Возвращает и устанавливает e-mail контакта
         /// Адрес электронной почты должен состоять 
-        /// не более чем из 50 символов.
+        /// не более чем из 50 символов
         /// </summary>
         public string Email
         {
@@ -157,16 +155,17 @@ namespace ContactsAppModel
             PhoneNumber number = new PhoneNumber(Number.Number);
             DateTime birthDate = new DateTime(BirthDate.Year,
                 BirthDate.Month, BirthDate.Day);
-            return new Contact(FirstName, LastName, number, Email, birthDate);
+            return new Contact(FirstName, LastName, 
+                number, Email, birthDate);
         }
 
 		/// <summary>
-		/// Определяет равенство двух объектов.
+		/// Определяет равенство двух объектов
 		/// класса <see cref="Contact"/>
 		/// </summary>
 		/// <param name="other">Сравниваемый объект</param>
 		/// <returns>Возвращает true, если объекты равны.
-		/// Иначе возвращает false.</returns>
+		/// Иначе возвращает false</returns>
 		public bool Equals(Contact other)
 		{
 			if (ReferenceEquals(null, other)) return false;
@@ -180,7 +179,7 @@ namespace ContactsAppModel
 		/// </summary>
 		/// <param name="obj">Сравниваемый объект</param>
 		/// <returns>Возвращает true, если объекты равны.
-		/// Иначе возвращает false.</returns>
+		/// Иначе возвращает false</returns>
 		public override bool Equals(object obj)
 		{
 			if (ReferenceEquals(null, obj)) return false;
@@ -199,11 +198,15 @@ namespace ContactsAppModel
 		{
 			unchecked
 			{
-				var hashCode = (_firstName != null ? _firstName.GetHashCode() : 0);
-				hashCode = (hashCode * 397) ^ (_lastName != null ? _lastName.GetHashCode() : 0);
-				hashCode = (hashCode * 397) ^ (_email != null ? _email.GetHashCode() : 0);
+				var hashCode = (_firstName != null 
+                    ? _firstName.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (_lastName != null 
+                    ? _lastName.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (_email != null 
+                    ? _email.GetHashCode() : 0);
 				hashCode = (hashCode * 397) ^ _birthDate.GetHashCode();
-				hashCode = (hashCode * 397) ^ (Number != null ? Number.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (Number != null 
+                    ? Number.GetHashCode() : 0);
 				return hashCode;
 			}
 		}

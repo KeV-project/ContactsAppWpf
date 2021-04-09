@@ -9,23 +9,6 @@ namespace ContactsAppModel
     public static class ValueCorrector
     {
         /// <summary>
-        /// Метод предназначен для исключения из строки,
-        /// содержащей номер телефона, всех посторонних символов
-        /// </summary>
-        /// <param name="number">Корректируемый номер телефона</param>
-        /// <returns>Возвращает номер телефона 
-        /// в целочисленном формате</returns>
-        public static long ConvertPhoneNumberToInt(string number)
-        {
-            number = number.Replace(" ", "");
-            number = number.Replace("+", "");
-            number = number.Replace("(", "");
-            number = number.Replace(")", "");
-            number = number.Replace("-", "");
-            return Convert.ToInt64(number);
-        }
-
-        /// <summary>
         /// Метод предназначен для корректирови 
         /// введенных пользователем имени или фамилии
         /// </summary>

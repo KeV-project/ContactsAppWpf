@@ -37,12 +37,12 @@ namespace ContactsAppModel
         /// <summary>
         /// Возвращает количество контактов в списке
         /// </summary>
-        /// <returns>Значение показывает, скоько контактов в списке</returns>
+        /// <returns>Значение показывает, 
+        /// скоько контактов в списке</returns>
         public int ContactsCount => Contacts.Count;
 
         /// <summary>
         /// Метод добавляет новый контакт в список проекта
-        /// и сортирует список по фамилиям контактов
         /// </summary>
         /// <param name="newContact">Добавляемый контакт</param>
         public void AddContact(Contact newContact)
@@ -77,7 +77,7 @@ namespace ContactsAppModel
         /// </summary>
         /// <param name="other">Сравниваемый объект</param>
         /// <returns>Возвращает true, если объекты равны.
-        /// Иначе возвращает false.</returns>
+        /// Иначе возвращает false</returns>
         public bool Equals(Project other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -91,7 +91,7 @@ namespace ContactsAppModel
         /// </summary>
         /// <param name="obj">Сравниваемый объект</param>
         /// <returns>Возвращает true, если объекты равны.
-        /// Иначе возвращает false.</returns>
+        /// Иначе возвращает false</returns>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;

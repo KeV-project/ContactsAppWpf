@@ -14,8 +14,9 @@ namespace ContactsAppModel
         private long _number;
 
         /// <summary>
-        /// Возвращает и создает номер телефона контакта
-        /// Номер телефона должен начинаться с цифры "7" и состоять из 11 цифр
+        /// Возвращает и устанавливает номер телефона контакта
+        /// Номер телефона должен начинаться с цифры "7" 
+        /// и состоять из 11 цифр
         /// </summary>
         public long Number
         {
@@ -51,7 +52,7 @@ namespace ContactsAppModel
 		/// </summary>
 		/// <param name="obj">Сравниваемый объект</param>
 		/// <returns>Возвращает true, если объекты равны.
-		/// Иначе возвращает false.</returns>
+		/// Иначе возвращает false</returns>
 		public override bool Equals(object obj)
 		{
 			return Equals(obj as PhoneNumber);
@@ -63,14 +64,13 @@ namespace ContactsAppModel
 		/// </summary>
 		/// <param name="other">Сравниваемый объект</param>
 		/// <returns>Возвращает true, если объекты равны.
-		/// Иначе возвращает false.</returns>
+		/// Иначе возвращает false</returns>
 		public bool Equals(PhoneNumber other)
 		{
 			return other != null &&
 				   _number == other._number &&
 				   Number == other.Number;
 		}
-
 
         /// <summary>
         /// Метод предназначен для генерации хеша
