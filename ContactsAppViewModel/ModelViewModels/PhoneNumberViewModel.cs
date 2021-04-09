@@ -18,21 +18,41 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// </summary>
 		public PhoneNumber PhoneNumber { get; set; }
 
+		private string _number;
+
 		/// <summary>
 		/// Возвращает и устанавливает номер телефона
 		/// </summary>
-		public long Number
+		public string Number
 		{
 			get
 			{
-				return PhoneNumber.Number;
+				if(PhoneNumber.Number == 70000000000 &&
+					(_number == null || _number == "70000000000"))
+				{
+					return "";
+				}
+				return _number;
 			}
 			set
 			{
 				try
 				{
-					PhoneNumber.Number = value;
-					RemoveError(nameof(Number));
+					_number = value.Trim();
+					if(_number == "")
+					{
+						_number = "70000000000";
+					}
+					if (long.TryParse(_number, out long number))
+					{
+						PhoneNumber.Number = number;
+						RemoveError(nameof(Number));
+					}
+					else
+					{
+						throw new ArgumentException("Номер телефона может " 
+							+ "содержать только цифры");
+					}
 				}
 				catch(ArgumentException ex)
 				{

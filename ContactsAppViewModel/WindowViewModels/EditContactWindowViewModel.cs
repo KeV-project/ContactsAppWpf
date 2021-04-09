@@ -23,16 +23,16 @@ namespace ContactsAppViewModel.WindowViewModels
 		/// <summary>
 		/// ViewModel редактируемого контакта
 		/// </summary>
-		public ContactViewModel ContactViewModel { get; private set; }
+		public ContactViewModel CurrentContactViewModel { get; private set; }
 
-		//TODO: XML
-		/// <summary>
-		/// Инициализирует редактируемый контакт
-		/// </summary>
-		/// <param name="contact"></param>
+		public ContactViewModel EditedContactViewModel { get; private set; }
+
+		
 		public EditContactWindowViewModel(ContactViewModel contactViewModel)
 		{
-			ContactViewModel = contactViewModel;
+			CurrentContactViewModel = contactViewModel;
+			EditedContactViewModel = (ContactViewModel)
+				contactViewModel.Clone();
 		}
     }
 }

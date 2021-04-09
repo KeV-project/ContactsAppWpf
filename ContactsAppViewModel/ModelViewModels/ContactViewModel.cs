@@ -70,14 +70,28 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 		}
 
-		/// <summary>
-		/// Возвращает и устанавливает VM для объекта 
-		/// класса <see cref="PhoneNumberViewModel"/>
-		/// </summary>
+		private PhoneNumberViewModel _phoneNumberViewModel;
 		public PhoneNumberViewModel PhoneNumberViewModel
-        {
-            get;
-        }
+		{
+			get
+			{
+				if(_phoneNumberViewModel.IsValid)
+				{
+					RemoveError(nameof(PhoneNumberViewModel));
+				}
+				else
+				{
+					AddError(nameof(PhoneNumberViewModel),
+						_phoneNumberViewModel.GetErrors(nameof(
+							_phoneNumberViewModel.Number)).ToString());
+				}
+				return _phoneNumberViewModel;
+			}
+			set
+			{
+				_phoneNumberViewModel = value;
+			}
+		}
 
         /// <summary>
 		/// Возвращает и устанавливает адрес электронной почты контакта
@@ -129,6 +143,16 @@ namespace ContactsAppViewModel.ModelViewModels
 		public object Clone()
 		{
 			return new ContactViewModel((Contact)Contact.Clone());
+		}
+
+		public void Copy(ContactViewModel contactViewModel)
+		{
+			FirstName = contactViewModel.FirstName;
+			LastName = contactViewModel.LastName;
+			BirthDate = contactViewModel.BirthDate;
+			PhoneNumberViewModel.Number = contactViewModel.
+				PhoneNumberViewModel.Number;
+			Email = contactViewModel.Email;
 		}
 	}
 }

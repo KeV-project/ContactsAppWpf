@@ -86,6 +86,13 @@ namespace ContactsAppViewModel.ModelViewModels
 			ContactViewModels.Add(contactViewModel);
 		}
 
+		public void ReplaceContactViewModel(ContactViewModel 
+			currentContactViewModel, ContactViewModel newContactViewModel)
+		{
+			ContactViewModels.Remove(currentContactViewModel);
+			ContactViewModels.Add(newContactViewModel);
+		}
+
 		public void SaveProject()
 		{
 			_project.Contacts = GetAllContacts();

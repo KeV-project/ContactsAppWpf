@@ -72,7 +72,7 @@ namespace ContactsAppViewModel.WindowViewModels
 					  if (_editContactWindowService.DialogResult)
 					  {
 						  ProjectViewModel.AddContactViewModel(
-							  editContactViewModel.ContactViewModel);
+							  editContactViewModel.EditedContactViewModel);
 					  }
 				  }));
 			}
@@ -102,7 +102,9 @@ namespace ContactsAppViewModel.WindowViewModels
 
 						  if (_editContactWindowService.DialogResult)
 						  {
-							  
+							  ProjectViewModel.ReplaceContactViewModel(
+								  viewModel.CurrentContactViewModel, 
+								  viewModel.EditedContactViewModel);
 						  }
 					  }
 				  }));
