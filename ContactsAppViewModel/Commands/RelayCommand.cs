@@ -41,7 +41,7 @@ namespace ContactsAppViewModel.Commands
         /// </summary>
         /// <param name="execute">Метод, содержащий логику команды</param>
         /// <param name="canExecute">Метод, содержащий логику проверки 
-        /// команды на достувность выполнения</param>
+        /// команды на готовность к выполнения</param>
         public RelayCommand(Action<object> execute,
             Func<object, bool> canExecute = null)
         {

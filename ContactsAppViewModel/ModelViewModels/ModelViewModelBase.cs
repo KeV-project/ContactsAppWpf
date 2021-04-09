@@ -26,9 +26,9 @@ namespace ContactsAppViewModel.ModelViewModels
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         /// <summary>
-        /// Возвращает перечень сообщений об ошибках валидации объекта
+        /// Возвращает перечень сообщений об ошибках валидации свойства
         /// </summary>
-        /// <param name="propertyName"></param>
+        /// <param name="propertyName">Валидируемое свойство</param>
         /// <returns></returns>
         public IEnumerable GetErrors(string propertyName)
         {
@@ -64,11 +64,11 @@ namespace ContactsAppViewModel.ModelViewModels
         }
 
         /// <summary>
-        /// Добавляет новую сведения об ошибке валидации в список объекта
+        /// Добавляет новые сведения об ошибке валидации в список объекта
         /// </summary>
         /// <param name="propertyName">Свойство, 
         /// не прошедшее валидацию</param>
-        /// <param name="error">Ошибка валидации</param>
+        /// <param name="error">Сообщение об ошибке</param>
         public void AddError(string propertyName, string error)
         {
             _errors[propertyName] = new List<string>() { error };

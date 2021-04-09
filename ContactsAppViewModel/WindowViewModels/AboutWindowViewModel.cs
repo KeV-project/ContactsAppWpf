@@ -4,7 +4,7 @@ using ContactsAppViewModel.Commands;
 namespace ContactsAppViewModel.WindowViewModels
 {
 	/// <summary>
-	/// Класс <see cref="AboutViewModel"/> связывает модель и 
+	/// Класс <see cref="AboutWindowViewModel"/> связывает модель и 
 	/// представление через механизм привязки данных
 	/// </summary>
 	public class AboutWindowViewModel: ViewModelBase

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Collections.ObjectModel;
 using ContactsAppModel;
 using ContactsAppViewModel.WindowServices;
 using ContactsAppViewModel.Commands;
@@ -15,6 +13,9 @@ namespace ContactsAppViewModel.WindowViewModels
     /// </summary>
     public class ShowContactsWindowViewModel: ViewModelBase
     {
+		/// <summary>
+		/// Возвращает и устанавливает проект с пользовательскими данными
+		/// </summary>
         public ProjectViewModel ProjectViewModel { get; set; }
 
         /// <summary>

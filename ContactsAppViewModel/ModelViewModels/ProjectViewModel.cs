@@ -1,14 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using ContactsAppModel;
 
 namespace ContactsAppViewModel.ModelViewModels
 {
+	/// <summary>
+	/// Класс <see cref="ProjectViewModel"/>
+	/// предназначен для создания viewModel объекта класса
+	/// <see cref="ContactsAppModel.Project"/>
+	/// </summary>
 	public class ProjectViewModel: ModelViewModelBase
 	{
 		/// <summary>
@@ -24,6 +26,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			Environment.SpecialFolder.ApplicationData) +
             "\\ContactsAppWpf\\" + "ContactsAppWpf.notes");
 
+		/// <summary>
+		/// Возвращает false, если проект содержит несохраненные данные,
+		/// иначе возвращает trye
+		/// </summary>
 		public bool IsProjectSaved { get; set; } = false;
 
 		/// <summary>
@@ -32,6 +38,13 @@ namespace ContactsAppViewModel.ModelViewModels
 		public ObservableCollection<ContactViewModel>
 			ContactViewModels{ get; set; }
 
+		/// <summary>
+		/// Позволяет получить или добавить VM контакта в список 
+		/// по указанному индуксу
+		/// </summary>
+		/// <param name="index">Индекс возвращаемой VM контакта
+		/// или позиция для добавления VM контакта в список</param>
+		/// <returns>Возвращает VM контакта по указанному индексу</returns>
 		public ContactViewModel this[int index] => ContactViewModels[index];
 
 		/// <summary>
@@ -40,7 +53,7 @@ namespace ContactsAppViewModel.ModelViewModels
 		private ContactViewModel _selectedContactViewModel;
 
 		/// <summary>
-		/// Возвращает и устанавливает текущий контакт
+		/// Возвращает и устанавливает VM текущего контакта
 		/// </summary>
 		public ContactViewModel SelectedContactViewModel
 		{
@@ -55,10 +68,22 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 		}
 
+		/// <summary>
+		/// Возвращает и устанавливает строку, содержащую имена и 
+		/// фамилии именинников
+		/// </summary>
 		public string BirthdayNames { get; private set; } = "";
 
+		/// <summary>
+		/// Возвращает true, если у кого-то из контактов сегодня день
+		/// рождения, иначе возвращает false
+		/// </summary>
 		public bool HasBirthdays { get; private set; } = false;
 
+		/// <summary>
+		/// Инициализирует свойства объекта класса 
+		/// <see cref="ProjectViewModel"/>
+		/// </summary>
 		public ProjectViewModel()
 		{
 			_project = ProjectManager.ReadProject(_defaultPath);
@@ -67,6 +92,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			OnPropertyChanged(nameof(HasBirthdays));
 		}
 
+		/// <summary>
+		/// Создает список VM контактов
+		/// </summary>
+		/// <returns>Возвращает список VM контактов</returns>
 		private ObservableCollection<ContactViewModel> 
 			GetContactViewModels()
 		{
@@ -79,6 +108,13 @@ namespace ContactsAppViewModel.ModelViewModels
 			return contactViewModels;
 		}
 
+		/// <summary>
+		/// Создает список VM контактов, фамилия и имя которых
+		/// содержит подстроку
+		/// </summary>
+		/// <param name="searchString">Подстрока для поиска</param>
+		/// <returns>Возвращает список VM контактов, фамилия и имя которых
+		/// содержит подстроку</returns>
 		private ObservableCollection<ContactViewModel>
 			GetSearchContactViewModels(string searchString)
 		{
@@ -96,6 +132,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			return contactViewModels;
 		}
 
+		/// <summary>
+		/// Создает список контактов из списка VM контактов
+		/// </summary>
+		/// <returns>Возвращает список контактов</returns>
 		private List<Contact> GetAllContacts()
 		{
 			List<Contact> contacts = new List<Contact>();
@@ -106,6 +146,12 @@ namespace ContactsAppViewModel.ModelViewModels
 			return contacts;
 		}
 
+		/// <summary>
+		/// Создает строку с инициалами контактов, у которых сегодня
+		/// день рождения
+		/// </summary>
+		/// <returns>Возвращает строку с инициалами контактов, 
+		/// у которых сегодня день рождения</returns>
 		private string GetBirthdayNames()
 		{
 			string birthdayNames = "";
@@ -124,6 +170,10 @@ namespace ContactsAppViewModel.ModelViewModels
 			return birthdayNames.Trim(new char[] { ',', ' ' });
 		}
 
+		/// <summary>
+		/// Добавляет VM контакта в список
+		/// </summary>
+		/// <param name="contactViewModel">Новая VM контакта</param>
 		public void AddContactViewModel(
 			ContactViewModel contactViewModel)
 		{
@@ -131,6 +181,11 @@ namespace ContactsAppViewModel.ModelViewModels
 			IsProjectSaved = false;
 		}
 
+		/// <summary>
+		/// Заменят одну VM контакта на другую
+		/// </summary>
+		/// <param name="currentContactViewModel">Текущая VM контакта</param>
+		/// <param name="newContactViewModel">Новая VM контакта</param>
 		public void ReplaceContactViewModel(
 			ContactViewModel currentContactViewModel, 
 			ContactViewModel newContactViewModel)
@@ -140,6 +195,9 @@ namespace ContactsAppViewModel.ModelViewModels
 			IsProjectSaved = false;
 		}
 
+		/// <summary>
+		/// Удаляет текущую VM контакта из списка
+		/// </summary>
 		public void RemoveSelectedContactViewModel()
 		{
 			if (SelectedContactViewModel != null)
@@ -149,6 +207,11 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 		}
 
+		/// <summary>
+		/// Создает список VM контактов, фамилия и имя которых 
+		/// содержит подстроку
+		/// </summary>
+		/// <param name="searchString">Подстрока для поиска</param>
 		public void ShowSearchContacts(string searchString)
 		{
 			if(!IsProjectSaved)
@@ -166,6 +229,9 @@ namespace ContactsAppViewModel.ModelViewModels
 			OnPropertyChanged(nameof(ContactViewModels));
 		}
 
+		/// <summary>
+		/// Сохраняет текущую версию проекта
+		/// </summary>
 		public void SaveProject()
 		{
 			if(!IsProjectSaved)

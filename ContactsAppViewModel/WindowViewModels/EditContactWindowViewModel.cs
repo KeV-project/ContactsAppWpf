@@ -3,10 +3,10 @@ using ContactsAppViewModel.ModelViewModels;
 
 namespace ContactsAppViewModel.WindowViewModels
 {
-    //TODO: Несоответствие XML
+    //TODO: Несоответствие XML +
 	/// <summary>
-	/// Класс <see cref="EditContactViewModel"/>
-	/// связывает модель и представление через механизм привязки данных.
+	/// Класс <see cref="EditContactWindowViewModel"/>
+	/// связывает модель и представление через механизм привязки данных
 	/// </summary>
 	public class EditContactWindowViewModel: ViewModelBase
 	{
@@ -21,13 +21,20 @@ namespace ContactsAppViewModel.WindowViewModels
 		public RelayCommand CancelCommand { get; set; }
 
 		/// <summary>
-		/// ViewModel редактируемого контакта
+		/// ViewModel текущего контакта
 		/// </summary>
 		public ContactViewModel CurrentContactViewModel { get; private set; }
 
+		/// <summary>
+		/// ViewModel редактируемого контакта
+		/// </summary>
 		public ContactViewModel EditedContactViewModel { get; private set; }
 
-		
+		/// <summary>
+		/// Инициализирет объект класса 
+		/// <see cref="EditContactWindowViewModel"/>
+		/// </summary>
+		/// <param name="contactViewModel">viewModel контакта</param>
 		public EditContactWindowViewModel(ContactViewModel contactViewModel)
 		{
 			CurrentContactViewModel = contactViewModel;

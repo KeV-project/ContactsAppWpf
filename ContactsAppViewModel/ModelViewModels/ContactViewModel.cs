@@ -4,8 +4,9 @@ using ContactsAppModel;
 namespace ContactsAppViewModel.ModelViewModels
 {
 	/// <summary>
-	/// Класс <see cref="ContactViewModel"/> организует уровень
-	/// защиты данных приложения от неккоректного ввода
+	/// Класс <see cref="ContactViewModel"/> 
+	/// предназначен для создания viewModel объекта класса
+	/// <see cref="ContactsAppModel.Contact"/>
 	/// </summary>
 	public class ContactViewModel: ModelViewModelBase, ICloneable
 	{
@@ -17,8 +18,9 @@ namespace ContactsAppViewModel.ModelViewModels
         /// <summary>
 		/// Устанавливает свойство контакта
 		/// </summary>
-		/// <param name="property"></param>
-		/// <param name="setProperty"></param>
+		/// <param name="property">Свойство контакта</param>
+		/// <param name="setProperty">Метод, устанавливайющий 
+		/// значение свойства</param>
 		private void SetProperty(string property, Action setProperty)
 		{
 			try
@@ -70,7 +72,16 @@ namespace ContactsAppViewModel.ModelViewModels
 			}
 		}
 
+		/// <summary>
+		/// Хранит viewModel объекта класса 
+		/// <see cref="ContactsAppModel.PhoneNumber"/>
+		/// </summary>
 		private PhoneNumberViewModel _phoneNumberViewModel;
+
+		/// <summary>
+		/// Возвращает и устанавливает viewModel объекта класса 
+		/// <see cref="ContactsAppModel.PhoneNumber"/>
+		/// </summary>
 		public PhoneNumberViewModel PhoneNumberViewModel
 		{
 			get
@@ -132,7 +143,7 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// <summary>
 		/// Инициализирует объект класса <see cref="ContactViewModel"/>
 		/// </summary>
-		/// <param name="contact"></param>
+		/// <param name="contact">Редактируемый контакт</param>
 		public ContactViewModel(Contact contact)
 		{
 			Contact = contact;
@@ -140,19 +151,13 @@ namespace ContactsAppViewModel.ModelViewModels
 				Contact.Number);
 		}
 
+		/// <summary>
+		/// Создает копию текущей viewModel-и
+		/// </summary>
+		/// <returns>Копия текущей viewModel-и</returns>
 		public object Clone()
 		{
 			return new ContactViewModel((Contact)Contact.Clone());
-		}
-
-		public void Copy(ContactViewModel contactViewModel)
-		{
-			FirstName = contactViewModel.FirstName;
-			LastName = contactViewModel.LastName;
-			BirthDate = contactViewModel.BirthDate;
-			PhoneNumberViewModel.Number = contactViewModel.
-				PhoneNumberViewModel.Number;
-			Email = contactViewModel.Email;
 		}
 	}
 }

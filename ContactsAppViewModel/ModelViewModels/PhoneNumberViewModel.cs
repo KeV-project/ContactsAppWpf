@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ContactsAppModel;
 
 namespace ContactsAppViewModel.ModelViewModels
 {
 	/// <summary>
-	/// /// Класс <see cref="PhoneNumberViewModel"/> организует уровень
-	/// защиты данных приложения от неккоректного ввода
+	/// Класс <see cref="PhoneNumberViewModel"/> 
+	/// предназначен для создания viewModel класса 
+	/// <see cref="ContactsAppModel.PhoneNumber"/>
 	/// </summary>
 	public class PhoneNumberViewModel: ModelViewModelBase
 	{
@@ -18,10 +15,14 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// </summary>
 		public PhoneNumber PhoneNumber { get; set; }
 
+		/// <summary>
+		/// Хранит представление свойста <see cref="PhoneNumber.Number"/>
+		/// </summary>
 		private string _number;
 
 		/// <summary>
-		/// Возвращает и устанавливает номер телефона
+		/// Возвращает и устанавливает представление 
+		/// номера телефона контакта
 		/// </summary>
 		public string Number
 		{
@@ -64,10 +65,10 @@ namespace ContactsAppViewModel.ModelViewModels
 		}
 
 		/// <summary>
-		/// Инифиализирует объект класса <see cref="PhoneNumberViewModel"/>
+		/// Инициализирует объект класса <see cref="PhoneNumberViewModel"/>
 		/// </summary>
 		/// <param name="phoneNumber">Объект класса 
-		/// <see cref="PhoneNumber"/></param>
+		/// <see cref="ContactsAppModel.PhoneNumber"/></param>
 		public PhoneNumberViewModel(PhoneNumber phoneNumber)
 		{
 			PhoneNumber = phoneNumber;
