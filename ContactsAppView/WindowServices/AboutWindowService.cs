@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ContactsAppViewModel.WindowServices;
-using ContactsAppViewModel.Commands;
+﻿using ContactsAppViewModel.WindowServices;
 
 namespace ContactsAppView.WindowServices
 {
     /// <summary>
 	/// Класс <see cref="AboutWindowService"/> 
-	/// предоставляет viewModel свойства и методы для 
+	/// предоставляет свойства и методы для 
 	/// работы с окном <see cref="AboutWindow"/>
 	/// </summary>
 	public class AboutWindowService: IWindowService

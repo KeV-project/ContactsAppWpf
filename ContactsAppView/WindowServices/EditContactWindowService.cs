@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ContactsAppViewModel.WindowViewModels;
+﻿using ContactsAppViewModel.WindowViewModels;
 using ContactsAppViewModel.WindowServices;
 using ContactsAppViewModel.Commands;
 
@@ -11,7 +6,7 @@ namespace ContactsAppView.WindowServices
 {
 	/// <summary>
 	/// Класс <see cref="EditContactWindowService"/> 
-	/// предоставляет viewModel свойства и методы для 
+	/// предоставляет свойства и методы для 
 	/// работы с окном <see cref="EditContactWindow"/>
 	/// </summary>
 	public class EditContactWindowService: IDialogWindowService
@@ -57,7 +52,8 @@ namespace ContactsAppView.WindowServices
 		/// <summary>
 		/// Запускает окно
 		/// </summary>
-		/// <param name="dataContext">ViewModel окна</param>
+		/// <param name="dataContext">ViewModel окна для создания 
+		/// и редактирования контакта</param>
 		public void ShowDialog(object dataContext)
 		{
 			((EditContactWindowViewModel)dataContext).OkCommand = 
