@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ContactsAppViewModel.WindowViewModels;
+using ContactsAppView.WindowServices;
 
 namespace ContactsAppView
 {
@@ -24,8 +25,9 @@ namespace ContactsAppView
 		public ShowContactsWindow()
 		{
 			DataContext = new ShowContactsWindowViewModel(
-				new WindowServices.EditContactWindowService(), 
-				new WindowServices.AboutWindowService());
+				new EditContactWindowService(), 
+				new AboutWindowService(),
+				new MessageBoxService());
 
 			InitializeComponent();
 		}

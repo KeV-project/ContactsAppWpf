@@ -60,8 +60,10 @@ namespace ContactsAppView.WindowServices
 		/// <param name="dataContext">ViewModel окна</param>
 		public void ShowDialog(object dataContext)
 		{
-			((EditContactWindowViewModel)dataContext).OkCommand = OkCommand;
-			((EditContactWindowViewModel)dataContext).CancelCommand = CancelCommand;
+			((EditContactWindowViewModel)dataContext).OkCommand = 
+				OkCommand;
+			((EditContactWindowViewModel)dataContext).CancelCommand = 
+				CancelCommand;
             _editContactWindow = new EditContactWindow
             {
                 DataContext = dataContext
