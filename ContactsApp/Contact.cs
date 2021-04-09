@@ -57,7 +57,7 @@ namespace ContactsAppModel
                 const int minLength = 0;
                 const int maxLength = 50;
                 ValueValidator.AssertCorrectName(value,
-                        minLength, maxLength, "фамилия контакта");
+                        minLength, maxLength, "фамилию контакта");
             }
         }
 

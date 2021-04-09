@@ -29,6 +29,7 @@ namespace ContactsAppViewModel.WindowViewModels
         /// </summary>
         private IWindowService _aboutWindowService;
 
+		private string _searchString = "";
 
 		/// <summary>
 		/// Инициализирует проект пользовательских данных и
@@ -111,57 +112,47 @@ namespace ContactsAppViewModel.WindowViewModels
 			}
 		}
 
-		//      /// <summary>
-		//      /// Хранит команду удаления контакта
-		//      /// </summary>
-		//      private RelayCommand _removeContactCommand;
+		/// <summary>
+		/// Хранит команду удаления контакта
+		/// </summary>
+		private RelayCommand _removeContactCommand;
 
-		//      /// <summary>
-		//      /// Возвращает команду удаления нового контакта
-		//      /// </summary>
-		//      public RelayCommand RemoveContactCommand
-		//      {
-		//	get
-		//	{
-		//		return _removeContactCommand ??
-		//		  (_removeContactCommand = new RelayCommand(obj =>
-		//		  {
-		//			  if (SelectedContactViewModel != null)
-		//			  {
-		//				  _project.RemoveContact(SelectedContactViewModel.
-		//					  Contact);
-		//				  ContactViewModels.Remove(SelectedContactViewModel);
-		//				  ProjectManager.SaveProject(_project, _path);
-		//			  }
-		//		  }));
-		//	}
-		//}
+		/// <summary>
+		/// Возвращает команду удаления нового контакта
+		/// </summary>
+		public RelayCommand RemoveContactCommand
+		{
+			get
+			{
+				return _removeContactCommand ??
+				  (_removeContactCommand = new RelayCommand(obj =>
+				  {
+					  ProjectViewModel.RemoveSelectedContactViewModel();
+				  }));
+			}
+		}
 
-		//      /// <summary>
-		//      /// Хранит команду для поиска контакта по подстроке
-		//      /// </summary>
-		//      private RelayCommand _findContactCommand;
+		/// <summary>
+		/// Хранит команду для поиска контакта по подстроке
+		/// </summary>
+		private RelayCommand _findContactCommand;
 
-		//      /// <summary>
-		//      /// Возвращает команду для поиска контакта
-		//      /// </summary>
-		//      public RelayCommand FindContactCommand
-		//      {
-		//	get
-		//	{
-		//		return _findContactCommand ??
-		//		 (_findContactCommand = new RelayCommand(soughtContactName =>
-		//		 {
-		//			 //TODO: Naming
-		//			 SoughtContactName = soughtContactName.ToString();
+		/// <summary>
+		/// Возвращает команду для поиска контакта
+		/// </summary>
+		public RelayCommand FindContactCommand
+		{
+			get
+			{
+				return _findContactCommand ??
+				 (_findContactCommand = new RelayCommand(searchString =>
+				 {
+					 //TODO: Naming
+					 _searchString = searchString.ToString();
 
-		//			 ContactViewModels = SoughtContactName != ""
-		//				 ? GetSoughtContactViewModels()
-		//				 : GetAllContactViewModels();
-		//			 OnPropertyChanged(nameof(ContactViewModels));
-		//		 }));
-		//	}
-		//}
+				 }));
+			}
+		}
 
 		/// <summary>
 		/// Хранит команду запуска окна About
