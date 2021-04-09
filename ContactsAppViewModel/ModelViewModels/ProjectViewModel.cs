@@ -28,8 +28,9 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// Хранит список VM контактов пользователя
 		/// </summary>
 		public ObservableCollection<ContactViewModel>
-			ContactViewModels
-		{ get; set; }
+			ContactViewModels{ get; set; }
+
+		public ContactViewModel this[int index] => ContactViewModels[index];
 
 		/// <summary>
 		/// Хранит VM текущего контакта
@@ -63,18 +64,32 @@ namespace ContactsAppViewModel.ModelViewModels
 		{
 			ObservableCollection<ContactViewModel> contactViewModels = 
 				new ObservableCollection<ContactViewModel>();
-
 			for (int i = 0; i < _project.ContactsCount; i++)
 			{
 				contactViewModels.Add(new ContactViewModel(_project[i]));
 			}
-
 			return contactViewModels;
+		}
+
+		private List<Contact> GetAllContacts()
+		{
+			List<Contact> contacts = new List<Contact>();
+			for(int i = 0; i < ContactViewModels.Count; i++)
+			{
+				contacts.Add(ContactViewModels[i].Contact);
+			}
+			return contacts;
 		}
 
 		public void AddContactViewModel(ContactViewModel contactViewModel)
 		{
 			ContactViewModels.Add(contactViewModel);
+		}
+
+		public void SaveProject()
+		{
+			_project.Contacts = GetAllContacts();
+			ProjectManager.SaveProject(_project, _defaultPath);
 		}
 	}
 }

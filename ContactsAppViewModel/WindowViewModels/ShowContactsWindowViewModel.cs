@@ -29,10 +29,6 @@ namespace ContactsAppViewModel.WindowViewModels
         /// </summary>
         private IWindowService _aboutWindowService;
 
-		//public ObservableCollection<ContactViewModel>
-		//	ContactViewModels
-		//{ get; set; }
-
 		/// <summary>
 		/// Инициализирует проект пользовательских данных и
 		/// устанавливает сервисы для связи с дочерним окном
@@ -44,16 +40,6 @@ namespace ContactsAppViewModel.WindowViewModels
 		public ShowContactsWindowViewModel(IDialogWindowService 
             editContactWindowService, IWindowService aboutWindowService)
 		{
-			//ContactViewModels = new ObservableCollection<ContactViewModel>
-			//{
-			//	new ContactViewModel(new Contact("Артем", "Кабанов", 
-			//		new PhoneNumber(79521777644), "", 
-			//		new DateTime(1900, 12, 31, 23, 59, 59))),
-			//	new ContactViewModel(new Contact("Борис", "Афанасьев",
-			//		new PhoneNumber(79521777644), "",
-			//		new DateTime(1900, 12, 31, 23, 59, 59)))
-
-			//};
             ProjectViewModel = new ProjectViewModel();
 
             _editContactWindowService = editContactWindowService;
@@ -199,6 +185,20 @@ namespace ContactsAppViewModel.WindowViewModels
             }
 		}
 
+		private RelayCommand _saveCommand;
+
+		public RelayCommand SaveCommand
+		{
+			get
+			{
+				return _saveCommand ??
+				 (_saveCommand = new RelayCommand(obj =>
+				 {
+					 ProjectViewModel.SaveProject();
+				 }));
+			}
+		}
+
         /// <summary>
         /// Храни команду выхода из приложения
         /// </summary>
@@ -214,6 +214,7 @@ namespace ContactsAppViewModel.WindowViewModels
                 return _closeApplicationCommand ??
                  (_closeApplicationCommand = new RelayCommand(obj =>
                  {
+					 
                      Environment.Exit(0);
                  }));
             }

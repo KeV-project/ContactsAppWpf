@@ -15,7 +15,7 @@ namespace ContactsAppModel
         /// Хранит все контакты пользователя
         /// </summary>
         [DataMember]
-        private List<Contact> _contacts;
+        public List<Contact> Contacts { get; set; }
 
         /// <summary>
         /// Позволяет получить или добавить контакт в список 
@@ -24,21 +24,21 @@ namespace ContactsAppModel
         /// <param name="index">Индекс возвращаемого контакта
         /// или позиция для добавления контакта в список</param>
         /// <returns>Возвращает контакт по указанному индексу</returns>
-        public Contact this[int index] => _contacts[index];
+        public Contact this[int index] => Contacts[index];
 
         /// <summary>
         /// Инициализирует объект класса <see cref="Project"/>
         /// </summary>
         public Project()
         {
-            _contacts = new List<Contact>();
+            Contacts = new List<Contact>();
         }
 
         /// <summary>
         /// Возвращает количество контактов в списке
         /// </summary>
         /// <returns>Значение показывает, скоько контактов в списке</returns>
-        public int ContactsCount => _contacts.Count;
+        public int ContactsCount => Contacts.Count;
 
         /// <summary>
         /// Метод добавляет новый контакт в список проекта
@@ -49,7 +49,7 @@ namespace ContactsAppModel
         {
             if (newContact != null)
             {
-                _contacts.Add(newContact);
+                Contacts.Add(newContact);
             }
             else
             {
@@ -64,7 +64,7 @@ namespace ContactsAppModel
         /// <param name="removableContact">Удаляемый контакт</param>
         public void RemoveContact(Contact removableContact)
         {
-            if (!_contacts.Remove(removableContact))
+            if (!Contacts.Remove(removableContact))
             {
                 throw new ArgumentException("ИСКЛЮЧЕНИЕ: контакт " +
                     "не существует");
@@ -83,7 +83,7 @@ namespace ContactsAppModel
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return Equals(_contacts, other._contacts);
+            return Equals(Contacts, other.Contacts);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace ContactsAppModel
         /// класса <see cref="Project"/></returns>
         public override int GetHashCode()
         {
-            return (_contacts != null ? _contacts.GetHashCode() : 0);
+            return (Contacts != null ? Contacts.GetHashCode() : 0);
         }
     }
 }
