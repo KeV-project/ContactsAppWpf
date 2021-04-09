@@ -78,39 +78,36 @@ namespace ContactsAppViewModel.WindowViewModels
 			}
 		}
 
-		//      /// <summary>
-		//      /// Хранит команду редактирования контакта
-		//      /// </summary>
-		//      private RelayCommand _editContactCommand;
+		/// <summary>
+		/// Хранит команду редактирования контакта
+		/// </summary>
+		private RelayCommand _editContactCommand;
 
-		//      /// <summary>
-		//      /// Возвращает команду редактирования нового контакта
-		//      /// </summary>
-		//      public RelayCommand EditContactCommand
-		//      {
-		//	get
-		//	{
-		//		return _editContactCommand ??
-		//		  (_editContactCommand = new RelayCommand(obj =>
-		//		  {
-		//			  if (SelectedContactViewModel != null)
-		//			  {
-		//				  EditContactWindowViewModel viewModel =
-		//					new EditContactWindowViewModel(
-		//						SelectedContactViewModel);
-		//				  _editContactWindowService.ShowDialog(viewModel);
+		/// <summary>
+		/// Возвращает команду редактирования нового контакта
+		/// </summary>
+		public RelayCommand EditContactCommand
+		{
+			get
+			{
+				return _editContactCommand ??
+				  (_editContactCommand = new RelayCommand(obj =>
+				  {
+					  if (ProjectViewModel.SelectedContactViewModel != null)
+					  {
+						  EditContactWindowViewModel viewModel =
+							new EditContactWindowViewModel(
+								ProjectViewModel.SelectedContactViewModel);
+						  _editContactWindowService.ShowDialog(viewModel);
 
-		//				  if (_editContactWindowService.DialogResult)
-		//				  {
-		//					  _project.SortContacts();
-		//					  ContactViewModels = GetAllContactViewModels();
-		//					  OnPropertyChanged(nameof(ContactViewModels));
-		//					  ProjectManager.SaveProject(_project, _path);
-		//				  }
-		//			  }
-		//		  }));
-		//	}
-		//}
+						  if (_editContactWindowService.DialogResult)
+						  {
+							  
+						  }
+					  }
+				  }));
+			}
+		}
 
 		//      /// <summary>
 		//      /// Хранит команду удаления контакта

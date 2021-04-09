@@ -100,7 +100,8 @@
                 </Grid>
                 
                 <!--Содержит список контактов-->
-                <ListBox Margin="10" Grid.Row="1" Grid.RowSpan="2"
+                <ListBox Margin="10" Grid.Row="1" Grid.RowSpan="2" 
+                         SelectedItem="{Binding ProjectViewModel.SelectedContactViewModel}"
                          ItemsSource="{Binding Source=
                                     {StaticResource CollectionViewSource}}">
                     <ListBox.ItemTemplate>
