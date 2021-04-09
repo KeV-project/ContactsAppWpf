@@ -29,7 +29,6 @@ namespace ContactsAppViewModel.WindowViewModels
         /// </summary>
         private IWindowService _aboutWindowService;
 
-		private IDialogWindowService _messageBoxWindowService;
 
 		/// <summary>
 		/// Инициализирует проект пользовательских данных и
@@ -40,14 +39,12 @@ namespace ContactsAppViewModel.WindowViewModels
 		/// /// <param name="aboutWindowService">
 		/// Сервис окна About</param>
 		public ShowContactsWindowViewModel(IDialogWindowService 
-            editContactWindowService, IWindowService aboutWindowService,
-			IDialogWindowService messageBoxWindowService)
+            editContactWindowService, IWindowService aboutWindowService)
 		{
             ProjectViewModel = new ProjectViewModel();
 
             _editContactWindowService = editContactWindowService;
             _aboutWindowService = aboutWindowService;
-			_messageBoxWindowService = messageBoxWindowService;
         }
 
 		/// <summary>

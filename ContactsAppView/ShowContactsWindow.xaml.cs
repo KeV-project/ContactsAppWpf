@@ -26,10 +26,17 @@ namespace ContactsAppView
 		{
 			DataContext = new ShowContactsWindowViewModel(
 				new EditContactWindowService(), 
-				new AboutWindowService(),
-				new MessageBoxService());
+				new AboutWindowService());
+
+			Closed += ShowContactsWindow_Closed;
 
 			InitializeComponent();
+		}
+
+		private void ShowContactsWindow_Closed(object sender, EventArgs e)
+		{
+			((ShowContactsWindowViewModel)DataContext).
+				ProjectViewModel.SaveProject();
 		}
 	}
 }
