@@ -55,13 +55,7 @@ namespace ContactsAppViewModel.ModelViewModels
         /// Возвращает true, если объект успешно прошел валидацию,
         /// в противном случае возвращает false
         /// </summary>
-        public bool IsValid
-        {
-            get
-            {
-                return !HasErrors;
-            }
-        }
+        public bool IsValid => !HasErrors;
 
         /// <summary>
         /// Добавляет новые сведения об ошибке валидации в список объекта

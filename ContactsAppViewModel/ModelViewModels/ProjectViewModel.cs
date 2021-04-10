@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using ContactsAppModel;
 
 namespace ContactsAppViewModel.ModelViewModels
@@ -99,9 +100,9 @@ namespace ContactsAppViewModel.ModelViewModels
 		private ObservableCollection<ContactViewModel> 
 			GetContactViewModels()
 		{
-			ObservableCollection<ContactViewModel> contactViewModels = 
+			var contactViewModels = 
 				new ObservableCollection<ContactViewModel>();
-			for (int i = 0; i < _project.ContactsCount; i++)
+			for (var i = 0; i < _project.ContactsCount; i++)
 			{
 				contactViewModels.Add(new ContactViewModel(_project[i]));
 			}
@@ -118,17 +119,16 @@ namespace ContactsAppViewModel.ModelViewModels
 		private ObservableCollection<ContactViewModel>
 			GetSearchContactViewModels(string searchString)
 		{
-			ObservableCollection<ContactViewModel> contactViewModels =
-				new ObservableCollection<ContactViewModel>();
-			for (int i = 0; i < ContactViewModels.Count; i++)
-			{
-				string contactName = ContactViewModels[i].LastName
-					+ " " + ContactViewModels[i].FirstName;
-				if(contactName.Contains(searchString))
-				{
-					contactViewModels.Add(ContactViewModels[i]);
-				}
-			}
+			var contactViewModels = new ObservableCollection<ContactViewModel>();
+			foreach (var contactViewModel in ContactViewModels)
+            {
+                var contactName = contactViewModel.LastName
+                                  + " " + contactViewModel.FirstName;
+                if(contactName.Contains(searchString))
+                {
+                    contactViewModels.Add(contactViewModel);
+                }
+            }
 			return contactViewModels;
 		}
 
@@ -137,14 +137,9 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// </summary>
 		/// <returns>Возвращает список контактов</returns>
 		private List<Contact> GetAllContacts()
-		{
-			List<Contact> contacts = new List<Contact>();
-			for(int i = 0; i < ContactViewModels.Count; i++)
-			{
-				contacts.Add(ContactViewModels[i].Contact);
-			}
-			return contacts;
-		}
+        {
+            return ContactViewModels.Select(contactViewModel => contactViewModel.Contact).ToList();
+        }
 
 		/// <summary>
 		/// Создает строку с инициалами контактов, у которых сегодня
@@ -154,19 +149,16 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// у которых сегодня день рождения</returns>
 		private string GetBirthdayNames()
 		{
-			string birthdayNames = "";
-			for(int i = 0; i < ContactViewModels.Count; i++)
-			{
-				if(ContactViewModels[i].BirthDate.Day 
-					== DateTime.Today.Day
-					&& ContactViewModels[i].BirthDate.Month 
-					== DateTime.Today.Month)
-				{
-					birthdayNames += ContactViewModels[i].LastName + " "
-						+ ContactViewModels[i].FirstName + ", ";
-					HasBirthdays = true;
-				}
-			}
+			var birthdayNames = "";
+			foreach (var contactViewModel in ContactViewModels)
+            {
+                if (contactViewModel.BirthDate.Day != DateTime.Today.Day ||
+                    contactViewModel.BirthDate.Month != DateTime.Today.Month) continue;
+
+                birthdayNames += contactViewModel.LastName 
+                                 + " " + contactViewModel.FirstName + ", ";
+                HasBirthdays = true;
+            }
 			return birthdayNames.Trim(new char[] { ',', ' ' });
 		}
 
@@ -218,14 +210,9 @@ namespace ContactsAppViewModel.ModelViewModels
 			{
 				SaveProject();
 			}
-			if(searchString == "")
-			{
-				ContactViewModels = GetContactViewModels();
-			}
-			else
-			{
-				ContactViewModels = GetSearchContactViewModels(searchString);
-			}
+			ContactViewModels = searchString == "" 
+                ? GetContactViewModels() 
+                : GetSearchContactViewModels(searchString);
 			OnPropertyChanged(nameof(ContactViewModels));
 		}
 
@@ -233,13 +220,12 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// Сохраняет текущую версию проекта
 		/// </summary>
 		public void SaveProject()
-		{
-			if(!IsProjectSaved)
-			{
-				_project.Contacts = GetAllContacts();
-				ProjectManager.SaveProject(_project, _defaultPath);
-				IsProjectSaved = true;
-			}
-		}
+        {
+            if (IsProjectSaved) return;
+
+            _project.Contacts = GetAllContacts();
+            ProjectManager.SaveProject(_project, _defaultPath);
+            IsProjectSaved = true;
+        }
 	}
 }
