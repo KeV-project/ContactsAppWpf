@@ -3,7 +3,6 @@ using ContactsAppViewModel.ModelViewModels;
 
 namespace ContactsAppViewModel.WindowViewModels
 {
-    //TODO: Несоответствие XML +
 	/// <summary>
 	/// Класс <see cref="EditContactWindowViewModel"/>
 	/// связывает модель и представление через механизм привязки данных
@@ -23,12 +22,12 @@ namespace ContactsAppViewModel.WindowViewModels
 		/// <summary>
 		/// ViewModel текущего контакта
 		/// </summary>
-		public ContactViewModel CurrentContactViewModel { get; private set; }
+		public ContactViewModel CurrentContactViewModel { get; }
 
 		/// <summary>
 		/// ViewModel редактируемого контакта
 		/// </summary>
-		public ContactViewModel EditedContactViewModel { get; private set; }
+		public ContactViewModel EditedContactViewModel { get; }
 
 		/// <summary>
 		/// Инициализирет объект класса 

@@ -146,7 +146,6 @@ namespace ContactsAppViewModel.WindowViewModels
 				return _findContactCommand ??
 				 (_findContactCommand = new RelayCommand(searchString =>
 				 {
-					 //TODO: Naming +
 					 ProjectViewModel.ShowSearchContacts(
 						 searchString.ToString());
 				 }));
