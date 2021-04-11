@@ -138,7 +138,8 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// <returns>Возвращает список контактов</returns>
 		private List<Contact> GetAllContacts()
         {
-            return ContactViewModels.Select(contactViewModel => contactViewModel.Contact).ToList();
+            return ContactViewModels.Select(contactViewModel => 
+				contactViewModel.Contact).ToList();
         }
 
 		/// <summary>
