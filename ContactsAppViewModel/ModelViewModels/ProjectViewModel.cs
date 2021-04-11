@@ -82,6 +82,28 @@ namespace ContactsAppViewModel.ModelViewModels
 		public bool HasBirthdays { get; private set; } = false;
 
 		/// <summary>
+		/// Хранит подстроку для поиска VM контакта
+		/// </summary>
+		private string _searchString = "";
+
+		/// <summary>
+		/// Возвращает и устанавливет строку для поиска
+		/// VM контакта
+		/// </summary>
+		public string SearchString
+		{
+			get
+			{
+				return _searchString;
+			}
+			set
+			{
+				_searchString = value;
+				OnPropertyChanged(nameof(SearchString));
+			}
+		}
+
+		/// <summary>
 		/// Инициализирует свойства объекта класса 
 		/// <see cref="ProjectViewModel"/>
 		/// </summary>
@@ -215,6 +237,38 @@ namespace ContactsAppViewModel.ModelViewModels
                 ? GetContactViewModels() 
                 : GetSearchContactViewModels(searchString);
 			OnPropertyChanged(nameof(ContactViewModels));
+		}
+
+		/// <summary>
+		/// Выполняет поиск равной VM контакта
+		/// </summary>
+		/// <param name="contactViewModel">Сравниваемый объект</param>
+		/// <returns>Возвращает VM контакта</returns>
+		public ContactViewModel GetEqualContactViewModel(
+			ContactViewModel contactViewModel)
+		{
+			for(int i = 0; i < ContactViewModels.Count; i++)
+			{
+				if(ContactViewModels[i].Contact.Equals(
+					contactViewModel.Contact))
+				{
+					return ContactViewModels[i];
+				}
+			}
+			return null;
+		}
+
+		/// <summary>
+		/// Возвращает список в исходное состояние
+		/// </summary>
+		public void ResetContactViewModels()
+		{
+			ContactViewModel selectedContactViewModel = 
+				SelectedContactViewModel;
+			SearchString = "";
+			ShowSearchContacts(SearchString);
+			SelectedContactViewModel = GetEqualContactViewModel(
+			  selectedContactViewModel);
 		}
 
 		/// <summary>

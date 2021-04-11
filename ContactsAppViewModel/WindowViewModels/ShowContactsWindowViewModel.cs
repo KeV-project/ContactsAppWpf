@@ -62,6 +62,7 @@ namespace ContactsAppViewModel.WindowViewModels
 				return _addContactCommand ??
 				  (_addContactCommand = new RelayCommand(obj =>
 				  {
+					  ProjectViewModel.ResetContactViewModels();
 					  EditContactWindowViewModel editContactViewModel =
 						new EditContactWindowViewModel(new ContactViewModel(
 							new Contact()));
@@ -73,6 +74,8 @@ namespace ContactsAppViewModel.WindowViewModels
 					  {
 						  ProjectViewModel.AddContactViewModel(
 							  editContactViewModel.EditedContactViewModel);
+						  ProjectViewModel.SelectedContactViewModel =
+							editContactViewModel.EditedContactViewModel;
 					  }
 				  }));
 			}
@@ -95,6 +98,7 @@ namespace ContactsAppViewModel.WindowViewModels
 				  {
 					  if (ProjectViewModel.SelectedContactViewModel != null)
 					  {
+						  ProjectViewModel.ResetContactViewModels();
 						  EditContactWindowViewModel viewModel =
 							new EditContactWindowViewModel(
 								ProjectViewModel.SelectedContactViewModel);
@@ -105,6 +109,8 @@ namespace ContactsAppViewModel.WindowViewModels
 							  ProjectViewModel.ReplaceContactViewModel(
 								  viewModel.CurrentContactViewModel, 
 								  viewModel.EditedContactViewModel);
+							  ProjectViewModel.SelectedContactViewModel =
+								viewModel.EditedContactViewModel;
 						  }
 					  }
 				  }));
@@ -126,6 +132,7 @@ namespace ContactsAppViewModel.WindowViewModels
 				return _removeContactCommand ??
 				  (_removeContactCommand = new RelayCommand(obj =>
 				  {
+					  ProjectViewModel.ResetContactViewModels();
 					  ProjectViewModel.RemoveSelectedContactViewModel();
 				  }));
 			}
