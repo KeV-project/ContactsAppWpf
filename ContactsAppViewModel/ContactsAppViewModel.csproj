@@ -65,10 +65,8 @@
     <Compile Include="ModelViewModels\ContactViewModel.cs" />
     <Compile Include="WindowViewModels\EditContactWindowViewModel.cs" />
     <Compile Include="WindowServices\IWindowService.cs" />
-    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="WindowViewModels\ShowContactsWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ContactsApp\ContactsAppModel.csproj">
