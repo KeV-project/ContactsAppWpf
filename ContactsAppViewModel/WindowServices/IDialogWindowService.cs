@@ -1,4 +1,4 @@
-﻿using ContactsAppViewModel.Commands;
+﻿using GalaSoft.MvvmLight.Command;
 
 namespace ContactsAppViewModel.WindowServices
 {

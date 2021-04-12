@@ -1,7 +1,8 @@
 ﻿using System;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using ContactsAppModel;
 using ContactsAppViewModel.WindowServices;
-using ContactsAppViewModel.Commands;
 using ContactsAppViewModel.ModelViewModels;
 
 
@@ -60,7 +61,7 @@ namespace ContactsAppViewModel.WindowViewModels
 			get
 			{
 				return _addContactCommand ??
-				  (_addContactCommand = new RelayCommand(obj =>
+				  (_addContactCommand = new RelayCommand(() =>
 				  {
 					  ProjectViewModel.ResetContactViewModels();
 					  EditContactWindowViewModel editContactViewModel =
@@ -94,7 +95,7 @@ namespace ContactsAppViewModel.WindowViewModels
 			get
 			{
 				return _editContactCommand ??
-				  (_editContactCommand = new RelayCommand(obj =>
+				  (_editContactCommand = new RelayCommand(() =>
 				  {
 					  if (ProjectViewModel.SelectedContactViewModel != null)
 					  {
@@ -130,7 +131,7 @@ namespace ContactsAppViewModel.WindowViewModels
 			get
 			{
 				return _removeContactCommand ??
-				  (_removeContactCommand = new RelayCommand(obj =>
+				  (_removeContactCommand = new RelayCommand(() =>
 				  {
 					  ProjectViewModel.ResetContactViewModels();
 					  ProjectViewModel.RemoveSelectedContactViewModel();
@@ -141,17 +142,18 @@ namespace ContactsAppViewModel.WindowViewModels
 		/// <summary>
 		/// Хранит команду для поиска контакта по подстроке
 		/// </summary>
-		private RelayCommand _findContactCommand;
+		private RelayCommand<string> _findContactCommand;
 
 		/// <summary>
 		/// Возвращает команду для поиска контакта
 		/// </summary>
-		public RelayCommand FindContactCommand
+		public RelayCommand<string> FindContactCommand
 		{
 			get
 			{
 				return _findContactCommand ??
-				 (_findContactCommand = new RelayCommand(searchString =>
+				 (_findContactCommand = new RelayCommand<string>(
+					 searchString =>
 				 {
 					 ProjectViewModel.ShowSearchContacts(
 						 searchString.ToString());
@@ -172,7 +174,7 @@ namespace ContactsAppViewModel.WindowViewModels
 			get
 			{
                 return _aboutCommand ??
-                 (_aboutCommand = new RelayCommand(obj =>
+                 (_aboutCommand = new RelayCommand(() =>
                  {
                      AboutWindowViewModel viewModel = 
                         new AboutWindowViewModel();
@@ -194,7 +196,7 @@ namespace ContactsAppViewModel.WindowViewModels
             get
             {
                 return _closeApplicationCommand ??
-                 (_closeApplicationCommand = new RelayCommand(obj =>
+                 (_closeApplicationCommand = new RelayCommand(() =>
                  {
 					 ProjectViewModel.SaveProject();
 					 Environment.Exit(0);

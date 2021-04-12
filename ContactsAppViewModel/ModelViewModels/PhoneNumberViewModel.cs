@@ -62,7 +62,7 @@ namespace ContactsAppViewModel.ModelViewModels
 					AddError(nameof(Number), ex.Message);
 				}
 
-				OnPropertyChanged(nameof(Number));
+				RaisePropertyChanged(nameof(Number));
 			}
 		}
 

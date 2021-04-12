@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
-using ContactsAppViewModel.Commands;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace ContactsAppViewModel.WindowViewModels
 {
@@ -47,7 +48,7 @@ namespace ContactsAppViewModel.WindowViewModels
 			get
 			{
 				return _openRepositoryCommand ??
-				 (_openRepositoryCommand = new RelayCommand(obj =>
+				 (_openRepositoryCommand = new RelayCommand(() =>
 				 {
 					 Process.Start(
 						 "https://github.com/KeV-project/ContactsAppWpf");

@@ -1,6 +1,6 @@
-﻿using ContactsAppViewModel.WindowViewModels;
+﻿using GalaSoft.MvvmLight.Command;
+using ContactsAppViewModel.WindowViewModels;
 using ContactsAppViewModel.WindowServices;
-using ContactsAppViewModel.Commands;
 
 namespace ContactsAppView.WindowServices
 {
@@ -36,13 +36,13 @@ namespace ContactsAppView.WindowServices
 		/// </summary>
 		public EditContactWindowService()
 		{
-			OkCommand = new RelayCommand(obj =>
+			OkCommand = new RelayCommand(() =>
 			{
 				DialogResult = true;
 				_editContactWindow.Close();
 			});
 
-			CancelCommand = new RelayCommand(obj =>
+			CancelCommand = new RelayCommand(() =>
 			{
 				DialogResult = false;
 				_editContactWindow.Close();

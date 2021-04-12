@@ -11,21 +11,21 @@ using System.Collections.ObjectModel;
 
 namespace ContactsAppViewModel
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Реализует привязку пользовательских данных к элементам управления
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+    //public abstract class ViewModelBase : INotifyPropertyChanged
+    //{
+    //    /// <summary>
+    //    /// Реализует привязку пользовательских данных к элементам управления
+    //    /// </summary>
+    //    public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        /// Сообщает View об изменении пользовательских данных
-        /// </summary>
-        /// <param name="prop">Измененное свойство</param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, 
-                new PropertyChangedEventArgs(prop));
-        }
-    }
+    //    /// <summary>
+    //    /// Сообщает View об изменении пользовательских данных
+    //    /// </summary>
+    //    /// <param name="prop">Измененное свойство</param>
+    //    public void OnPropertyChanged([CallerMemberName] string prop = "")
+    //    {
+    //        PropertyChanged?.Invoke(this, 
+    //            new PropertyChangedEventArgs(prop));
+    //    }
+    //}
 }

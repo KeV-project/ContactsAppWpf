@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using GalaSoft.MvvmLight;
 
 namespace ContactsAppViewModel.ModelViewModels
 {
@@ -67,7 +68,7 @@ namespace ContactsAppViewModel.ModelViewModels
         {
             _errors[propertyName] = new List<string>() { error };
             NotifyErrorsChanged(propertyName);
-            OnPropertyChanged(nameof(IsValid));
+            RaisePropertyChanged(nameof(IsValid));
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace ContactsAppViewModel.ModelViewModels
                 _errors.Remove(propertyName);
             }
             NotifyErrorsChanged(propertyName);
-            OnPropertyChanged(nameof(IsValid));
+            RaisePropertyChanged(nameof(IsValid));
         }
 
         /// <summary>

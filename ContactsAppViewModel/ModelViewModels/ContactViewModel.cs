@@ -34,7 +34,7 @@ namespace ContactsAppViewModel.ModelViewModels
 				AddError(property, ex.Message);
 			}
 
-			OnPropertyChanged(property);
+			RaisePropertyChanged(property);
 		}
 
 		/// <summary>

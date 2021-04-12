@@ -65,7 +65,7 @@ namespace ContactsAppViewModel.ModelViewModels
 			set
 			{
 				_selectedContactViewModel = value;
-				OnPropertyChanged(nameof(SelectedContactViewModel));
+				RaisePropertyChanged(nameof(SelectedContactViewModel));
 			}
 		}
 
@@ -99,7 +99,7 @@ namespace ContactsAppViewModel.ModelViewModels
 			set
 			{
 				_searchString = value;
-				OnPropertyChanged(nameof(SearchString));
+				RaisePropertyChanged(nameof(SearchString));
 			}
 		}
 
@@ -112,7 +112,7 @@ namespace ContactsAppViewModel.ModelViewModels
 			_project = ProjectManager.ReadProject(_defaultPath);
 			ContactViewModels = GetContactViewModels();
 			BirthdayNames = GetBirthdayNames();
-			OnPropertyChanged(nameof(HasBirthdays));
+			RaisePropertyChanged(nameof(HasBirthdays));
 		}
 
 		/// <summary>
@@ -236,7 +236,7 @@ namespace ContactsAppViewModel.ModelViewModels
 			ContactViewModels = searchString == "" 
                 ? GetContactViewModels() 
                 : GetSearchContactViewModels(searchString);
-			OnPropertyChanged(nameof(ContactViewModels));
+			RaisePropertyChanged(nameof(ContactViewModels));
 		}
 
 		/// <summary>

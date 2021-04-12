@@ -1,4 +1,5 @@
-﻿using ContactsAppViewModel.Commands;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using ContactsAppViewModel.ModelViewModels;
 
 namespace ContactsAppViewModel.WindowViewModels
