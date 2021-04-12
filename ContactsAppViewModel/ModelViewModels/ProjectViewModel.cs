@@ -233,9 +233,12 @@ namespace ContactsAppViewModel.ModelViewModels
 			{
 				SaveProject();
 			}
-			ContactViewModels = searchString == "" 
-                ? GetContactViewModels() 
-                : GetSearchContactViewModels(searchString);
+			ContactViewModels = GetContactViewModels();
+			if(searchString != "")
+			{
+				ContactViewModels = GetSearchContactViewModels(
+					searchString);
+			}
 			RaisePropertyChanged(nameof(ContactViewModels));
 		}
 
