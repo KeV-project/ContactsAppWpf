@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using ViewModelLib;
 using ContactsAppModel;
 
 namespace ContactsAppViewModel.ModelViewModels
@@ -10,9 +11,9 @@ namespace ContactsAppViewModel.ModelViewModels
 	/// <summary>
 	/// Класс <see cref="ProjectViewModel"/>
 	/// предназначен для создания viewModel объекта класса
-	/// <see cref="ContactsAppModel.Project"/>
+	/// <see cref="Project"/>
 	/// </summary>
-	public class ProjectViewModel: ModelViewModelBase
+	public class ProjectViewModel: NotifyDataErrorViewModelBase
 	{
 		/// <summary>
 		/// Хранит проект с пользовательскими данными приложения

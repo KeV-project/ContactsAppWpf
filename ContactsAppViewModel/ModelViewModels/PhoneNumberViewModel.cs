@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using ViewModelLib;
 using ContactsAppModel;
 
 namespace ContactsAppViewModel.ModelViewModels
@@ -9,7 +9,7 @@ namespace ContactsAppViewModel.ModelViewModels
 	/// предназначен для создания viewModel класса 
 	/// <see cref="ContactsAppModel.PhoneNumber"/>
 	/// </summary>
-	public class PhoneNumberViewModel: ModelViewModelBase
+	public class PhoneNumberViewModel: NotifyDataErrorViewModelBase
 	{
 		/// <summary>
 		/// Хранит изменяемый объект

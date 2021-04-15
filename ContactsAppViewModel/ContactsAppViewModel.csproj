@@ -55,9 +55,11 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="ViewModelLib">
+      <HintPath>..\..\ViewModelLib\ViewModelLib\bin\Release\ViewModelLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelViewModels\ModelViewModelBase.cs" />
     <Compile Include="ModelViewModels\PhoneNumberViewModel.cs" />
     <Compile Include="ModelViewModels\ProjectViewModel.cs" />
     <Compile Include="WindowServices\IDialogWindowService.cs" />

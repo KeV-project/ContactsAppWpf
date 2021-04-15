@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using ContactsAppModel;
+using ViewModelLib;
 
 namespace ContactsAppViewModel.ModelViewModels
 {
@@ -9,7 +9,7 @@ namespace ContactsAppViewModel.ModelViewModels
 	/// предназначен для создания viewModel объекта класса
 	/// <see cref="ContactsAppModel.Contact"/>
 	/// </summary>
-	public class ContactViewModel: ModelViewModelBase, ICloneable
+	public class ContactViewModel: NotifyDataErrorViewModelBase, ICloneable
 	{
 		/// <summary>
 		/// Изменяемый контакт
