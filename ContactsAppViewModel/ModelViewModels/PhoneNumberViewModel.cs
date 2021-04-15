@@ -17,6 +17,11 @@ namespace ContactsAppViewModel.ModelViewModels
 		public PhoneNumber PhoneNumber { get; set; }
 
 		/// <summary>
+		/// Хранит номер телефона по умолчанию
+		/// </summary>
+		private const long DEFAULT_NUMBER = 70000000000;
+
+		/// <summary>
 		/// Хранит представление свойста <see cref="PhoneNumber.Number"/>
 		/// </summary>
 		private string _number;
@@ -27,11 +32,12 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// </summary>
 		public string Number
 		{
-			//TODO: Дефолтное значение дублируется три раза - лучше его вынести в константу.
+			//TODO: Дефолтное значение дублируется три раза - лучше его вынести в константу. +
 			get
 			{
-				if(PhoneNumber.Number == 70000000000 &&
-					(_number == null || _number == "70000000000"))
+				if(PhoneNumber.Number == DEFAULT_NUMBER &&
+					(_number == null || 
+					_number == DEFAULT_NUMBER.ToString()))
 				{
 					return "";
 				}
@@ -44,7 +50,7 @@ namespace ContactsAppViewModel.ModelViewModels
 					_number = value.Trim();
 					if(_number == "")
 					{
-						_number = "70000000000";
+						_number = DEFAULT_NUMBER.ToString();
 					}
 					if (long.TryParse(_number, out long number))
 					{
