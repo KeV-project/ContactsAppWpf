@@ -75,13 +75,13 @@ namespace ContactsAppViewModel.ModelViewModels
 
 		/// <summary>
 		/// Хранит viewModel объекта класса 
-		/// <see cref="ContactsAppModel.PhoneNumber"/>
+		/// <see cref="PhoneNumber"/>
 		/// </summary>
 		private PhoneNumberViewModel _phoneNumberViewModel;
 
 		/// <summary>
 		/// Возвращает и устанавливает viewModel объекта класса 
-		/// <see cref="ContactsAppModel.PhoneNumber"/>
+		/// <see cref="PhoneNumber"/>
 		/// </summary>
 		public PhoneNumberViewModel PhoneNumberViewModel
 		{
