@@ -32,7 +32,6 @@ namespace ContactsAppViewModel.ModelViewModels
 		/// </summary>
 		public string Number
 		{
-			//TODO: Дефолтное значение дублируется три раза - лучше его вынести в константу. +
 			get
 			{
 				if(PhoneNumber.Number == DEFAULT_NUMBER &&
